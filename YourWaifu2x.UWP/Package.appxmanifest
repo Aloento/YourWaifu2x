@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="2e25802f-10fa-4f00-9a1d-3691951d1fa4"
-    Publisher="Aloento_SoarCraft"
+    Name="8fbb2465-7499-4317-883c-9bffb28b65a0"
+    Publisher="O=MyCompany"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="0f50d7bb-b16f-4074-a4d5-c6db643906e6" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="513de6cb-112d-477a-9bec-6317ed446516" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>YourWaifu2x</DisplayName>

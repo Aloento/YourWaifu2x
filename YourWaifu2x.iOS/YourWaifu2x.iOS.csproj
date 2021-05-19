@@ -3,13 +3,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProjectGuid>5bf5aea0-4f61-4a5b-b6e4-dd928d192be4</ProjectGuid>
+    <ProjectGuid>2ff3fb5a-6103-4875-96e5-8a9abb6e7b0f</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>YourWaifu2x</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>YourWaifu2x</AssemblyName>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <ResourcesDirectory>..\YourWaifu2x.Shared\Strings</ResourcesDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
@@ -120,15 +121,33 @@
     <PackageReference Include="Uno.Extensions.Logging.OSLog " Version="1.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Contents.json"></ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\ios-marketing-1024x1024%401x.png"></ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\iPad-76x76%402x.png"></ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\iPad-84x84%402x.png"></ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\iPhone-20x20%402x.png"></ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\iPhone-20x20%403x.png"></ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\iPhone-40x40%403x.png"></ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\iPhone-60x60%402x.png"></ImageAsset>
-    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\Contents.json"></ImageAsset>
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\ios-marketing-1024x1024%401x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\iPad-76x76%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\iPad-84x84%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\iPhone-20x20%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\iPhone-20x20%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\iPhone-40x40%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\iPhone-60x60%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Media" Visible="false" />
