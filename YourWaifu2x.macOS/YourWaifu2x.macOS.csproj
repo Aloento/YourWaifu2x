@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProjectGuid>e450209f-15eb-4f1a-aea2-5222b02d58e7</ProjectGuid>
+    <ProjectGuid>{F5478E89-9761-4894-A8C7-B2F27342E404}</ProjectGuid>
     <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>YourWaifu2x.macOS</RootNamespace>
@@ -28,17 +28,22 @@
     <UseSGen>true</UseSGen>
     <UseRefCounting>true</UseRefCounting>
     <Profiling>true</Profiling>
-    <HttpClientHandler></HttpClientHandler>
-    <LinkMode></LinkMode>
-    <XamMacArch></XamMacArch>
-    <NoWarn></NoWarn>
+    <HttpClientHandler>
+    </HttpClientHandler>
+    <LinkMode>
+    </LinkMode>
+    <XamMacArch>
+    </XamMacArch>
+    <NoWarn>
+    </NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugSymbols>false</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <EnableCodeSigning>false</EnableCodeSigning>
@@ -48,10 +53,26 @@
     <UseSGen>true</UseSGen>
     <UseRefCounting>true</UseRefCounting>
     <LinkMode>SdkOnly</LinkMode>
-    <HttpClientHandler></HttpClientHandler>
-    <XamMacArch></XamMacArch>
-    <NoWarn></NoWarn>
+    <HttpClientHandler>
+    </HttpClientHandler>
+    <XamMacArch>
+    </XamMacArch>
+    <NoWarn>
+    </NoWarn>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\YourWaifu2x.UWP\App.xaml.cs" />
+    <ApplicationDefinition Include="..\YourWaifu2x.UWP\App.xaml" Link="App.xaml" Visible="False" />
+    <Compile Include="MenuHelper.cs" />
+    <Page Include="..\YourWaifu2x.UWP\Views\**\*.xaml" Visible="False">
+      <Link>Views\%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="..\YourWaifu2x.UWP\Views\**\*.cs" Visible="False">
+      <Link>Views\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,12 +82,49 @@
     <Reference Include="System.Memory" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Uno.UI" Version="3.7.4" />
-    <PackageReference Include="Uno.UI.RemoteControl" Version="3.7.4" Condition="'$(Configuration)'=='Debug'" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
+    <PackageReference Include="nventive.Nimue.Application.Building.Light">
+      <Version>0.1.0-alpha.58</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="nventive.Nimue.Application.Packaging">
+      <Version>0.1.0-alpha.58</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="nventive.Nimue.Application.Versioning">
+      <Version>0.1.0-alpha.58</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="nventive.Nimue.TargetFrameworks.Filtering">
+      <Version>0.1.0-alpha.58</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Uno.Cupertino">
+      <Version>1.0.0-dev.751</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.Material">
+      <Version>1.0.0-dev.751</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.ShowMeTheXAML">
+      <Version>1.0.59</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.ShowMeTheXAML.MSBuild">
+      <Version>1.0.59</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.UI">
+      <Version>3.8.0-dev.55</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.UI.Lottie">
+      <Version>3.8.0-dev.55</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.UI.RemoteControl" Version="3.8.0-dev.55" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
   </ItemGroup>
-  <Import Project="..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems" Label="Shared" />
+  <Import Project="..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems" Label="Shared" Condition="Exists('..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems')" />
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-128.png" />
@@ -83,40 +141,67 @@
     <ImageAsset Include="Assets.xcassets\unologo.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\unologo.imageset\unoplatform.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\Fonts\" />
-    <Folder Include="Assets.xcassets\unologo.imageset\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <BundleResource Include="Resources\Fonts\roboto.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\Fonts\SF-Pro.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\uno-fluentui-assets.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Assets\AndroidIcon_Medium.png" />
+    <Content Include="Resources\Assets\AndroidIcon_Small.png" />
+    <Content Include="Resources\Assets\AppleIcon_Medium.png" />
+    <Content Include="Resources\Assets\AppleIcon_Small.png" />
+    <Content Include="Resources\Assets\Avatar.png" />
+    <Content Include="Resources\Assets\FluentIcon_Medium.png" />
+    <Content Include="Resources\Assets\FluentIcon_Small.png" />
+    <Content Include="Resources\Assets\ImageSample.png" />
+    <Content Include="Resources\Assets\LargeMedia.png" />
+    <Content Include="Resources\Assets\MaterialIcon_Medium.png" />
+    <Content Include="Resources\Assets\MaterialIcon_Small.png" />
+    <Content Include="Resources\Assets\SmallMedia.png" />
+    <Content Include="Resources\Assets\uno-banner-dark.png" />
+    <Content Include="Resources\Assets\uno-banner-light.png" />
+    <Content Include="Resources\Assets\UnoGalleryLogo_Dark.png" />
+    <Content Include="Resources\Assets\UnoGalleryLogo_Light.png" />
+    <Content Include="Resources\Assets\UnoLogo_Medium.png" />
+    <Content Include="Resources\Assets\UnoLogo_Small.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
   <Target Name="VS16Mac_RemoveSystemMemory" BeforeTargets="ResolveAssemblyReferences">
     <!--
-        VS4Mac seems to process System.Memory differently, and removes
-        the System.Memory local reference if the package is transitively referenced.
-        We remove the Reference added by the nuget targets so that ResolveAssemblyReferences
-        is properly adding the local System.Memory to the Reference item group.
-    -->
+				VS4Mac seems to process System.Memory differently, and removes
+				the System.Memory local reference if the package is transitively referenced.
+				We remove the Reference added by the nuget targets so that ResolveAssemblyReferences
+				is properly adding the local System.Memory to the Reference item group.
+		-->
     <ItemGroup>
+      <_ReferenceToRemove Include="@(Reference)" Condition="'%(Reference.Identity)'=='System.Memory'" />
       <Reference Remove="@(_ReferenceToRemove)" />
       <Reference Include="System.Memory" />
     </ItemGroup>
   </Target>
   <Target Name="VS16_RemoveSystemMemory" BeforeTargets="FindReferenceAssembliesForReferences">
     <ItemGroup>
+      <_ReferencePathToRemove Include="@(ReferencePath)" Condition="'%(ReferencePath.NuGetPackageId)'=='System.Memory'" />
       <ReferencePath Remove="@(_ReferencePathToRemove)" />
     </ItemGroup>
+  </Target>
+  <Target Name="_PackageCopyToOutput" BeforeTargets="Build">
+    <ItemGroup>
+      <_packages Include="$(TargetDir)\*.pkg" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_packages)" DestinationFolder="$(PackageOutputPath)\" />
   </Target>
 </Project>
