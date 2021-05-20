@@ -30,13 +30,12 @@ namespace YourWaifu2x {
         public static readonly DependencyProperty CurrentSampleBackdoorProperty =
             DependencyProperty.Register(nameof(CurrentSampleBackdoor), typeof(string), typeof(Shell), new PropertyMetadata(null));
 
-        private void OnLoaded(object sender, RoutedEventArgs e) => SetDarkLightToggleInitialState();
+        private void OnLoaded(object sender, RoutedEventArgs e) {
 #if __IOS__ || __ANDROID__
             this.Log().Debug("Loaded Shell.");
             YourWaifu2x.Deeplinking.BranchService.Instance.SetIsAppReady();
 #endif
-
-        private void SetDarkLightToggleInitialState() {
+            //SetDarkLightToggleInitialState();
             // Initialize the toggle to the current theme.
             var root = Window.Current.Content as FrameworkElement;
 

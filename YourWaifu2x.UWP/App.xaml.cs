@@ -7,7 +7,6 @@ namespace YourWaifu2x {
     using ShowMeTheXAML;
     using Uno.Extensions;
     using Uno.Logging;
-    using Windows.ApplicationModel;
     using Windows.ApplicationModel.Activation;
     using Windows.Foundation;
     using Windows.UI.ViewManagement;
@@ -46,7 +45,7 @@ namespace YourWaifu2x {
             /// </summary>
             /// <param name="sender">The source of the suspend request.</param>
             /// <param name="e">Details about the suspend request.</param>
-            Suspending += (object sender, SuspendingEventArgs e) => e.SuspendingOperation.GetDeferral().Complete();
+            Suspending += (s, e) => e.SuspendingOperation.GetDeferral().Complete();
 
 #if __WASM__
             _ = Windows.UI.Xaml.Window.Current.Dispatcher?.RunIdleAsync(_ => AnalyticsService.Initialize());
@@ -70,15 +69,17 @@ namespace YourWaifu2x {
                 Xamarin.Calabash.Start();
 #endif
 
-                InitializeThemes();
+                //InitializeThemes();
+                Uno.Material.Resources.Init(this, colorPaletteOverride: new ResourceDictionary() { Source = new Uri("ms-appx:///Views/Colors.xaml") });
+                Uno.Cupertino.Resources.Init(this, null);
+                Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("ms-appx:///Views/Styles/TextBlock.xaml") });
 
 #if WINDOWS_UWP
                 ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 568)); // (size of the iPhone SE)
 #endif
 
-                if (!(window.Content is Shell)) {
+                if (!(window.Content is Shell))
                     window.Content = shell = BuildShell();
-                }
             }
 
             // Ensure the current window is active
@@ -99,9 +100,8 @@ namespace YourWaifu2x {
             var pageType = typeof(TPage);
             var attribute = pageType.GetCustomAttribute<SamplePageAttribute>()
                 ?? throw new NotSupportedException($"{pageType} isn't tagged with [{nameof(SamplePageAttribute)}].");
-            var sample = new Sample(attribute, pageType);
 
-            ShellNavigateTo(sample, trySynchronizeCurrentItem);
+            ShellNavigateTo(new Sample(attribute, pageType), trySynchronizeCurrentItem);
         }
 
         private void ShellNavigateTo(Sample sample, bool trySynchronizeCurrentItem) {
@@ -143,7 +143,10 @@ namespace YourWaifu2x {
             );
 
             // navigation + setting handler
-            nv.ItemInvoked += OnNavigationItemInvoked;
+            nv.ItemInvoked += (s, e) => {
+                if (e.InvokedItemContainer.DataContext is Sample sample)
+                    ShellNavigateTo(sample, trySynchronizeCurrentItem: false);
+            };
 
             return shell;
         }
@@ -158,13 +161,6 @@ namespace YourWaifu2x {
             }
 
             ShellNavigateTo(sample);
-        }
-
-
-        private void OnNavigationItemInvoked(MUXC.NavigationView sender, MUXC.NavigationViewItemInvokedEventArgs e) {
-            if (e.InvokedItemContainer.DataContext is Sample sample) {
-                ShellNavigateTo(sample, trySynchronizeCurrentItem: false);
-            }
         }
 
         private void AddNavigationItems(MUXC.NavigationView nv) {
@@ -276,11 +272,5 @@ namespace YourWaifu2x {
                            .Where(x => x.SamplePageAttribute != null)
                            .Select(x => new Sample(x.SamplePageAttribute, x.TypeInfo.AsType()))
                            .ToArray();
-
-        private void InitializeThemes() {
-            Uno.Material.Resources.Init(this, colorPaletteOverride: new ResourceDictionary() { Source = new Uri("ms-appx:///Views/Colors.xaml") });
-            Uno.Cupertino.Resources.Init(this, null);
-            Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("ms-appx:///Views/Styles/TextBlock.xaml") });
-        }
     }
 }
