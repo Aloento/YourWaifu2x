@@ -1,24 +1,23 @@
-﻿using System;
-using Uno.Extensions;
-using Uno.Logging;
-using Windows.UI.Xaml.Data;
-
 namespace YourWaifu2x
 {
+    using System;
+    using Uno.Extensions;
+    using Uno.Logging;
+    using Windows.UI.Xaml.Data;
+
     [Bindable]
     public class Sample
     {
         public Sample(SamplePageAttribute attribute, Type viewType)
         {
-            Category = attribute.Category;
-            Title = attribute.Title;
-            Description = attribute.Description;
-            DocumentationLink = attribute.DocumentationLink;
-            Data = CreateData(attribute.DataType);
-            Source = attribute.Source;
-            SortOrder = attribute.SortOrder;
-
-            ViewType = viewType;
+            this.Category = attribute.Category;
+            this.Title = attribute.Title;
+            this.Description = attribute.Description;
+            this.DocumentationLink = attribute.DocumentationLink;
+            this.Data = this.CreateData(attribute.DataType);
+            this.Source = attribute.Source;
+            this.SortOrder = attribute.SortOrder;
+            this.ViewType = viewType;
         }
 
         private object CreateData(Type dataType)
@@ -34,7 +33,7 @@ namespace YourWaifu2x
             }
             catch (Exception e)
             {
-                this.Log().Error($"Failed to initialize data for `{ViewType.Name}`:", e);
+                this.Log().Error($"Failed to initialize data for `{this.ViewType.Name}`:", e);
                 return null;
             }
         }
