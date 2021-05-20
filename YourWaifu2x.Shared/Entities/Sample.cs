@@ -1,39 +1,31 @@
-namespace YourWaifu2x
-{
+namespace YourWaifu2x {
     using System;
     using Uno.Extensions;
     using Uno.Logging;
     using Windows.UI.Xaml.Data;
 
     [Bindable]
-    public class Sample
-    {
-        public Sample(SamplePageAttribute attribute, Type viewType)
-        {
-            this.Category = attribute.Category;
-            this.Title = attribute.Title;
-            this.Description = attribute.Description;
-            this.DocumentationLink = attribute.DocumentationLink;
-            this.Data = this.CreateData(attribute.DataType);
-            this.Source = attribute.Source;
-            this.SortOrder = attribute.SortOrder;
-            this.ViewType = viewType;
+    public class Sample {
+        public Sample(SamplePageAttribute attribute, Type viewType) {
+            Category = attribute.Category;
+            Title = attribute.Title;
+            Description = attribute.Description;
+            DocumentationLink = attribute.DocumentationLink;
+            Data = CreateData(attribute.DataType);
+            Source = attribute.Source;
+            SortOrder = attribute.SortOrder;
+            ViewType = viewType;
         }
 
-        private object CreateData(Type dataType)
-        {
-            if (dataType == null)
-            {
+        private object CreateData(Type dataType) {
+            if (dataType == null) {
                 return null;
             }
 
-            try
-            {
+            try {
                 return Activator.CreateInstance(dataType);
-            }
-            catch (Exception e)
-            {
-                this.Log().Error($"Failed to initialize data for `{this.ViewType.Name}`:", e);
+            } catch (Exception e) {
+                this.Log().Error($"Failed to initialize data for `{ViewType.Name}`:", e);
                 return null;
             }
         }

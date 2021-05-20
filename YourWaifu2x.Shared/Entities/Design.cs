@@ -1,7 +1,5 @@
-﻿namespace YourWaifu2x
-{
-    public enum Design
-    {
+﻿namespace YourWaifu2x {
+    public enum Design {
         Fluent,
         Material,
         Cupertino,

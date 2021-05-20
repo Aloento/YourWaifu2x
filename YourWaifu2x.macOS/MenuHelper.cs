@@ -1,22 +1,18 @@
-﻿using AppKit;
+namespace YourWaifu2x.macOS {
+    using AppKit;
 
-namespace YourWaifu2x.macOS
-{
-    internal static class MenuHelper
-    {
+    internal static class MenuHelper {
         private const string QuitTitle = "Quit";
         private const string QuitCharCode = "q";
 
-        internal static NSMenu GetMenu()
-        {
-            NSMenu menubar = new NSMenu();
-            NSMenuItem appMenuItem = new NSMenuItem();
+        internal static NSMenu GetMenu() {
+            var menubar = new NSMenu();
+            var appMenuItem = new NSMenuItem();
             menubar.AddItem(appMenuItem);
 
-            NSMenu appMenu = new NSMenu();
+            var appMenu = new NSMenu();
 
-            NSMenuItem quitMenuItem = new NSMenuItem(QuitTitle, QuitCharCode, delegate
-            {
+            var quitMenuItem = new NSMenuItem(QuitTitle, QuitCharCode, delegate {
                 NSApplication.SharedApplication.Terminate(menubar);
             });
 

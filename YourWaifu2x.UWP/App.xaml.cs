@@ -1,5 +1,4 @@
-namespace YourWaifu2x
-{
+namespace YourWaifu2x {
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -23,8 +22,7 @@ namespace YourWaifu2x
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    public sealed partial class App : Application
-    {
+    public sealed partial class App : Application {
         private static Sample[] samples;
         private Shell shell;
 
@@ -32,15 +30,14 @@ namespace YourWaifu2x
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
-        public App()
-        {
+        public App() {
 #if !WINDOWS_UWP
             Uno.UI.FeatureConfiguration.ApiInformation.NotImplementedLogLevel = LogLevel.Debug; // Raise not implemented usages as Debug messages
 #endif
 
             ConfigureFilters(LogExtensionPoint.AmbientLoggerFactory);
-            XamlDisplay.Init(this.GetType().Assembly);
-            this.InitializeComponent();
+            XamlDisplay.Init(GetType().Assembly);
+            InitializeComponent();
 
             /// <summary>
             /// Invoked when application execution is being suspended. Application state is saved
@@ -61,29 +58,26 @@ namespace YourWaifu2x
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
-        {
+        protected override void OnLaunched(LaunchActivatedEventArgs e) {
             this.Log().Debug("Launched app.");
 
             var window = Window.Current;
             var isFirstLaunch = !(window.Content is Shell);
 
-            if (isFirstLaunch)
-            {
+            if (isFirstLaunch) {
 #if __IOS__ && USE_UITESTS
                 // requires Xamarin Test Cloud Agent
                 Xamarin.Calabash.Start();
 #endif
 
-                this.InitializeThemes();
+                InitializeThemes();
 
 #if WINDOWS_UWP
                 ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 568)); // (size of the iPhone SE)
 #endif
 
-                if (!(window.Content is Shell))
-                {
-                    window.Content = this.shell = this.BuildShell();
+                if (!(window.Content is Shell)) {
+                    window.Content = shell = BuildShell();
                 }
             }
 
@@ -94,36 +88,31 @@ namespace YourWaifu2x
         /// <summary>
         /// This method is used as the entry point when opening the app from an url.
         /// </summary>
-        protected override void OnActivated(IActivatedEventArgs args)
-        {
+        protected override void OnActivated(IActivatedEventArgs args) {
             this.Log().Debug("Activated app.");
             base.OnActivated(args);
         }
 
-        public void ShellNavigateTo(Sample sample) => this.ShellNavigateTo(sample, trySynchronizeCurrentItem: true);
+        public void ShellNavigateTo(Sample sample) => ShellNavigateTo(sample, trySynchronizeCurrentItem: true);
 
-        private void ShellNavigateTo<TPage>(bool trySynchronizeCurrentItem = true) where TPage : Page
-        {
+        private void ShellNavigateTo<TPage>(bool trySynchronizeCurrentItem = true) where TPage : Page {
             var pageType = typeof(TPage);
             var attribute = pageType.GetCustomAttribute<SamplePageAttribute>()
                 ?? throw new NotSupportedException($"{pageType} isn't tagged with [{nameof(SamplePageAttribute)}].");
             var sample = new Sample(attribute, pageType);
 
-            this.ShellNavigateTo(sample, trySynchronizeCurrentItem);
+            ShellNavigateTo(sample, trySynchronizeCurrentItem);
         }
 
-        private void ShellNavigateTo(Sample sample, bool trySynchronizeCurrentItem)
-        {
-            var nv = this.shell.NavigationView;
-            if (nv.Content?.GetType() != sample.ViewType)
-            {
+        private void ShellNavigateTo(Sample sample, bool trySynchronizeCurrentItem) {
+            var nv = shell.NavigationView;
+            if (nv.Content?.GetType() != sample.ViewType) {
                 var selected = trySynchronizeCurrentItem
                     ? nv.MenuItems
                         .OfType<MUXC.NavigationViewItem>()
                         .FirstOrDefault(x => (x.DataContext as Sample)?.ViewType == sample.ViewType)
                     : default;
-                if (selected != null)
-                {
+                if (selected != null) {
                     nv.SelectedItem = selected;
                 }
 
@@ -134,20 +123,19 @@ namespace YourWaifu2x
                 _ = Windows.UI.Xaml.Window.Current.Dispatcher.RunIdleAsync(_ => AnalyticsService.TrackView(sample?.Title ?? page.GetType().Name));
 #endif
 
-                this.shell.NavigationView.Content = page;
+                shell.NavigationView.Content = page;
             }
         }
 
-        private Shell BuildShell()
-        {
-            this.shell = new Shell();
-            AutomationProperties.SetAutomationId(this.shell, "AppShell");
-            this.shell.RegisterPropertyChangedCallback(Shell.CurrentSampleBackdoorProperty, this.OnCurrentSampleBackdoorChanged);
-            var nv = this.shell.NavigationView;
-            this.AddNavigationItems(nv);
+        private Shell BuildShell() {
+            shell = new Shell();
+            AutomationProperties.SetAutomationId(shell, "AppShell");
+            shell.RegisterPropertyChangedCallback(Shell.CurrentSampleBackdoorProperty, OnCurrentSampleBackdoorChanged);
+            var nv = shell.NavigationView;
+            AddNavigationItems(nv);
 
             // landing navigation
-            this.ShellNavigateTo<OverviewPage>(
+            ShellNavigateTo<OverviewPage>(
 #if !WINDOWS_UWP
                 // workaround for uno#5069: setting NavView.SelectedItem at launch bricks it
                 trySynchronizeCurrentItem: false
@@ -155,67 +143,57 @@ namespace YourWaifu2x
             );
 
             // navigation + setting handler
-            nv.ItemInvoked += this.OnNavigationItemInvoked;
+            nv.ItemInvoked += OnNavigationItemInvoked;
 
-            return this.shell;
+            return shell;
         }
 
-        private void OnCurrentSampleBackdoorChanged(DependencyObject sender, DependencyProperty dp)
-        {
+        private void OnCurrentSampleBackdoorChanged(DependencyObject sender, DependencyProperty dp) {
             var sample = GetSamples()
-                .FirstOrDefault(x => string.Equals(x.Title, this.shell.CurrentSampleBackdoor, StringComparison.OrdinalIgnoreCase));
+                .FirstOrDefault(x => string.Equals(x.Title, shell.CurrentSampleBackdoor, StringComparison.OrdinalIgnoreCase));
 
-            if (sample == null)
-            {
-                this.Log().LogWarning($"No SampleAttribute found with a Title that matches: {this.shell.CurrentSampleBackdoor}");
+            if (sample == null) {
+                this.Log().LogWarning($"No SampleAttribute found with a Title that matches: {shell.CurrentSampleBackdoor}");
                 return;
             }
 
-            this.ShellNavigateTo(sample);
+            ShellNavigateTo(sample);
         }
 
 
-        private void OnNavigationItemInvoked(MUXC.NavigationView sender, MUXC.NavigationViewItemInvokedEventArgs e)
-        {
-            if (e.InvokedItemContainer.DataContext is Sample sample)
-            {
-                this.ShellNavigateTo(sample, trySynchronizeCurrentItem: false);
+        private void OnNavigationItemInvoked(MUXC.NavigationView sender, MUXC.NavigationViewItemInvokedEventArgs e) {
+            if (e.InvokedItemContainer.DataContext is Sample sample) {
+                ShellNavigateTo(sample, trySynchronizeCurrentItem: false);
             }
         }
 
-        private void AddNavigationItems(MUXC.NavigationView nv)
-        {
+        private void AddNavigationItems(MUXC.NavigationView nv) {
             var categories = GetSamples()
                 .OrderByDescending(x => x.SortOrder.HasValue)
                 .ThenBy(x => x.SortOrder)
                 .ThenBy(x => x.Title)
                 .GroupBy(x => x.Category);
 
-            foreach (var category in categories.OrderBy(x => x.Key))
-            {
+            foreach (var category in categories.OrderBy(x => x.Key)) {
                 var tier = 1;
 
                 var parentItem = default(MUXC.NavigationViewItem);
-                if (category.Key != SampleCategory.None)
-                {
-                    parentItem = new MUXC.NavigationViewItem
-                    {
+                if (category.Key != SampleCategory.None) {
+                    parentItem = new MUXC.NavigationViewItem {
                         Content = category.Key.GetDescription() ?? category.Key.ToString(),
                         SelectsOnInvoked = false,
-                        Style = (Style)this.Resources[$"T{tier++}NavigationViewItemStyle"]
+                        Style = (Style)Resources[$"T{tier++}NavigationViewItemStyle"]
                     }.Apply(NavViewItemVisualStateFix);
                     AutomationProperties.SetAutomationId(parentItem, "Section_" + parentItem.Content);
 
                     nv.MenuItems.Add(parentItem);
                 }
 
-                foreach (var sample in category)
-                {
-                    var item = new MUXC.NavigationViewItem
-                    {
+                foreach (var sample in category) {
+                    var item = new MUXC.NavigationViewItem {
                         Content = sample.Title,
                         DataContext = sample,
-                        Style = (Style)this.Resources[$"T{tier}NavigationViewItemStyle"]
+                        Style = (Style)Resources[$"T{tier}NavigationViewItemStyle"]
                     }.Apply(NavViewItemVisualStateFix);
                     AutomationProperties.SetAutomationId(item, "Section_" + item.Content);
 
@@ -226,10 +204,8 @@ namespace YourWaifu2x
             void NavViewItemVisualStateFix(MUXC.NavigationViewItem nvi) =>
                 // gallery#107: on uwp and uno, deselecting a NVI by selecting another NVI will leave the former in the "Selected" state
                 // to workaround this, we force reset the visual state when IsSelected becomes false
-                nvi.RegisterPropertyChangedCallback(MUXC.NavigationViewItemBase.IsSelectedProperty, (s, e) =>
-                {
-                    if (!nvi.IsSelected)
-                    {
+                nvi.RegisterPropertyChangedCallback(MUXC.NavigationViewItemBase.IsSelectedProperty, (s, e) => {
+                    if (!nvi.IsSelected) {
                         // depending on the DisplayMode, a NVIP may or may not be used.
                         var nvip = VisualTreeHelperEx.GetFirstDescendant<MUXCP.NavigationViewItemPresenter>(nvi, x => x.Name == "NavigationViewItemPresenter");
                         _ = VisualStateManager.GoToState((Control)nvip ?? nvi, "Normal", true);
@@ -301,11 +277,10 @@ namespace YourWaifu2x
                            .Select(x => new Sample(x.SamplePageAttribute, x.TypeInfo.AsType()))
                            .ToArray();
 
-        private void InitializeThemes()
-        {
+        private void InitializeThemes() {
             Uno.Material.Resources.Init(this, colorPaletteOverride: new ResourceDictionary() { Source = new Uri("ms-appx:///Views/Colors.xaml") });
             Uno.Cupertino.Resources.Init(this, null);
-            this.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("ms-appx:///Views/Styles/TextBlock.xaml") });
+            Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("ms-appx:///Views/Styles/TextBlock.xaml") });
         }
     }
 }

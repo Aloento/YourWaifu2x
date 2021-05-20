@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Uno.Disposables;
-using Windows.System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+namespace YourWaifu2x {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Uno.Disposables;
+    using Windows.System;
+    using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
 
-namespace YourWaifu2x
-{
-    public partial class Banner : Control
-    {
+    public partial class Banner : Control {
         private const string HowItWorkButtonPart = "PART_HowItWorkButton";
         private const string CodeSampleButtonPart = "PART_CodeSampleButton";
         private const string ShowCasesButtonPart = "PART_ShowCasesButton";
@@ -26,75 +24,69 @@ namespace YourWaifu2x
         private static readonly Uri ContactButtonLink = new Uri("https://platform.uno/contact/#");
         private static readonly Uri GetStartedButtonLink = new Uri("https://platform.uno/docs/articles/getting-started-tutorial-1.html");
 
-        private Button _howItWorksButton;
-        private Button _codeSampleButton;
-        private Button _showCasesButton;
-        private Button _docsButton;
-        private Button _blogButton;
-        private Button _contactButton;
-        private Button _getStartedButton;
+        private Button howItWorksButton;
+        private Button codeSampleButton;
+        private Button showCasesButton;
+        private Button docsButton;
+        private Button blogButton;
+        private Button contactButton;
+        private Button getStartedButton;
 
-        private readonly SerialDisposable _subscriptions = new SerialDisposable();
+        private readonly SerialDisposable subscriptions = new SerialDisposable();
 
         private IReadOnlyCollection<BannerButton> BannerButtons => new List<BannerButton>
         {
-            new BannerButton(_howItWorksButton, HowItWorkLink),
-            new BannerButton(_codeSampleButton, CodeSampleButtonLink),
-            new BannerButton(_showCasesButton, ShowCasesButtonLink),
-            new BannerButton(_docsButton, DocsButtonLink),
-            new BannerButton(_blogButton, BlogButtonLink),
-            new BannerButton(_contactButton, ContactButtonLink),
-            new BannerButton(_getStartedButton, GetStartedButtonLink),
+            new BannerButton(howItWorksButton, HowItWorkLink),
+            new BannerButton(codeSampleButton, CodeSampleButtonLink),
+            new BannerButton(showCasesButton, ShowCasesButtonLink),
+            new BannerButton(docsButton, DocsButtonLink),
+            new BannerButton(blogButton, BlogButtonLink),
+            new BannerButton(contactButton, ContactButtonLink),
+            new BannerButton(getStartedButton, GetStartedButtonLink),
         };
 
-        protected override void OnApplyTemplate()
-        {
+        protected override void OnApplyTemplate() {
             base.OnApplyTemplate();
 
-            _howItWorksButton = (Button)GetTemplateChild(HowItWorkButtonPart);
-            _codeSampleButton = (Button)GetTemplateChild(CodeSampleButtonPart);
-            _showCasesButton = (Button)GetTemplateChild(ShowCasesButtonPart);
-            _docsButton = (Button)GetTemplateChild(DocsButtonPart);
-            _blogButton = (Button)GetTemplateChild(BlogButtonPart);
-            _contactButton = (Button)GetTemplateChild(ContactButtonPart);
-            _getStartedButton = (Button)GetTemplateChild(GetStartedButtonPart);
+            howItWorksButton = (Button)GetTemplateChild(HowItWorkButtonPart);
+            codeSampleButton = (Button)GetTemplateChild(CodeSampleButtonPart);
+            showCasesButton = (Button)GetTemplateChild(ShowCasesButtonPart);
+            docsButton = (Button)GetTemplateChild(DocsButtonPart);
+            blogButton = (Button)GetTemplateChild(BlogButtonPart);
+            contactButton = (Button)GetTemplateChild(ContactButtonPart);
+            getStartedButton = (Button)GetTemplateChild(GetStartedButtonPart);
 
-            CompositeDisposable disposables = new CompositeDisposable();
-            _subscriptions.Disposable = disposables;
+            var disposables = new CompositeDisposable();
+            subscriptions.Disposable = disposables;
 
-            BindOnClick(_howItWorksButton);
-            BindOnClick(_codeSampleButton);
-            BindOnClick(_showCasesButton);
-            BindOnClick(_docsButton);
-            BindOnClick(_blogButton);
-            BindOnClick(_contactButton);
-            BindOnClick(_getStartedButton);
+            BindOnClick(howItWorksButton);
+            BindOnClick(codeSampleButton);
+            BindOnClick(showCasesButton);
+            BindOnClick(docsButton);
+            BindOnClick(blogButton);
+            BindOnClick(contactButton);
+            BindOnClick(getStartedButton);
 
-            void BindOnClick(Button button)
-            {
+            void BindOnClick(Button button) {
                 button.Click += OnBannerButtonClicked;
-                Disposable
+                _ = Disposable
                     .Create(() => button.Click -= OnBannerButtonClicked)
                     .DisposeWith(disposables);
             }
         }
 
-        private void OnBannerButtonClicked(object sender, RoutedEventArgs e)
-        {
-            if (sender is Button button && BannerButtons.FirstOrDefault(x => x.Button == button) is BannerButton buttonBanner)
-            {
-                Launcher.LaunchUriAsync(buttonBanner.Url);
+        private void OnBannerButtonClicked(object sender, RoutedEventArgs e) {
+            if (sender is Button button && BannerButtons.FirstOrDefault(x => x.Button == button) is BannerButton buttonBanner) {
+                _ = Launcher.LaunchUriAsync(buttonBanner.Url);
             }
         }
 
-        private class BannerButton
-        {
+        private class BannerButton {
             public Button Button { get; set; }
 
             public Uri Url { get; set; }
 
-            public BannerButton(Button button, Uri url)
-            {
+            public BannerButton(Button button, Uri url) {
                 Button = button;
                 Url = url;
             }

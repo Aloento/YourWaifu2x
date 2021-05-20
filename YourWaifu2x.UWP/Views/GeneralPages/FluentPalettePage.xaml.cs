@@ -1,14 +1,11 @@
 ﻿using Windows.UI.Xaml.Controls;
 
-namespace YourWaifu2x
-{
+namespace YourWaifu2x {
     [SamplePage(SampleCategory.Theme, "Fluent Palette", SortOrder = 2, Description = Description)]
-    public sealed partial class FluentPalettePage : Page
-    {
+    public sealed partial class FluentPalettePage : Page {
         private const string Description = "View the Uno palette applied to Fluent's styles.";
 
-        public FluentPalettePage()
-        {
+        public FluentPalettePage() {
             InitializeComponent();
         }
     }

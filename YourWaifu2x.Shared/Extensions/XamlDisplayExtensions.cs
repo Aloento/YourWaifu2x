@@ -12,10 +12,8 @@ using Uno.Extensions;
 using Windows.UI.Xaml;
 using YourWaifu2x;
 
-namespace ShowMeTheXAML
-{
-    public static class XamlDisplayExtensions
-    {
+namespace ShowMeTheXAML {
+    public static class XamlDisplayExtensions {
         /* Header, Description: [optional] texts for display
 		 * IgnorePath: [required] ignore everything except descendent(s) of this path; see: PrettyXamlFormatter.IgnorePath
 		 *             ^ made [optional='XamlDisplay'] with default style setter
@@ -108,21 +106,16 @@ namespace ShowMeTheXAML
 
         #endregion
 
-        private static void OnIgnorePathChanged(XamlDisplay sender, DependencyPropertyChangedEventArgs e)
-        {
+        private static void OnIgnorePathChanged(XamlDisplay sender, DependencyPropertyChangedEventArgs e) {
             sender.RegisterPropertyChangedCallback(XamlDisplay.XamlProperty, OnXamlChanged);
-            if (sender.Xaml != null)
-            {
+            if (sender.Xaml != null) {
                 OnXamlChanged(sender, XamlDisplay.XamlProperty);
             }
         }
 
-        private static void OnShowXamlChanged(XamlDisplay sender, bool showXaml)
-        {
-            if (showXaml && sender is XamlDisplay target)
-            {
-                if (!GetIsXamlDirty(target))
-                {
+        private static void OnShowXamlChanged(XamlDisplay sender, bool showXaml) {
+            if (showXaml && sender is XamlDisplay target) {
+                if (!GetIsXamlDirty(target)) {
                     return;
                 }
 
@@ -136,38 +129,32 @@ namespace ShowMeTheXAML
         }
 
 
-        private static void OnXamlChanged(DependencyObject sender, DependencyProperty dp)
-        {
-            if (sender is XamlDisplay target)
-            {
+        private static void OnXamlChanged(DependencyObject sender, DependencyProperty dp) {
+            if (sender is XamlDisplay target) {
                 SetIsXamlDirty(target, true);
             }
         }
 
         #region Implementation
 
-        private class XmlWriterProxy : XmlWriter
-        {
+        private class XmlWriterProxy : XmlWriter {
             protected readonly StringBuilder _buffer;
             protected readonly TextWriter _textWriter;
             private readonly XmlWriter _writer;
             private bool? _noopInnerCallOverride;
 
-            public XmlWriterProxy(StringBuilder buffer, XmlWriterSettings settings)
-            {
+            public XmlWriterProxy(StringBuilder buffer, XmlWriterSettings settings) {
                 _buffer = buffer;
                 _textWriter = new StringWriter(buffer);
                 _writer = XmlWriter.Create(_textWriter, settings);
             }
-            protected override void Dispose(bool disposing)
-            {
+            protected override void Dispose(bool disposing) {
                 base.Dispose(disposing);
                 GetProxy()?.Flush();
             }
 
             protected virtual bool NoopInnerCall => false;
-            protected IDisposable OverrideNoopInnerCall(bool value)
-            {
+            protected IDisposable OverrideNoopInnerCall(bool value) {
                 return new AnonymousDisposable(() => _noopInnerCallOverride = value, () => _noopInnerCallOverride = null);
             }
             private XmlWriter GetProxy() => _noopInnerCallOverride ?? NoopInnerCall ? default : _writer;
@@ -204,21 +191,17 @@ namespace ShowMeTheXAML
             #endregion
         }
 
-        private class NiceXmlWriter : XmlWriterProxy
-        {
+        private class NiceXmlWriter : XmlWriterProxy {
             private Stack<(string Prefix, string LocalName, string NS)> _elements = new Stack<(string Prefix, string LocalName, string NS)>();
             private bool _wroteFirstElementAttribute = false;
             private int _currentIndentLevel = -1;
             private int _currentElementAttributeIndentLength = 0;
 
             // align attributes to the first one, remove XamlDisplay element, but leave nested elements intact
-            public NiceXmlWriter(StringBuilder buffer) : base(buffer, GetSettings())
-            {
+            public NiceXmlWriter(StringBuilder buffer) : base(buffer, GetSettings()) {
             }
-            private static XmlWriterSettings GetSettings()
-            {
-                return new XmlWriterSettings
-                {
+            private static XmlWriterSettings GetSettings() {
+                return new XmlWriterSettings {
                     Indent = true,
                     IndentChars = "   ",
                     NamespaceHandling = NamespaceHandling.OmitDuplicates,
@@ -233,20 +216,17 @@ namespace ShowMeTheXAML
             protected virtual IReadOnlyCollection<(string Prefix, string LocalName, string NS)> ElementStack => _elements;
             protected override bool NoopInnerCall => _elements.Any() && _elements.Peek().LocalName == nameof(XamlDisplay);
 
-            public override void WriteStartAttribute(string prefix, string localName, string ns)
-            {
-                if (NoopInnerCall) return;
-                if (_wroteFirstElementAttribute)
-                {
+            public override void WriteStartAttribute(string prefix, string localName, string ns) {
+                if (NoopInnerCall)
+                    return;
+                if (_wroteFirstElementAttribute) {
                     // flush xml buffer, so we can write with _textWrite at appropriate location
                     Flush();
 
                     // align to first attribute
                     _textWriter.Write(Environment.NewLine);
-                    if (Settings.Indent && !string.IsNullOrEmpty(Settings.IndentChars))
-                    {
-                        for (int i = 0; Settings.Indent && i < _currentIndentLevel; i++)
-                        {
+                    if (Settings.Indent && !string.IsNullOrEmpty(Settings.IndentChars)) {
+                        for (int i = 0; Settings.Indent && i < _currentIndentLevel; i++) {
                             _textWriter.Write(Settings.IndentChars);
                         }
                     }
@@ -255,18 +235,18 @@ namespace ShowMeTheXAML
 
                 base.WriteStartAttribute(prefix, localName, ns);
             }
-            public override void WriteEndAttribute()
-            {
-                if (NoopInnerCall) return;
+            public override void WriteEndAttribute() {
+                if (NoopInnerCall)
+                    return;
 
                 base.WriteEndAttribute();
 
                 _wroteFirstElementAttribute = true;
             }
-            public override void WriteStartElement(string prefix, string localName, string ns)
-            {
+            public override void WriteStartElement(string prefix, string localName, string ns) {
                 _elements.Push((prefix, localName, ns));
-                if (NoopInnerCall) return;
+                if (NoopInnerCall)
+                    return;
 
                 base.WriteStartElement(prefix, localName, ns);
 
@@ -276,54 +256,44 @@ namespace ShowMeTheXAML
                     // length: (${prefix}:)?localName\s
                     (string.IsNullOrEmpty(prefix) ? 0 : prefix.Length + 1) + localName.Length + 1;
             }
-            public override void WriteEndElement()
-            {
+            public override void WriteEndElement() {
                 base.WriteEndElement();
                 _elements.Pop();
 
                 _currentIndentLevel--;
             }
-            public override void WriteFullEndElement()
-            {
+            public override void WriteFullEndElement() {
                 base.WriteFullEndElement();
                 _elements.Pop();
 
                 _currentIndentLevel--;
             }
-            public override void WriteComment(string text)
-            {
-                using (OverrideNoopInnerCall(false))
-                {
+            public override void WriteComment(string text) {
+                using (OverrideNoopInnerCall(false)) {
                     base.WriteComment(text);
                 }
             }
         }
 
-        private class CustomXamlFormatterBase
-        {
-            public virtual string FormatXaml(string xaml)
-            {
-                if (string.IsNullOrWhiteSpace(xaml)) return string.Empty;
-                try
-                {
+        private class CustomXamlFormatterBase {
+            public virtual string FormatXaml(string xaml) {
+                if (string.IsNullOrWhiteSpace(xaml))
+                    return string.Empty;
+                try {
                     xaml = PreprocessXaml(xaml);
                     xaml = RewriteXaml(xaml);
                     xaml = PostprocessXaml(xaml);
 
                     return xaml;
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     return HandleException(e, xaml);
                 }
             }
 
             protected virtual string PreprocessXaml(string xaml) => xaml;
-            protected virtual string RewriteXaml(string xaml)
-            {
+            protected virtual string RewriteXaml(string xaml) {
                 var buffer = new StringBuilder();
-                using (var rewriter = CreateRewriter(buffer))
-                {
+                using (var rewriter = CreateRewriter(buffer)) {
                     var element = XElement.Parse(xaml);
                     element.WriteTo(rewriter);
                     rewriter.Flush();
@@ -337,16 +307,14 @@ namespace ShowMeTheXAML
             protected virtual XmlWriter CreateRewriter(StringBuilder buffer) => XmlWriter.Create(buffer);
         }
 
-        private class PrettyXamlFormatter : CustomXamlFormatterBase
-        {
+        private class PrettyXamlFormatter : CustomXamlFormatterBase {
             public const string PathSeparator = @"\";
 
             /// <summary>Ignore everything except descendent(s) of this path, eg: XamlDisplay>StackPanel </summary>
             /// <remarks>This path is the local-name of elements joined by <see cref="PathSeparator"/>.</remarks>
             public string IgnorePath { get; set; } = "XamlDisplay";
 
-            protected override XmlWriter CreateRewriter(StringBuilder buffer)
-            {
+            protected override XmlWriter CreateRewriter(StringBuilder buffer) {
                 return new PrettyXmlWriter(
                     buffer,
                     stack => // return true to ignore current element
@@ -357,37 +325,32 @@ namespace ShowMeTheXAML
                         )
                 );
             }
-            protected override string PostprocessXaml(string xaml)
-            {
+            protected override string PostprocessXaml(string xaml) {
                 xaml = RemoveXmlns(xaml);
 
                 return xaml;
             }
 
-            private static string RemoveXmlns(string xaml)
-            {
+            private static string RemoveXmlns(string xaml) {
                 var namespaces = new[]
                 {
                     "http://schemas.microsoft.com/winfx/2006/xaml/presentation",
                     "http://schemas.microsoft.com/winfx/2006/xaml",
                 };
-                return Regex.Replace(xaml, @"\s+xmlns(:(?<prefix>\w+))?=""(?<uri>[^""]+)""", m =>
-                {
+                return Regex.Replace(xaml, @"\s+xmlns(:(?<prefix>\w+))?=""(?<uri>[^""]+)""", m => {
                     return namespaces?.Contains(m.Groups["uri"].Value) == true
                         ? null
                         : m.Value;
                 });
             }
 
-            private class PrettyXmlWriter : NiceXmlWriter
-            {
+            private class PrettyXmlWriter : NiceXmlWriter {
                 Func<IReadOnlyCollection<(string Prefix, string LocalName, string NS)>, bool> _noopInnerCallImpl;
 
                 public PrettyXmlWriter(
                     StringBuilder buffer,
                     Func<IReadOnlyCollection<(string Prefix, string LocalName, string NS)>, bool> noopInnerCallImpl)
-                    : base(buffer)
-                {
+                    : base(buffer) {
                     _noopInnerCallImpl = noopInnerCallImpl;
                 }
 

@@ -1,25 +1,20 @@
-﻿using Windows.UI;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
+namespace YourWaifu2x.Helpers {
+    using Windows.UI;
+    using Windows.UI.ViewManagement;
+    using Windows.UI.Xaml;
 
-namespace YourWaifu2x.Helpers
-{
     /// <summary>
     /// Helper class for the theme (dark/light)
     /// </summary>
-    public static class SystemThemeHelper
-    {
+    public static class SystemThemeHelper {
         /// <summary>
         /// Get the ApplicationTheme of the device/system
         /// </summary>
-        public static ApplicationTheme GetSystemApplicationTheme()
-        {
+        public static ApplicationTheme GetSystemApplicationTheme() {
 #if __ANDROID__
-            if ((int)Android.OS.Build.VERSION.SdkInt >= 28)
-            {
-                Android.Content.Res.UiMode uiModeFlags = Android.App.Application.Context.Resources.Configuration.UiMode & Android.Content.Res.UiMode.NightMask;
-                if (uiModeFlags == Android.Content.Res.UiMode.NightYes)
-                {
+            if ((int)Android.OS.Build.VERSION.SdkInt >= 28) {
+                var uiModeFlags = Android.App.Application.Context.Resources.Configuration.UiMode & Android.Content.Res.UiMode.NightMask;
+                if (uiModeFlags == Android.Content.Res.UiMode.NightYes) {
                     return ApplicationTheme.Dark;
                 }
             }
@@ -71,23 +66,19 @@ namespace YourWaifu2x.Helpers
 #elif __WASM__
             var serializedTheme = Foundation.WebAssemblyRuntime.InvokeJS("Windows.UI.Xaml.Application.getDefaultSystemTheme()");
 
-            if (serializedTheme != null)
-            {
-                if (Enum.TryParse(serializedTheme, out ApplicationTheme theme))
-                {
+            if (serializedTheme != null) {
+                if (Enum.TryParse(serializedTheme, out ApplicationTheme theme)) {
                     return theme;
-                }
-                else
-                {
+                } else {
                     throw new InvalidOperationException($"{serializedTheme} theme is not a supported OS theme");
                 }
             }
             //OS has no preference or API not implemented, use light as default
             return ApplicationTheme.Light;
 #elif WINDOWS_UWP
-            UISettings settings = new UISettings();
-            Color systemBackground = settings.GetColorValue(UIColorType.Background);
-            Color black = Color.FromArgb(255, 0, 0, 0);
+            var settings = new UISettings();
+            var systemBackground = settings.GetColorValue(UIColorType.Background);
+            var black = Color.FromArgb(255, 0, 0, 0);
             return systemBackground == black ? ApplicationTheme.Dark : ApplicationTheme.Light;
 #else
             // Not implemented so default to light.

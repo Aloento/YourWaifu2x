@@ -26,8 +26,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		YourWaifu2x.Shared\YourWaifu2x.Shared.projitems*{07181f38-5fa7-440e-8659-1acaa34710c7}*SharedItemsImports = 5
+		YourWaifu2x.Shared\YourWaifu2x.Shared.projitems*{41aa73d1-1930-4bf2-9154-7be5f6974333}*SharedItemsImports = 4
+		YourWaifu2x.Shared\YourWaifu2x.Shared.projitems*{49d3caa2-546e-4e7a-be97-2b01b04db462}*SharedItemsImports = 5
 		YourWaifu2x.Shared\YourWaifu2x.Shared.projitems*{6279c845-92f8-4333-ab99-3d213163593c}*SharedItemsImports = 13
 		YourWaifu2x.Shared\YourWaifu2x.Shared.projitems*{b4470685-43a9-4cbd-88c8-c16675042d53}*SharedItemsImports = 4
+		YourWaifu2x.Shared\YourWaifu2x.Shared.projitems*{ef1962dd-f6ff-46a1-b846-be4a1ffde32b}*SharedItemsImports = 4
+		YourWaifu2x.Shared\YourWaifu2x.Shared.projitems*{f5478e89-9761-4894-a8c7-b2f27342e404}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Android = Ad-Hoc|Android

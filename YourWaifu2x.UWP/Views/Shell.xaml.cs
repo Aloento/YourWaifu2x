@@ -1,5 +1,4 @@
-namespace YourWaifu2x
-{
+namespace YourWaifu2x {
     using System;
     using Windows.UI.Core;
     using Windows.UI.ViewManagement;
@@ -8,53 +7,48 @@ namespace YourWaifu2x
     using YourWaifu2x.Helpers;
     using MUXC = Microsoft.UI.Xaml.Controls;
 
-    public sealed partial class Shell : UserControl
-    {
-        public Shell()
-        {
-            this.InitializeComponent();
+    public sealed partial class Shell : UserControl {
+        public Shell() {
+            InitializeComponent();
 
-            this.InitializeSafeArea();
-            Loaded += this.OnLoaded;
+            InitializeSafeArea();
+            Loaded += OnLoaded;
 
-            _ = this.NestedSampleFrame.RegisterPropertyChangedCallback(ContentControl.ContentProperty, this.OnNestedSampleFrameChanged);
-            SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) => e.Handled = this.BackNavigateFromNestedSample();
+            _ = NestedSampleFrame.RegisterPropertyChangedCallback(ContentControl.ContentProperty, OnNestedSampleFrameChanged);
+            SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) => e.Handled = BackNavigateFromNestedSample();
         }
 
         public static Shell GetForCurrentView() => (Shell)Window.Current.Content;
 
-        public MUXC.NavigationView NavigationView => this.NavigationViewControl;
+        public MUXC.NavigationView NavigationView => NavigationViewControl;
 
-        public string CurrentSampleBackdoor
-        {
-            get => (string)this.GetValue(CurrentSampleBackdoorProperty);
-            set => this.SetValue(CurrentSampleBackdoorProperty, value);
+        public string CurrentSampleBackdoor {
+            get => (string)GetValue(CurrentSampleBackdoorProperty);
+            set => SetValue(CurrentSampleBackdoorProperty, value);
         }
 
         public static readonly DependencyProperty CurrentSampleBackdoorProperty =
             DependencyProperty.Register(nameof(CurrentSampleBackdoor), typeof(string), typeof(Shell), new PropertyMetadata(null));
 
-        private void OnLoaded(object sender, RoutedEventArgs e) => this.SetDarkLightToggleInitialState();
+        private void OnLoaded(object sender, RoutedEventArgs e) => SetDarkLightToggleInitialState();
 #if __IOS__ || __ANDROID__
             this.Log().Debug("Loaded Shell.");
             YourWaifu2x.Deeplinking.BranchService.Instance.SetIsAppReady();
 #endif
 
-        private void SetDarkLightToggleInitialState()
-        {
+        private void SetDarkLightToggleInitialState() {
             // Initialize the toggle to the current theme.
             var root = Window.Current.Content as FrameworkElement;
 
-            switch (root.ActualTheme)
-            {
+            switch (root.ActualTheme) {
                 case ElementTheme.Default:
-                    this.DarkLightModeToggle.IsChecked = SystemThemeHelper.GetSystemApplicationTheme() == ApplicationTheme.Dark;
+                    DarkLightModeToggle.IsChecked = SystemThemeHelper.GetSystemApplicationTheme() == ApplicationTheme.Dark;
                     break;
                 case ElementTheme.Light:
-                    this.DarkLightModeToggle.IsChecked = false;
+                    DarkLightModeToggle.IsChecked = false;
                     break;
                 case ElementTheme.Dark:
-                    this.DarkLightModeToggle.IsChecked = true;
+                    DarkLightModeToggle.IsChecked = true;
                     break;
                 default:
                     break;
@@ -64,33 +58,25 @@ namespace YourWaifu2x
         /// <summary>
         /// This method handles the top padding for phones like iPhone X.
         /// </summary>
-        private void InitializeSafeArea()
-        {
+        private void InitializeSafeArea() {
             var full = Window.Current.Bounds;
             var bounds = ApplicationView.GetForCurrentView().VisibleBounds;
 
             var topPadding = Math.Abs(full.Top - bounds.Top);
 
-            if (topPadding > 0)
-            {
-                this.TopPaddingRow.Height = new GridLength(topPadding);
+            if (topPadding > 0) {
+                TopPaddingRow.Height = new GridLength(topPadding);
             }
         }
 
-        private void ToggleButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void ToggleButton_Click(object sender, RoutedEventArgs e) {
             // Set theme for window root.
-            if (Window.Current.Content is FrameworkElement root)
-            {
-                switch (root.ActualTheme)
-                {
+            if (Window.Current.Content is FrameworkElement root) {
+                switch (root.ActualTheme) {
                     case ElementTheme.Default:
-                        if (SystemThemeHelper.GetSystemApplicationTheme() == ApplicationTheme.Dark)
-                        {
+                        if (SystemThemeHelper.GetSystemApplicationTheme() == ApplicationTheme.Dark) {
                             root.RequestedTheme = ElementTheme.Light;
-                        }
-                        else
-                        {
+                        } else {
                             root.RequestedTheme = ElementTheme.Dark;
                         }
                         break;
@@ -106,12 +92,11 @@ namespace YourWaifu2x
             }
         }
 
-        private void OnNestedSampleFrameChanged(DependencyObject sender, DependencyProperty dp)
-        {
-            var isInsideNestedSample = this.NestedSampleFrame.Content != null;
+        private void OnNestedSampleFrameChanged(DependencyObject sender, DependencyProperty dp) {
+            var isInsideNestedSample = NestedSampleFrame.Content != null;
 
             // prevent empty frame from blocking the content (nav-view) behind it
-            this.NestedSampleFrame.Visibility = isInsideNestedSample
+            NestedSampleFrame.Visibility = isInsideNestedSample
                 ? Visibility.Visible
                 : Visibility.Collapsed;
 
@@ -121,29 +106,22 @@ namespace YourWaifu2x
                 : AppViewBackButtonVisibility.Collapsed;
         }
 
-        public void ShowNestedSample<TPage>(bool? clearStack = null) where TPage : Page
-        {
-            var wasFrameEmpty = this.NestedSampleFrame.Content == null;
-            if (this.NestedSampleFrame.Navigate(typeof(TPage)) && (clearStack ?? wasFrameEmpty))
-            {
-                this.NestedSampleFrame.BackStack.Clear();
+        public void ShowNestedSample<TPage>(bool? clearStack = null) where TPage : Page {
+            var wasFrameEmpty = NestedSampleFrame.Content == null;
+            if (NestedSampleFrame.Navigate(typeof(TPage)) && (clearStack ?? wasFrameEmpty)) {
+                NestedSampleFrame.BackStack.Clear();
             }
         }
 
-        public bool BackNavigateFromNestedSample()
-        {
-            if (this.NestedSampleFrame.Content == null)
-            {
+        public bool BackNavigateFromNestedSample() {
+            if (NestedSampleFrame.Content == null) {
                 return false;
             }
 
-            if (this.NestedSampleFrame.CanGoBack)
-            {
-                this.NestedSampleFrame.GoBack();
-            }
-            else
-            {
-                this.NestedSampleFrame.Content = null;
+            if (NestedSampleFrame.CanGoBack) {
+                NestedSampleFrame.GoBack();
+            } else {
+                NestedSampleFrame.Content = null;
 
 #if __IOS__
                 // This will force reset the UINavigationController, to prevent the back button from appearing when the stack is supposely empty.
@@ -158,32 +136,24 @@ namespace YourWaifu2x
             return true;
         }
 
-        private void NavViewToggleButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.NavigationViewControl.PaneDisplayMode == MUXC.NavigationViewPaneDisplayMode.LeftMinimal)
-            {
-                this.NavigationViewControl.IsPaneOpen = !this.NavigationViewControl.IsPaneOpen;
-            }
-            else if (this.NavigationViewControl.PaneDisplayMode == MUXC.NavigationViewPaneDisplayMode.Left)
-            {
-                this.NavigationViewControl.IsPaneVisible = !this.NavigationViewControl.IsPaneVisible;
-                this.NavigationViewControl.IsPaneOpen = this.NavigationViewControl.IsPaneVisible;
+        private void NavViewToggleButton_Click(object sender, RoutedEventArgs e) {
+            if (NavigationViewControl.PaneDisplayMode == MUXC.NavigationViewPaneDisplayMode.LeftMinimal) {
+                NavigationViewControl.IsPaneOpen = !NavigationViewControl.IsPaneOpen;
+            } else if (NavigationViewControl.PaneDisplayMode == MUXC.NavigationViewPaneDisplayMode.Left) {
+                NavigationViewControl.IsPaneVisible = !NavigationViewControl.IsPaneVisible;
+                NavigationViewControl.IsPaneOpen = NavigationViewControl.IsPaneVisible;
             }
         }
 
-        private void NavigationViewControl_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
+        private void NavigationViewControl_SizeChanged(object sender, SizeChangedEventArgs e) {
             // This could be done using VisualState with Adaptive triggers, but an issue prevents this currently - https://github.com/unoplatform/uno/issues/5168
             var desktopWidth = (double)Application.Current.Resources["DesktopAdaptiveThresholdWidth"];
-            if (e.NewSize.Width >= desktopWidth && this.NavigationViewControl.PaneDisplayMode != MUXC.NavigationViewPaneDisplayMode.Left)
-            {
-                this.NavigationViewControl.PaneDisplayMode = MUXC.NavigationViewPaneDisplayMode.Left;
-                this.NavigationViewControl.IsPaneOpen = true;
-            }
-            else if (e.NewSize.Width < desktopWidth && this.NavigationViewControl.PaneDisplayMode != MUXC.NavigationViewPaneDisplayMode.LeftMinimal)
-            {
-                this.NavigationViewControl.IsPaneVisible = true;
-                this.NavigationViewControl.PaneDisplayMode = MUXC.NavigationViewPaneDisplayMode.LeftMinimal;
+            if (e.NewSize.Width >= desktopWidth && NavigationViewControl.PaneDisplayMode != MUXC.NavigationViewPaneDisplayMode.Left) {
+                NavigationViewControl.PaneDisplayMode = MUXC.NavigationViewPaneDisplayMode.Left;
+                NavigationViewControl.IsPaneOpen = true;
+            } else if (e.NewSize.Width < desktopWidth && NavigationViewControl.PaneDisplayMode != MUXC.NavigationViewPaneDisplayMode.LeftMinimal) {
+                NavigationViewControl.IsPaneVisible = true;
+                NavigationViewControl.PaneDisplayMode = MUXC.NavigationViewPaneDisplayMode.LeftMinimal;
             }
         }
     }

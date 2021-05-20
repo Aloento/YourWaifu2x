@@ -1,4 +1,4 @@
-﻿// ******************************************************************
+// ******************************************************************
 // Copyright � 2015-2018 nventive inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,49 +14,42 @@
 // limitations under the License.
 //
 // ******************************************************************
-using System;
-using System.Threading;
-using Uno.Disposables;
+namespace YourWaifu2x {
+    using System;
+    using System.Threading;
+    using Uno.Disposables;
 
-namespace YourWaifu2x
-{
     /// <summary>
     /// Represents an Action-based disposable.
     /// </summary>
-    public sealed class AnonymousDisposable : ICancelable
-    {
-        private volatile Action _dispose;
+    public sealed class AnonymousDisposable : ICancelable {
+        private volatile Action dispose;
 
         /// <summary>
         /// Constructs a new disposable with the given action used for disposal.
         /// </summary>
         /// <param name="create">Optional action which will be run immediately. Typically the reverse of the disposal action.</param>
         /// <param name="dispose">Disposal action which will be run upon calling Dispose.</param>
-        public AnonymousDisposable(Action create, Action dispose)
-        {
+        public AnonymousDisposable(Action create, Action dispose) {
             create?.Invoke();
             System.Diagnostics.Debug.Assert(dispose != null);
 
-            _dispose = dispose;
+            this.dispose = dispose;
         }
 
         /// <summary>
         /// Gets a value that indicates whether the object is disposed.
         /// </summary>
-        public bool IsDisposed => _dispose == null;
+        public bool IsDisposed => dispose == null;
 
         /// <summary>
         /// Calls the disposal action if and only if the current instance hasn't been disposed yet.
         /// </summary>
-        public void Dispose()
-        {
+        public void Dispose() {
 #pragma warning disable 0420
-            Action dispose = Interlocked.Exchange(ref _dispose, null);
+            var dispose = Interlocked.Exchange(ref this.dispose, null);
 #pragma warning restore 0420
-            if (dispose != null)
-            {
-                dispose();
-            }
+            dispose?.Invoke();
         }
     }
 }

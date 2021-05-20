@@ -1,4 +1,4 @@
-﻿namespace YourWaifu2x.UITests
+namespace YourWaifu2x.UITests
 {
     public static class Extensions
     {

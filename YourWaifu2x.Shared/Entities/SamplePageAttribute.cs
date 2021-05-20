@@ -1,12 +1,9 @@
-﻿using System;
+namespace YourWaifu2x {
+    using System;
 
-namespace YourWaifu2x
-{
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-    public sealed class SamplePageAttribute : Attribute
-    {
-        public SamplePageAttribute(SampleCategory category, string title, SourceSdk source = SourceSdk.WinUI)
-        {
+    public sealed class SamplePageAttribute : Attribute {
+        public SamplePageAttribute(SampleCategory category, string title, SourceSdk source = SourceSdk.WinUI) {
             Category = category;
             Title = title;
             Source = source;

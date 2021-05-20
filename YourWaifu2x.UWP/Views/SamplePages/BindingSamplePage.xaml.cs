@@ -2,27 +2,21 @@
 using System.Globalization;
 using Windows.UI.Xaml.Controls;
 
-namespace YourWaifu2x.Views.Samples
-{
+namespace YourWaifu2x.Views.Samples {
     [SamplePage(SampleCategory.Features, "Binding", Description = "Bindings allow you to pass data between your UI and business logic.", DocumentationLink = "https://docs.microsoft.com/en-us/windows/uwp/data-binding/")]
-    public sealed partial class BindingSamplePage : Page
-    {
-        public BindingSamplePage()
-        {
+    public sealed partial class BindingSamplePage : Page {
+        public BindingSamplePage() {
             InitializeComponent();
         }
     }
 
-    public class BindingSamplePageViewModel : INotifyPropertyChanged
-    {
+    public class BindingSamplePageViewModel : INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string _text;
-        public string Text
-        {
+        public string Text {
             get => _text;
-            set
-            {
+            set {
                 _text = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Text)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TextLength)));

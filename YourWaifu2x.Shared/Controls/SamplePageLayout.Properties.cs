@@ -1,9 +1,7 @@
-﻿using Windows.UI.Xaml;
+namespace YourWaifu2x {
+    using Windows.UI.Xaml;
 
-namespace YourWaifu2x
-{
-    public partial class SamplePageLayout
-    {
+    public partial class SamplePageLayout {
         #region Property: Title
 
         public static DependencyProperty TitleProperty { get; } = DependencyProperty.Register(
@@ -12,8 +10,7 @@ namespace YourWaifu2x
             typeof(SamplePageLayout),
             new PropertyMetadata(default));
 
-        public string Title
-        {
+        public string Title {
             get => (string)GetValue(TitleProperty);
             set => SetValue(TitleProperty, value);
         }
@@ -27,8 +24,7 @@ namespace YourWaifu2x
             typeof(SamplePageLayout),
             new PropertyMetadata(default));
 
-        public string Description
-        {
+        public string Description {
             get => (string)GetValue(DescriptionProperty);
             set => SetValue(DescriptionProperty, value);
         }
@@ -42,8 +38,7 @@ namespace YourWaifu2x
             typeof(SamplePageLayout),
             new PropertyMetadata(default));
 
-        public string DocumentationLink
-        {
+        public string DocumentationLink {
             get => (string)GetValue(DocumentationLinkProperty);
             set => SetValue(DocumentationLinkProperty, value);
         }
@@ -57,8 +52,7 @@ namespace YourWaifu2x
             typeof(SamplePageLayout),
             new PropertyMetadata(default));
 
-        public SourceSdk? Source
-        {
+        public SourceSdk? Source {
             get => (SourceSdk?)GetValue(SourceProperty);
             set => SetValue(SourceProperty, value);
         }
@@ -73,8 +67,7 @@ namespace YourWaifu2x
             typeof(SamplePageLayout),
             new PropertyMetadata(default));
 
-        public DataTemplate FluentTemplate
-        {
+        public DataTemplate FluentTemplate {
             get => (DataTemplate)GetValue(FluentTemplateProperty);
             set => SetValue(FluentTemplateProperty, value);
         }
@@ -88,8 +81,7 @@ namespace YourWaifu2x
             typeof(SamplePageLayout),
             new PropertyMetadata(default));
 
-        public DataTemplate MaterialTemplate
-        {
+        public DataTemplate MaterialTemplate {
             get => (DataTemplate)GetValue(MaterialTemplateProperty);
             set => SetValue(MaterialTemplateProperty, value);
         }
@@ -103,8 +95,7 @@ namespace YourWaifu2x
             typeof(SamplePageLayout),
             new PropertyMetadata(default));
 
-        public DataTemplate CupertinoTemplate
-        {
+        public DataTemplate CupertinoTemplate {
             get => (DataTemplate)GetValue(CupertinoTemplateProperty);
             set => SetValue(CupertinoTemplateProperty, value);
         }
@@ -118,8 +109,7 @@ namespace YourWaifu2x
             typeof(SamplePageLayout),
             new PropertyMetadata(default));
 
-        public DataTemplate NativeTemplate
-        {
+        public DataTemplate NativeTemplate {
             get => (DataTemplate)GetValue(NativeTemplateProperty);
             set => SetValue(NativeTemplateProperty, value);
         }
@@ -131,8 +121,7 @@ namespace YourWaifu2x
         /// The Header is the part above the design tabs (Material|Fluent|Native).
         /// It contains the Description and the Source in the default style.
         /// </summary>
-        public DataTemplate HeaderTemplate
-        {
+        public DataTemplate HeaderTemplate {
             get => (DataTemplate)GetValue(HeaderTemplateProperty);
             set => SetValue(HeaderTemplateProperty, value);
         }
@@ -142,8 +131,7 @@ namespace YourWaifu2x
         #endregion
 
         #region Property: IsFooterVisible
-        public bool IsFooterVisible
-        {
+        public bool IsFooterVisible {
             get => (bool)GetValue(IsFooterVisibleProperty);
             set => SetValue(IsFooterVisibleProperty, value);
         }
@@ -153,8 +141,7 @@ namespace YourWaifu2x
         #endregion
 
         #region IsShareVisible
-        public bool IsShareVisible
-        {
+        public bool IsShareVisible {
             get => (bool)GetValue(IsShareVisibleProperty);
             set => SetValue(IsShareVisibleProperty, value);
         }

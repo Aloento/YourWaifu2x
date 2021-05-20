@@ -1,10 +1,7 @@
-﻿using System.ComponentModel;
+namespace YourWaifu2x {
+    using System.ComponentModel;
 
-
-namespace YourWaifu2x
-{
-    public enum SourceSdk
-    {
+    public enum SourceSdk {
         [Description("WinUI/Uno.UI")]
         WinUI,
         [Description("Uno.Material")]

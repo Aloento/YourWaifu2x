@@ -1,10 +1,8 @@
-﻿using System;
-using Windows.UI.Xaml.Data;
+namespace YourWaifu2x.Converters {
+    using System;
+    using Windows.UI.Xaml.Data;
 
-namespace YourWaifu2x.Converters
-{
-    public class FromStringToValueConverter : IValueConverter
-    {
+    public class FromStringToValueConverter : IValueConverter {
         public enum CheckMethod { IsNullOrEmpty, IsNullOrWhitespace }
 
 
@@ -14,16 +12,9 @@ namespace YourWaifu2x.Converters
 
         public object FalseValue { get; set; }
 
-        public object Convert(object value, Type targetType, object parameter, string language)
-        {
-            return !(value is string text) || (Check == CheckMethod.IsNullOrEmpty ? string.IsNullOrEmpty(text) : string.IsNullOrWhiteSpace(text))
-? TrueValue
-: FalseValue;
-        }
+        public object Convert(object value, Type targetType, object parameter, string language) =>
+            !(value is string text) || (Check == CheckMethod.IsNullOrEmpty ? string.IsNullOrEmpty(text) : string.IsNullOrWhiteSpace(text)) ? TrueValue : FalseValue;
 
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
-            throw new NotSupportedException("Only one-way conversion is supported.");
-        }
+        public object ConvertBack(object value, Type targetType, object parameter, string language) => throw new NotSupportedException("Only one-way conversion is supported.");
     }
 }

@@ -1,16 +1,13 @@
-﻿using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+namespace YourWaifu2x {
+    using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Media;
 
-namespace YourWaifu2x
-{
     /// <summary>
     /// This control is used to display a tuples of colors.
     /// </summary>
-    public partial class ThreeColorPaletteView : Control
-    {
-        public string Title
-        {
+    public partial class ThreeColorPaletteView : Control {
+        public string Title {
             get => (string)GetValue(TitleProperty);
             set => SetValue(TitleProperty, value);
         }
@@ -18,8 +15,7 @@ namespace YourWaifu2x
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(ThreeColorPaletteView), new PropertyMetadata(string.Empty));
 
-        public string Description
-        {
+        public string Description {
             get => (string)GetValue(DescriptionProperty);
             set => SetValue(DescriptionProperty, value);
         }
@@ -28,8 +24,7 @@ namespace YourWaifu2x
             DependencyProperty.Register("Description", typeof(string), typeof(ThreeColorPaletteView), new PropertyMetadata(string.Empty));
 
         #region First Color Dependency Properties
-        public string FirstColorName
-        {
+        public string FirstColorName {
             get => (string)GetValue(FirstColorNameProperty);
             set => SetValue(FirstColorNameProperty, value);
         }
@@ -37,8 +32,7 @@ namespace YourWaifu2x
         public static readonly DependencyProperty FirstColorNameProperty =
             DependencyProperty.Register("FirstColorName", typeof(string), typeof(ThreeColorPaletteView), new PropertyMetadata(string.Empty));
 
-        public Brush FirstColorBrush
-        {
+        public Brush FirstColorBrush {
             get => (Brush)GetValue(FirstColorBrushProperty);
             set => SetValue(FirstColorBrushProperty, value);
         }
@@ -46,8 +40,7 @@ namespace YourWaifu2x
         public static readonly DependencyProperty FirstColorBrushProperty =
             DependencyProperty.Register("FirstColorBrush", typeof(Brush), typeof(ThreeColorPaletteView), new PropertyMetadata(null));
 
-        public Brush FirstColorForeground
-        {
+        public Brush FirstColorForeground {
             get => (Brush)GetValue(FirstColorForegroundProperty);
             set => SetValue(FirstColorForegroundProperty, value);
         }
@@ -58,8 +51,7 @@ namespace YourWaifu2x
         #endregion
 
         #region Second Color Dependency Properties
-        public string SecondColorName
-        {
+        public string SecondColorName {
             get => (string)GetValue(SecondColorNameProperty);
             set => SetValue(SecondColorNameProperty, value);
         }
@@ -67,8 +59,7 @@ namespace YourWaifu2x
         public static readonly DependencyProperty SecondColorNameProperty =
             DependencyProperty.Register("SecondColorName", typeof(string), typeof(ThreeColorPaletteView), new PropertyMetadata(string.Empty));
 
-        public Brush SecondColorBrush
-        {
+        public Brush SecondColorBrush {
             get => (Brush)GetValue(SecondColorBrushProperty);
             set => SetValue(SecondColorBrushProperty, value);
         }
@@ -76,8 +67,7 @@ namespace YourWaifu2x
         public static readonly DependencyProperty SecondColorBrushProperty =
             DependencyProperty.Register("SecondColorBrush", typeof(Brush), typeof(ThreeColorPaletteView), new PropertyMetadata(null));
 
-        public Brush SecondColorForeground
-        {
+        public Brush SecondColorForeground {
             get => (Brush)GetValue(SecondColorForegroundProperty);
             set => SetValue(SecondColorForegroundProperty, value);
         }
@@ -89,8 +79,7 @@ namespace YourWaifu2x
         #endregion
 
         #region Third Color Dependency Properties
-        public string ThirdColorName
-        {
+        public string ThirdColorName {
             get => (string)GetValue(ThirdColorNameProperty);
             set => SetValue(ThirdColorNameProperty, value);
         }
@@ -98,8 +87,7 @@ namespace YourWaifu2x
         public static readonly DependencyProperty ThirdColorNameProperty =
             DependencyProperty.Register("ThirdColorName", typeof(string), typeof(ThreeColorPaletteView), new PropertyMetadata(string.Empty));
 
-        public Brush ThirdColorBrush
-        {
+        public Brush ThirdColorBrush {
             get => (Brush)GetValue(ThirdColorBrushProperty);
             set => SetValue(ThirdColorBrushProperty, value);
         }
@@ -107,8 +95,7 @@ namespace YourWaifu2x
         public static readonly DependencyProperty ThirdColorBrushProperty =
             DependencyProperty.Register("ThirdColorBrush", typeof(Brush), typeof(ThreeColorPaletteView), new PropertyMetadata(null));
 
-        public Brush ThirdColorForeground
-        {
+        public Brush ThirdColorForeground {
             get => (Brush)GetValue(ThirdColorForegroundProperty);
             set => SetValue(ThirdColorForegroundProperty, value);
         }

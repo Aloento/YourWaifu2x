@@ -1,8 +1,7 @@
 ﻿using Windows.UI.Xaml.Controls;
 using YourWaifu2x.Entities.Data;
 
-namespace YourWaifu2x.Views.Samples
-{
+namespace YourWaifu2x.Views.Samples {
     [SamplePage(
         category: SampleCategory.Components,
         title: "Divider",
@@ -10,10 +9,8 @@ namespace YourWaifu2x.Views.Samples
         DocumentationLink = "https://material.io/components/dividers",
         DataType = typeof(DividerItems)
     )]
-    public sealed partial class DividerSamplePage : Page
-    {
-        public DividerSamplePage()
-        {
+    public sealed partial class DividerSamplePage : Page {
+        public DividerSamplePage() {
             InitializeComponent();
         }
     }
