@@ -18,25 +18,25 @@ namespace YourWaifu2x.Deeplinking {
         private readonly TaskCompletionSource<bool> isAppReadyTcs = new TaskCompletionSource<bool>();
 
         public async void InitSessionComplete(BranchUniversalObject buo, BranchLinkProperties blp) {
-            // Gets the requested sample and design, then navigates to it.
+            // Gets the requested myPage and design, then navigates to it.
 
             this.Log().Debug("Branch initialization completed.");
 
             var pageName = string.Empty;
             if (blp?.controlParams?.TryGetValue("$deeplink_path", out pageName) ?? false) {
-                var sample = App.GetSamples().FirstOrDefault(s => s.ViewType.Name.ToLowerInvariant() == pageName.ToLowerInvariant());
-                if (sample != null) {
+                var myPage = App.GetPages().FirstOrDefault(s => s.ViewType.Name.ToLowerInvariant() == pageName.ToLowerInvariant());
+                if (myPage != null) {
                     if (blp.controlParams.TryGetValue("$design", out var designName) && Enum.TryParse(designName, out Design design)) {
                         SamplePageLayout.SetPreferredDesign(design);
                     }
 
                     _ = await isAppReadyTcs.Task;
 
-                    this.Log().Debug($"Navigating to {sample.ViewType.Name} from deeplink.");
+                    this.Log().Debug($"Navigating to {myPage.ViewType.Name} from deeplink.");
 
-                    (Application.Current as App)?.ShellNavigateTo(sample);
+                    (Application.Current as App)?.ShellNavigateTo(myPage);
 
-                    this.Log().Info($"Navigated to {sample.ViewType.Name} from deeplink.");
+                    this.Log().Info($"Navigated to {myPage.ViewType.Name} from deeplink.");
                 }
             }
         }
@@ -44,12 +44,12 @@ namespace YourWaifu2x.Deeplinking {
         public void SessionRequestError(BranchError error) => this.Log().Error("Branch error: " + error.ErrorCode + '\n' + error.ErrorMessage);
 
         /// <summary>
-        /// Creates a branch.io link to the specified sample and design, then shares it.
+        /// Creates a branch.io link to the specified myPage and design, then shares it.
         /// </summary>
-        public async Task ShareSample(Sample sample, Design design) {
-            var pageName = sample.ViewType.Name.ToLowerInvariant();
+        public async Task ShareSample(MyPage myPage, Design design) {
+            var pageName = myPage.ViewType.Name.ToLowerInvariant();
             var buo = new BranchUniversalObject() {
-                title = $"{design} {sample.Title}",
+                title = $"{design} {myPage.Title}",
                 canonicalIdentifier = Guid.NewGuid().ToString(),
             };
 

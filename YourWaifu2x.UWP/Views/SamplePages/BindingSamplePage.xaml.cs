@@ -3,7 +3,7 @@ using System.Globalization;
 using Windows.UI.Xaml.Controls;
 
 namespace YourWaifu2x.Views.Samples {
-    [SamplePage(SampleCategory.Features, "Binding", Description = "Bindings allow you to pass data between your UI and business logic.", DocumentationLink = "https://docs.microsoft.com/en-us/windows/uwp/data-binding/")]
+    [Page(PageCategory.Features, "Binding", Description = "Bindings allow you to pass data between your UI and business logic.", DocumentationLink = "https://docs.microsoft.com/en-us/windows/uwp/data-binding/")]
     public sealed partial class BindingSamplePage : Page {
         public BindingSamplePage() {
             InitializeComponent();

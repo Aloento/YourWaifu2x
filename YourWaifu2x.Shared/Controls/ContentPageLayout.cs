@@ -3,7 +3,7 @@ namespace YourWaifu2x {
     using Windows.UI.Xaml.Controls;
 
     /// <summary>
-    /// This control is used as a template for each non-sample page (like the palette pages).
+    /// This control is used as a template for each non-myPage page (like the palette pages).
     /// </summary>
     public partial class ContentPageLayout : ContentControl {
         public string Title {

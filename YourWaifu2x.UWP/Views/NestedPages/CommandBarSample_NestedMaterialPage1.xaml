@@ -36,10 +36,10 @@
 					Padding="16,0">
 			<TextBlock Style="{StaticResource MaterialBody1}">
 				You can use the back button located on the left side of the CommandBar
-				to exit this sample.
+				to exit this myPage.
 			</TextBlock>
 
-			<Button Content="Exit sample"
+			<Button Content="Exit myPage"
 					Click="NavigateBack"
 					HorizontalAlignment="Stretch"
 					Style="{StaticResource MaterialContainedButtonStyle}" />

@@ -9,7 +9,7 @@ namespace YourWaifu2x {
     using YourWaifu2x.Helpers;
 
     /// <summary>
-    /// This control is used as a template for each sample page.
+    /// This control is used as a template for each myPage page.
     /// </summary>
     public partial class SamplePageLayout : ContentControl {
         private const string VisualStateMaterial = nameof(Design.Material);
@@ -66,7 +66,7 @@ namespace YourWaifu2x {
             DataContextChanged += OnDataContextChanged;
 
             void OnDataContextChanged(object sender, DataContextChangedEventArgs args) {
-                if (args.NewValue is Sample sample) {
+                if (args.NewValue is MyPage sample) {
                     Title = sample.Title;
                     Description = sample.Description;
                     DocumentationLink = sample.DocumentationLink;
@@ -147,14 +147,14 @@ namespace YourWaifu2x {
 
         private void OnShareClicked(Hyperlink sender, HyperlinkClickEventArgs args) {
 #if __IOS__ || __ANDROID__
-            var sample = DataContext as Sample;
-            _ = Deeplinking.BranchService.Instance.ShareSample(sample, design);
+            var myPage = DataContext as MyPage;
+            _ = Deeplinking.BranchService.Instance.ShareSample(myPage, design);
 #endif
         }
 
         /// <summary>
         /// Changes the preferred design.
-        /// This doesn't change the current UI. It only affects the next created sample.
+        /// This doesn't change the current UI. It only affects the next created myPage.
         /// </summary>
         /// <param name="design">The desired design.</param>
         public static void SetPreferredDesign(Design design) => SamplePageLayout.design = design;

@@ -7,7 +7,7 @@ namespace YourWaifu2x {
     using YourWaifu2x.Helpers;
     using MUXC = Microsoft.UI.Xaml.Controls;
 
-    public sealed partial class Shell : UserControl {
+    public sealed partial class Shell {
         public Shell() {
             InitializeComponent();
 
@@ -49,8 +49,6 @@ namespace YourWaifu2x {
                 case ElementTheme.Dark:
                     DarkLightModeToggle.IsChecked = true;
                     break;
-                default:
-                    break;
             }
         }
 
@@ -84,8 +82,6 @@ namespace YourWaifu2x {
                         break;
                     case ElementTheme.Dark:
                         root.RequestedTheme = ElementTheme.Light;
-                        break;
-                    default:
                         break;
                 }
             }

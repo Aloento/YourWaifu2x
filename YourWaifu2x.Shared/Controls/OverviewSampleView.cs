@@ -17,19 +17,19 @@ namespace YourWaifu2x {
             DependencyProperty.Register("SamplePageType", typeof(Type), typeof(OverviewSampleView), new PropertyMetadata(null, OnSamplePageTypeChanged));
 
         private static void OnSamplePageTypeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
-            if (e.NewValue is Type type) {
-                var that = (OverviewSampleView)d;
-                that.Sample = new Sample(type.GetTypeInfo().GetCustomAttribute<SamplePageAttribute>(), type);
-            }
+            if (!(e.NewValue is Type type))
+                return;
+            var that = (OverviewSampleView)d;
+            that.MyPage = new MyPage(type.GetTypeInfo().GetCustomAttribute<PageAttribute>(), type);
         }
 
-        public Sample Sample {
-            get => (Sample)GetValue(SampleProperty);
-            set => SetValue(SampleProperty, value);
+        public MyPage MyPage {
+            get => (MyPage)GetValue(MyPageProperty);
+            set => SetValue(MyPageProperty, value);
         }
 
-        public static readonly DependencyProperty SampleProperty =
-            DependencyProperty.Register("Sample", typeof(Sample), typeof(OverviewSampleView), new PropertyMetadata(null));
+        public static readonly DependencyProperty MyPageProperty =
+            DependencyProperty.Register("MyPage", typeof(MyPage), typeof(OverviewSampleView), new PropertyMetadata(null));
 
         protected override void OnApplyTemplate() {
             base.OnApplyTemplate();
@@ -38,7 +38,7 @@ namespace YourWaifu2x {
             viewButton.Click -= OnViewClicked;
             viewButton.Click += OnViewClicked;
 
-            void OnViewClicked(object sender, RoutedEventArgs e) => (Application.Current as App)?.ShellNavigateTo(Sample);
+            void OnViewClicked(object sender, RoutedEventArgs e) => (Application.Current as App)?.ShellNavigateTo(MyPage);
         }
     }
 }

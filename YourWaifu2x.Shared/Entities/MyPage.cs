@@ -5,8 +5,8 @@ namespace YourWaifu2x {
     using Windows.UI.Xaml.Data;
 
     [Bindable]
-    public class Sample {
-        public Sample(SamplePageAttribute attribute, Type viewType) {
+    public class MyPage {
+        public MyPage(PageAttribute attribute, Type viewType) {
             Category = attribute.Category;
             Title = attribute.Title;
             Description = attribute.Description;
@@ -30,7 +30,7 @@ namespace YourWaifu2x {
             }
         }
 
-        public SampleCategory Category { get; set; }
+        public PageCategory Category { get; set; }
 
         public string Title { get; }
 

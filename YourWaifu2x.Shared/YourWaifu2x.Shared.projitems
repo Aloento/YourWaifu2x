@@ -109,7 +109,6 @@
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Banner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ContentPageLayout.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\OverviewSampleView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SamplePageLayout.Properties.cs" />
@@ -129,9 +128,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Domain\AnalyticsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Data\DividerItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Data\Record.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Sample.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\SampleCategory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\SamplePageAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\MyPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\PageCategory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\PageAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SamplePageLayout.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Design.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\SourceSdk.cs" />

@@ -21,8 +21,8 @@ namespace YourWaifu2x {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    public sealed partial class App : Application {
-        private static Sample[] samples;
+    public sealed partial class App {
+        private static MyPage[] samples;
         private Shell shell;
 
         /// <summary>
@@ -38,13 +38,6 @@ namespace YourWaifu2x {
             XamlDisplay.Init(GetType().Assembly);
             InitializeComponent();
 
-            /// <summary>
-            /// Invoked when application execution is being suspended. Application state is saved
-            /// without knowing whether the application will be terminated or resumed with the contents
-            /// of memory still intact.
-            /// </summary>
-            /// <param name="sender">The source of the suspend request.</param>
-            /// <param name="e">Details about the suspend request.</param>
             Suspending += (s, e) => e.SuspendingOperation.GetDeferral().Complete();
 
 #if __WASM__
@@ -94,37 +87,38 @@ namespace YourWaifu2x {
             base.OnActivated(args);
         }
 
-        public void ShellNavigateTo(Sample sample) => ShellNavigateTo(sample, trySynchronizeCurrentItem: true);
+        public void ShellNavigateTo(MyPage myPage) => ShellNavigateTo(myPage, true);
 
         private void ShellNavigateTo<TPage>(bool trySynchronizeCurrentItem = true) where TPage : Page {
             var pageType = typeof(TPage);
-            var attribute = pageType.GetCustomAttribute<SamplePageAttribute>()
-                ?? throw new NotSupportedException($"{pageType} isn't tagged with [{nameof(SamplePageAttribute)}].");
+            var attribute = pageType.GetCustomAttribute<PageAttribute>()
+                ?? throw new NotSupportedException($"{pageType} isn't tagged with [{nameof(PageAttribute)}].");
 
-            ShellNavigateTo(new Sample(attribute, pageType), trySynchronizeCurrentItem);
+            ShellNavigateTo(new MyPage(attribute, pageType), trySynchronizeCurrentItem);
         }
 
-        private void ShellNavigateTo(Sample sample, bool trySynchronizeCurrentItem) {
+        private void ShellNavigateTo(MyPage myPage, bool trySynchronizeCurrentItem) {
             var nv = shell.NavigationView;
-            if (nv.Content?.GetType() != sample.ViewType) {
-                var selected = trySynchronizeCurrentItem
-                    ? nv.MenuItems
-                        .OfType<MUXC.NavigationViewItem>()
-                        .FirstOrDefault(x => (x.DataContext as Sample)?.ViewType == sample.ViewType)
-                    : default;
-                if (selected != null) {
-                    nv.SelectedItem = selected;
-                }
+            if (nv.Content?.GetType() == myPage.ViewType)
+                return;
 
-                var page = (Page)Activator.CreateInstance(sample.ViewType);
-                page.DataContext = sample;
+            var selected = trySynchronizeCurrentItem
+                ? nv.MenuItems
+                    .OfType<MUXC.NavigationViewItem>()
+                    .FirstOrDefault(x => (x.DataContext as MyPage)?.ViewType == myPage.ViewType)
+                : default;
+
+            if (selected != null)
+                nv.SelectedItem = selected;
+
+            var page = (Page)Activator.CreateInstance(myPage.ViewType);
+            page.DataContext = myPage;
 
 #if __WASM__
-                _ = Windows.UI.Xaml.Window.Current.Dispatcher.RunIdleAsync(_ => AnalyticsService.TrackView(sample?.Title ?? page.GetType().Name));
+                _ = Windows.UI.Xaml.Window.Current.Dispatcher.RunIdleAsync(_ => AnalyticsService.TrackView(myPage?.Title ?? page.GetType().Name));
 #endif
 
-                shell.NavigationView.Content = page;
-            }
+            shell.NavigationView.Content = page;
         }
 
         private Shell BuildShell() {
@@ -144,7 +138,7 @@ namespace YourWaifu2x {
 
             // navigation + setting handler
             nv.ItemInvoked += (s, e) => {
-                if (e.InvokedItemContainer.DataContext is Sample sample)
+                if (e.InvokedItemContainer.DataContext is MyPage sample)
                     ShellNavigateTo(sample, trySynchronizeCurrentItem: false);
             };
 
@@ -152,7 +146,7 @@ namespace YourWaifu2x {
         }
 
         private void OnCurrentSampleBackdoorChanged(DependencyObject sender, DependencyProperty dp) {
-            var sample = GetSamples()
+            var sample = GetPages()
                 .FirstOrDefault(x => string.Equals(x.Title, shell.CurrentSampleBackdoor, StringComparison.OrdinalIgnoreCase));
 
             if (sample == null) {
@@ -164,36 +158,22 @@ namespace YourWaifu2x {
         }
 
         private void AddNavigationItems(MUXC.NavigationView nv) {
-            var categories = GetSamples()
+            var categories = GetPages()
                 .OrderByDescending(x => x.SortOrder.HasValue)
                 .ThenBy(x => x.SortOrder)
                 .ThenBy(x => x.Title)
                 .GroupBy(x => x.Category);
 
             foreach (var category in categories.OrderBy(x => x.Key)) {
-                var tier = 1;
-
-                var parentItem = default(MUXC.NavigationViewItem);
-                if (category.Key != SampleCategory.None) {
-                    parentItem = new MUXC.NavigationViewItem {
-                        Content = category.Key.GetDescription() ?? category.Key.ToString(),
-                        SelectsOnInvoked = false,
-                        Style = (Style)Resources[$"T{tier++}NavigationViewItemStyle"]
-                    }.Apply(NavViewItemVisualStateFix);
-                    AutomationProperties.SetAutomationId(parentItem, "Section_" + parentItem.Content);
-
-                    nv.MenuItems.Add(parentItem);
-                }
-
                 foreach (var sample in category) {
                     var item = new MUXC.NavigationViewItem {
                         Content = sample.Title,
                         DataContext = sample,
-                        Style = (Style)Resources[$"T{tier}NavigationViewItemStyle"]
+                        Style = (Style)Resources["T1NavigationViewItemStyle"]
                     }.Apply(NavViewItemVisualStateFix);
                     AutomationProperties.SetAutomationId(item, "Section_" + item.Content);
 
-                    (parentItem?.MenuItems ?? nv.MenuItems).Add(item);
+                    nv.MenuItems.Add(item);
                 }
             }
 
@@ -265,12 +245,12 @@ namespace YourWaifu2x {
 				.AddConsole(LogLevel.Information);
 #endif
 
-        public static IEnumerable<Sample> GetSamples() => samples = samples ?? Assembly.GetExecutingAssembly()
+        public static IEnumerable<MyPage> GetPages() => samples = samples ?? Assembly.GetExecutingAssembly()
                            .DefinedTypes
                            .Where(x => x.Namespace?.StartsWith("YourWaifu2x") == true)
-                           .Select(x => new { TypeInfo = x, SamplePageAttribute = x.GetCustomAttribute<SamplePageAttribute>() })
+                           .Select(x => (TypeInfo: x, SamplePageAttribute: x.GetCustomAttribute<PageAttribute>()))
                            .Where(x => x.SamplePageAttribute != null)
-                           .Select(x => new Sample(x.SamplePageAttribute, x.TypeInfo.AsType()))
+                           .Select(x => new MyPage(x.SamplePageAttribute, x.TypeInfo.AsType()))
                            .ToArray();
     }
 }

@@ -179,6 +179,15 @@
     <Compile Include="Views\GeneralPages\CupertinoPalettePage.xaml.cs">
       <DependentUpon>CupertinoPalettePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GeneralPages\Exporting.xaml.cs">
+      <DependentUpon>Exporting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GeneralPages\SettingWaifu2x.xaml.cs">
+      <DependentUpon>SettingWaifu2x.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GeneralPages\SelectingImages.xaml.cs">
+      <DependentUpon>SelectingImages.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GeneralPages\OverviewPage.xaml.cs">
       <DependentUpon>OverviewPage.xaml</DependentUpon>
     </Compile>
@@ -396,6 +405,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\GeneralPages\Exporting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GeneralPages\SettingWaifu2x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GeneralPages\SelectingImages.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\GeneralPages\OverviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -611,10 +632,6 @@
     <Page Include="Views\Styles\TextBlock.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Styles\Banner.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Styles\NavigationView.xaml">
       <SubType>Designer</SubType>

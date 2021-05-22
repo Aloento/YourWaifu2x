@@ -2,17 +2,17 @@ namespace YourWaifu2x {
     using System;
 
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-    public sealed class SamplePageAttribute : Attribute {
-        public SamplePageAttribute(SampleCategory category, string title, SourceSdk source = SourceSdk.WinUI) {
+    public sealed class PageAttribute : Attribute {
+        public PageAttribute(PageCategory category, string title, SourceSdk source = SourceSdk.WinUI) {
             Category = category;
             Title = title;
             Source = source;
         }
 
         /// <summary>
-        /// Sample category with null reserved for Home/Overview.
+        /// MyPage category with null reserved for Home/Overview.
         /// </summary>
-        public SampleCategory Category { get; }
+        public PageCategory Category { get; }
 
         public string Title { get; }
 

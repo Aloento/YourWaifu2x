@@ -4,7 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace YourWaifu2x.Views.Samples {
-    [SamplePage(SampleCategory.Features, "MessageDialog", Description = "This represents a simple dialog to show to users. Customization is limited to title text, content text and commands.", DocumentationLink = "https://docs.microsoft.com/en-us/uwp/api/windows.ui.popups.messagedialog")]
+    [Page(PageCategory.Features, "MessageDialog", Description = "This represents a simple dialog to show to users. Customization is limited to title text, content text and commands.", DocumentationLink = "https://docs.microsoft.com/en-us/uwp/api/windows.ui.popups.messagedialog")]
     public sealed partial class MessageDialogSamplePage : Page {
         public MessageDialogSamplePage() {
             InitializeComponent();

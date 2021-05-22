@@ -5,7 +5,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace YourWaifu2x.Views.Samples {
 
-    [SamplePage(SampleCategory.Features, "Animation", Description = "Animations samples using VisualStates, DoubleAnimations, EasingFunctions and RenderTransforms", DocumentationLink = "https://docs.microsoft.com/en-us/windows/uwp/design/motion/xaml-animation")]
+    [Page(PageCategory.Features, "Animation", Description = "Animations samples using VisualStates, DoubleAnimations, EasingFunctions and RenderTransforms", DocumentationLink = "https://docs.microsoft.com/en-us/windows/uwp/design/motion/xaml-animation")]
     public sealed partial class AnimationSamplePage : Page {
         private Control _sampleLayoutRoot;
 

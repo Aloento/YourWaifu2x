@@ -12,7 +12,7 @@
 			<local:SamplePageLayout.MaterialTemplate>
 				<DataTemplate>
 
-					<Button Content="Show Sample"
+					<Button Content="Show MyPage"
 							Click="LaunchFullScreenSample"
 							Style="{StaticResource MaterialContainedButtonStyle}" />
 

@@ -5,7 +5,7 @@ using YourWaifu2x.Entities.Data;
 
 namespace YourWaifu2x.Views.Samples {
 
-    [SamplePage(SampleCategory.Features, "ListView",
+    [Page(PageCategory.Features, "ListView",
         Description = "Represents a control that displays data items in a vertical stack.",
         DocumentationLink = "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.listview",
         DataType = typeof(RecordCollection)
