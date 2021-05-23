@@ -1,36 +1,36 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					xmlns:converters="using:YourWaifu2x.Converters">
 
-	<converters:FromBoolToValueConverter x:Key="TrueToVisible"
+    <converters:FromBoolToValueConverter x:Key="TrueToVisible"
 										 TrueValue="Visible"
 										 NullOrFalseValue="Collapsed" />
-	<converters:FromBoolToValueConverter x:Key="TrueOrNullToVisible"
+    <converters:FromBoolToValueConverter x:Key="TrueOrNullToVisible"
 										 NullOrTrueValue="Visible"
 										 FalseValue="Collapsed" />
-	<converters:FromBoolToValueConverter x:Key="TrueToCollapsed"
+    <converters:FromBoolToValueConverter x:Key="TrueToCollapsed"
 										 TrueValue="Collapsed"
 										 NullOrFalseValue="Visible" />
-	<converters:FromBoolToValueConverter x:Key="TrueOrNullToCollapsed"
+    <converters:FromBoolToValueConverter x:Key="TrueOrNullToCollapsed"
 										 NullOrTrueValue="Collapsed"
 										 FalseValue="Visible" />
 
-	<converters:FromStringToValueConverter x:Key="IsNullOrEmptyToVisible"
+    <converters:FromStringToValueConverter x:Key="IsNullOrEmptyToVisible"
 										   Check="IsNullOrEmpty"
 										   TrueValue="Visible"
 										   FalseValue="Collapsed" />
-	<converters:FromStringToValueConverter x:Key="IsNullOrEmptyToCollapsed"
+    <converters:FromStringToValueConverter x:Key="IsNullOrEmptyToCollapsed"
 										   Check="IsNullOrEmpty"
 										   TrueValue="Collapsed"
 										   FalseValue="Visible" />
 
-	<converters:EnumDescriptionConverter x:Name="EnumToDescription" />
+    <converters:EnumDescriptionConverter x:Name="EnumToDescription" />
 
-	<converters:RandomColorConverter x:Name="RandomColorBrush"
+    <converters:RandomColorConverter x:Name="RandomColorBrush"
 									 Provider="Random" />
-	
-	<converters:RandomColorConverter x:Name="HashCodeToRandomColorBrush"
+
+    <converters:RandomColorConverter x:Name="HashCodeToRandomColorBrush"
 									 Provider="HashCode" />
 
-	<converters:DebugConverter x:Key="debug" />
+    <converters:PathToNameConverter x:Key="PathToNameConverter" />
 </ResourceDictionary>

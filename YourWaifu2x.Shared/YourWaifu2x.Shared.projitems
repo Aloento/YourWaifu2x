@@ -112,7 +112,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ContentPageLayout.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\OverviewSampleView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SamplePageLayout.Properties.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\DebugConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\EnumDescriptionConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\EnumDesignConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\FromBoolToValueConverter.cs" />
@@ -123,6 +122,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FluentColorAccentView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ThreeColorPaletteView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\FromColorBrushToHexConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\PathToNameConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\RandomColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Deeplinking\BranchService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Domain\AnalyticsService.cs" />

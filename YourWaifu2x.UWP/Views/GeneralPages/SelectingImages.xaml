@@ -1,22 +1,28 @@
-<Page x:Class="YourWaifu2x.Views.GeneralPages.SelectingImages"
+<Page
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:local="using:YourWaifu2x"
 	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	  xmlns:io="using:System.IO"
-	  xmlns:generalPages="using:YourWaifu2x.Views.GeneralPages"
+      xmlns:converters="using:YourWaifu2x.Converters" x:Class="YourWaifu2x.Views.GeneralPages.SelectingImages"
 	  mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:PathToNameConverter x:Key="PathToName"/>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <local:ContentPageLayout Title="Selecting Images"
                                  Description="Please choose Images that you want to Re-sample">
             <StackPanel Loaded="Selecting_OnLoaded">
                 <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
-                    <AppBarButton Name="AddButton" Icon="Add" Label="Add Files"/>
-                    <AppBarButton Name="FolderButton" Icon="Folder" Label="Add Folder"/>
-                    <AppBarButton Name="DeleteButton" Icon="Delete" Label="Delete"/>
-                    <AppBarButton Name="CleanButton" Icon="Clear" Label="Clean"/>
+                    <AppBarButton Name="AllCountLabel" Label="No Images" IsEnabled="False"/>
+                    <AppBarSeparator/>
+                    <AppBarButton x:Name="AddButton" Icon="Add" Label="Add Files"/>
+                    <AppBarButton x:Name="FolderButton" Icon="Folder" Label="Add Folder"/>
+                    <AppBarButton x:Name="DeleteButton" Icon="Delete" Label="Delete"/>
+                    <AppBarButton x:Name="CleanButton" Icon="Clear" Label="Clean"/>
                 </CommandBar>
 
                 <ListView x:Name="ImagesList"
@@ -28,8 +34,8 @@
                           Margin="0,16,0,0">
 
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="generalPages:Images">
-                            <TextBlock Text="{x:Bind FileName}" ToolTipService.ToolTip="{Binding FileStream.Name}"></TextBlock>
+                        <DataTemplate x:DataType="io:FileStream">
+                            <TextBlock Text="{Binding Name, Converter={StaticResource PathToName}, Mode=OneWay}" ToolTipService.ToolTip="{Binding Name}"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
 
