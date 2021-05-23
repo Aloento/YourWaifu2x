@@ -134,10 +134,11 @@ namespace YourWaifu2x {
         private void NavViewToggleButton_Click(object sender, RoutedEventArgs e) {
             if (NavigationViewControl.PaneDisplayMode == MUXC.NavigationViewPaneDisplayMode.LeftMinimal) {
                 NavigationViewControl.IsPaneOpen = !NavigationViewControl.IsPaneOpen;
-            } else if (NavigationViewControl.PaneDisplayMode == MUXC.NavigationViewPaneDisplayMode.Left) {
-                NavigationViewControl.IsPaneVisible = !NavigationViewControl.IsPaneVisible;
-                NavigationViewControl.IsPaneOpen = NavigationViewControl.IsPaneVisible;
             }
+            //else if (NavigationViewControl.PaneDisplayMode == MUXC.NavigationViewPaneDisplayMode.Left) {
+            //    NavigationViewControl.IsPaneVisible = !NavigationViewControl.IsPaneVisible;
+            //    NavigationViewControl.IsPaneOpen = NavigationViewControl.IsPaneVisible;
+            //}
         }
 
         private void NavigationViewControl_SizeChanged(object sender, SizeChangedEventArgs e) {
@@ -146,9 +147,11 @@ namespace YourWaifu2x {
             if (e.NewSize.Width >= desktopWidth && NavigationViewControl.PaneDisplayMode != MUXC.NavigationViewPaneDisplayMode.Left) {
                 NavigationViewControl.PaneDisplayMode = MUXC.NavigationViewPaneDisplayMode.Left;
                 NavigationViewControl.IsPaneOpen = true;
+                NavToggle.Visibility = Visibility.Collapsed;
             } else if (e.NewSize.Width < desktopWidth && NavigationViewControl.PaneDisplayMode != MUXC.NavigationViewPaneDisplayMode.LeftMinimal) {
                 NavigationViewControl.IsPaneVisible = true;
                 NavigationViewControl.PaneDisplayMode = MUXC.NavigationViewPaneDisplayMode.LeftMinimal;
+                NavToggle.Visibility = Visibility.Visible;
             }
         }
     }

@@ -35,7 +35,7 @@
 							 IsTabStop="False">
             <muxc:NavigationView.PaneHeader>
                 <!-- Left padding for overlay toggle button -->
-                <Grid Padding="24,0,0,0">
+                <Grid Padding="24,8,0,0">
                     <!-- Image -->
                     <Image Source="{ThemeResource UnoLogoImageSource}"
 						   Height="101"
@@ -61,10 +61,11 @@
 			   xamarin:Style="{StaticResource NativeDefaultFrame}" />
 
         <!-- Custom pane toggle button -->
-        <Button 
-            Grid.Row="2" 
-            Click="NavViewToggleButton_Click" 
-            HorizontalAlignment="Left" 
+        <Button
+            x:Name="NavToggle"
+            Grid.Row="2"
+            Click="NavViewToggleButton_Click"
+            HorizontalAlignment="Left"
 			AutomationProperties.AutomationId="NavToggle"
             Style="{StaticResource PaneToggleButtonStyle}" />
     </Grid>
