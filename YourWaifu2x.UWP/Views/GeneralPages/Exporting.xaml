@@ -1,20 +1,15 @@
 <Page x:Class="YourWaifu2x.Views.GeneralPages.Exporting"
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	  xmlns:gallery="using:YourWaifu2x.Views.GeneralPages"
-	  xmlns:samples="using:YourWaifu2x.Views.Samples"
-	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	  xmlns:android="http:/uno.ui/android"
-	  xmlns:converters="using:YourWaifu2x.Converters"
-	  xmlns:extensions="using:Uno.Material.Extensions"
-	  xmlns:local="using:YourWaifu2x"
+      xmlns:local="using:YourWaifu2x"
 	  xmlns:ios="http:/uno.ui/ios"
 	  xmlns:wasm="http:/uno.ui/wasm"
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:xamarin="http:/uno.ui/xamarin"
-	  mc:Ignorable="d android ios wasm xamarin"
-	  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	  mc:Ignorable="d android ios wasm xamarin">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <local:ContentPageLayout Title="Exporting"
@@ -24,8 +19,7 @@
                 <TextBox Name="TestBox"
                          TextWrapping="Wrap"
                          AcceptsReturn="True"
-                         IsSpellCheckEnabled="True"
-                         SelectionHighlightColor="Green" />
+                         IsSpellCheckEnabled="True"/>
 
             </StackPanel>
         </local:ContentPageLayout>

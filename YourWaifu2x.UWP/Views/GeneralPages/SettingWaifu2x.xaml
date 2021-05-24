@@ -8,8 +8,7 @@
 	  xmlns:ios="http:/uno.ui/ios"
 	  xmlns:wasm="http:/uno.ui/wasm"
       xmlns:xamarin="http:/uno.ui/xamarin"
-      mc:Ignorable="d android ios wasm xamarin"
-	  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+      mc:Ignorable="d android ios wasm xamarin">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <local:ContentPageLayout Title="Setting Waifu2x"
