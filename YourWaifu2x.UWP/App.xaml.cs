@@ -22,7 +22,7 @@ namespace YourWaifu2x {
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
     public sealed partial class App {
-        private static MyPage[] samples;
+        private static MyPage[] myPages;
         private Shell shell;
 
         /// <summary>
@@ -85,6 +85,14 @@ namespace YourWaifu2x {
         protected override void OnActivated(IActivatedEventArgs args) {
             this.Log().Debug("Activated app.");
             base.OnActivated(args);
+        }
+
+        public MyPage FindMyPage<TPage>() where TPage : Page {
+            var pageType = typeof(TPage);
+            var attribute = pageType.GetCustomAttribute<PageAttribute>()
+                            ?? throw new NotSupportedException($"{pageType} isn't tagged with [{nameof(PageAttribute)}].");
+
+            return myPages.FirstOrDefault(page => page.Title.Equals(attribute.Title));
         }
 
         public void ShellNavigateTo(MyPage myPage) => ShellNavigateTo(myPage, true);
@@ -245,7 +253,7 @@ namespace YourWaifu2x {
 				.AddConsole(LogLevel.Information);
 #endif
 
-        public static IEnumerable<MyPage> GetPages() => samples = samples ?? Assembly.GetExecutingAssembly()
+        public static IEnumerable<MyPage> GetPages() => myPages = myPages ?? Assembly.GetExecutingAssembly()
                            .DefinedTypes
                            .Where(x => x.Namespace?.StartsWith("YourWaifu2x") == true)
                            .Select(x => (TypeInfo: x, SamplePageAttribute: x.GetCustomAttribute<PageAttribute>()))

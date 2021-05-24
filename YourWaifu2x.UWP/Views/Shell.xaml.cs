@@ -4,7 +4,7 @@ namespace YourWaifu2x {
     using Windows.UI.ViewManagement;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
-    using YourWaifu2x.Helpers;
+    using Helpers;
     using MUXC = Microsoft.UI.Xaml.Controls;
 
     public sealed partial class Shell {

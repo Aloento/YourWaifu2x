@@ -7,13 +7,18 @@ namespace YourWaifu2x.Views.GeneralPages {
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Input;
+    using Entities.Data;
 
     [Page(PageCategory.None, "Selecting Images")]
     public sealed partial class SelectingImages {
-        public readonly ObservableCollection<StorageFile> ImageListData = new ObservableCollection<StorageFile>();
+        private readonly ObservableCollection<IStorageItem2> imageListData = ImageList.ImageListData;
 
         private readonly FileOpenPicker filePicker = new FileOpenPicker {
             ViewMode = PickerViewMode.Thumbnail,
+            SuggestedStartLocation = PickerLocationId.Downloads
+        };
+
+        private readonly FolderPicker folderPicker = new FolderPicker {
             SuggestedStartLocation = PickerLocationId.Downloads
         };
 
@@ -23,10 +28,11 @@ namespace YourWaifu2x.Views.GeneralPages {
             filePicker.FileTypeFilter.Add(".jpeg");
             filePicker.FileTypeFilter.Add(".png");
             filePicker.FileTypeFilter.Add(".webp");
+            folderPicker.FileTypeFilter.Add("*");
         }
 
         private void Selecting_OnLoaded(object sender, RoutedEventArgs e) {
-            ImagesList.ItemsSource = ImageListData;
+            ImagesList.ItemsSource = imageListData;
 
             var addCommand = new StandardUICommand(StandardUICommandKind.Open);
             addCommand.ExecuteRequested += async (command, args) => {
@@ -34,17 +40,24 @@ namespace YourWaifu2x.Views.GeneralPages {
                 if (files.Count <= 0)
                     return;
                 foreach (var file in files) {
-                    if (ImageListData.Any(image => image.IsEqual(file)))
+                    if (imageListData.Any(image => image.IsEqual(file)))
                         return;
 
-                    ImageListData.Add(file);
+                    imageListData.Add(file);
                 }
             };
             AddButton.Command = addCommand;
 
             var folderCommand = new StandardUICommand(StandardUICommandKind.Open);
-            folderCommand.ExecuteRequested += (command, args) => {
+            folderCommand.ExecuteRequested += async (command, args) => {
+                var folder = await folderPicker.PickSingleFolderAsync();
+                if (folder == null || imageListData.Any(image => image.IsEqual(folder)))
+                    return;
 
+                Windows.Storage.AccessCache.StorageApplicationPermissions.
+                    FutureAccessList.AddOrReplace("PickedFolderToken", folder);
+
+                imageListData.Add(folder);
             };
             FolderButton.Command = folderCommand;
 
@@ -54,17 +67,22 @@ namespace YourWaifu2x.Views.GeneralPages {
                     return;
 
                 for (var i = 0; i < ImagesList.SelectedItems.Count;) {
-                    _ = ImageListData.Remove((StorageFile)ImagesList.SelectedItems[i]);
+                    _ = imageListData.Remove((StorageFile)ImagesList.SelectedItems[i]);
                 }
             };
             DeleteButton.Command = deleteCommand;
 
             var clearCommand = new StandardUICommand(StandardUICommandKind.Delete);
-            clearCommand.ExecuteRequested += (command, args) => ImageListData.Clear();
+            clearCommand.ExecuteRequested += (command, args) => imageListData.Clear();
             CleanButton.Command = clearCommand;
+
+            var nextCommand = new StandardUICommand(StandardUICommandKind.Forward);
+            nextCommand.ExecuteRequested += (command, args) =>
+                (Application.Current as App)?.ShellNavigateTo((Application.Current as App)?.FindMyPage<SettingWaifu2x>());
+            NextButton.Command = nextCommand;
         }
 
         private void ImagesList_OnSelectionChanged(object sender, SelectionChangedEventArgs e) =>
-            AllCountLabel.Label = ImagesList.SelectedItems.Count + " / " + ImageListData.Count;
+            AllCountLabel.Label = ImagesList.SelectedItems.Count + " / " + imageListData.Count;
     }
 }

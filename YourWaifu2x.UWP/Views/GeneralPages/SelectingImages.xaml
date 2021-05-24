@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <local:ContentPageLayout Title="Selecting Images"
-                                 Description="Please choose Images that you want to Re-sample"
+                                 Description="Please add the images you want to optimize to the list below. You can add multiple images at once, or add a folder containing images. After confirming the files to be processed, click NextStep. You can return to this page at any time to modify the list."
                                  Loaded="Selecting_OnLoaded">
             <StackPanel>
                 <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
@@ -31,17 +31,19 @@
                           Margin="0,16,0,0">
 
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="storage:StorageFile">
+                        <DataTemplate x:DataType="storage:IStorageItem2">
                             <TextBlock Text="{Binding Name}" ToolTipService.ToolTip="{Binding Path}"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
 
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <ItemsStackPanel AreStickyGroupHeadersEnabled="True"/>
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
                 </ListView>
+
+                <Button Name="NextButton"
+                        Content="Next Step"
+                        Style="{StaticResource MaterialOutlinedButtonStyle}"
+                        HorizontalAlignment="Right"
+                        Margin="0,24,0,0" />
+
             </StackPanel>
         </local:ContentPageLayout>
     </Grid>

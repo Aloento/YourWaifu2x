@@ -127,6 +127,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Deeplinking\BranchService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Domain\AnalyticsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Data\DividerItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Data\ImageList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Data\Record.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\MyPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\PageCategory.cs" />
