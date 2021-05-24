@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <local:ContentPageLayout Title="Selecting Images"
-                                 Description="Please add the images you want to optimize to the list below. You can add multiple images at once, or add a folder containing images. After confirming the files to be processed, click NextStep. You can return to this page at any time to modify the list."
+                                 Description="Please add the images you want to optimize to the list below. You can add multiple images at once, or add a folder containing images. For a large number of files it is recommended to add the folder where they are located directly. You can return to this page at any time to modify this list."
                                  Loaded="Selecting_OnLoaded">
             <StackPanel>
                 <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">

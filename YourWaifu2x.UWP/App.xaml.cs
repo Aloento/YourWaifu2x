@@ -22,6 +22,7 @@ namespace YourWaifu2x {
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
     public sealed partial class App {
+        public static readonly Waifu2xWrapper Waifu2x = new Waifu2xWrapper();
         private static MyPage[] myPages;
         private Shell shell;
 
@@ -87,7 +88,7 @@ namespace YourWaifu2x {
             base.OnActivated(args);
         }
 
-        public MyPage FindMyPage<TPage>() where TPage : Page {
+        public static MyPage FindMyPage<TPage>() where TPage : Page {
             var pageType = typeof(TPage);
             var attribute = pageType.GetCustomAttribute<PageAttribute>()
                             ?? throw new NotSupportedException($"{pageType} isn't tagged with [{nameof(PageAttribute)}].");

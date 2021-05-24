@@ -78,7 +78,7 @@ namespace YourWaifu2x.Views.GeneralPages {
 
             var nextCommand = new StandardUICommand(StandardUICommandKind.Forward);
             nextCommand.ExecuteRequested += (command, args) =>
-                (Application.Current as App)?.ShellNavigateTo((Application.Current as App)?.FindMyPage<SettingWaifu2x>());
+                (Application.Current as App)?.ShellNavigateTo(App.FindMyPage<SettingWaifu2x>());
             NextButton.Command = nextCommand;
         }
 

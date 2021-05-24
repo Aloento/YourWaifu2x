@@ -127,7 +127,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Deeplinking\BranchService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Domain\AnalyticsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Data\DividerItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Data\ImageList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Data\Waifu2x.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Data\Record.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\MyPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\PageCategory.cs" />
@@ -136,6 +136,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Design.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\SourceSdk.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ClipboardExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\TextBoxOutPutter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\XamlDisplayExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Disposable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\EnumHelper.cs" />

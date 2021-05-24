@@ -16,12 +16,18 @@
 	  mc:Ignorable="d android ios wasm xamarin"
 	  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <local:SamplePageLayout>
-        <local:SamplePageLayout.HeaderTemplate>
-            <DataTemplate>
-                <gallery:OverviewPageHeader />
-            </DataTemplate>
-        </local:SamplePageLayout.HeaderTemplate>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <local:ContentPageLayout Title="Exporting"
+                                 Description="Exporting"
+                                 Loaded="Exporting_OnLoaded">
+            <StackPanel>
+                <TextBox Name="TestBox"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         IsSpellCheckEnabled="True"
+                         SelectionHighlightColor="Green" />
 
-    </local:SamplePageLayout>
+            </StackPanel>
+        </local:ContentPageLayout>
+    </Grid>
 </Page>
