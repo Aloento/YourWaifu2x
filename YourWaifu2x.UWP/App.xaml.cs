@@ -3,6 +3,7 @@ namespace YourWaifu2x {
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
+    using System.Threading;
     using Microsoft.Extensions.Logging;
     using ShowMeTheXAML;
     using Uno.Extensions;
@@ -13,8 +14,8 @@ namespace YourWaifu2x {
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Automation;
     using Windows.UI.Xaml.Controls;
-    using YourWaifu2x.Helpers;
-    using YourWaifu2x.Views.GeneralPages;
+    using Helpers;
+    using Views.GeneralPages;
     using MUXC = Microsoft.UI.Xaml.Controls;
     using MUXCP = Microsoft.UI.Xaml.Controls.Primitives;
 
@@ -22,7 +23,7 @@ namespace YourWaifu2x {
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
     public sealed partial class App {
-        public static readonly Waifu2xWrapper Waifu2x = new Waifu2xWrapper();
+        public static Waifu2X Waifu2X;
         private static MyPage[] myPages;
         private Shell shell;
 
@@ -31,6 +32,10 @@ namespace YourWaifu2x {
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App() {
+            _ = new Thread(() => {
+                Waifu2X = new Waifu2X();
+            });
+
 #if !WINDOWS_UWP
             Uno.UI.FeatureConfiguration.ApiInformation.NotImplementedLogLevel = LogLevel.Debug; // Raise not implemented usages as Debug messages
 #endif

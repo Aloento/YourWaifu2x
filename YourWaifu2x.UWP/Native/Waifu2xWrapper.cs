@@ -8,8 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-
-public class Waifu2xWrapper : global::System.IDisposable {
+public abstract class Waifu2xWrapper : global::System.IDisposable {
     private global::System.Runtime.InteropServices.HandleRef swigCPtr;
     protected bool swigCMemOwn;
 
