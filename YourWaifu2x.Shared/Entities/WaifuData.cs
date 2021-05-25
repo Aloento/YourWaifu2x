@@ -6,8 +6,10 @@ namespace YourWaifu2x.Entities.Data {
     using Helpers;
 
     public static class WaifuInstance {
-        public static readonly Thread WaifuThread = new Thread(() => Waifu2X = Waifu2X ?? new Waifu2X())
-            {Name = "Waifu2x-Vulkan-Library"};
+        public static readonly Thread WaifuThread = new Thread(() => Waifu2X = Waifu2X ?? new Waifu2X()) {
+            Name = "Waifu2x-Vulkan-Library",
+            IsBackground = true
+        };
 
         public static Waifu2X Waifu2X;
     }

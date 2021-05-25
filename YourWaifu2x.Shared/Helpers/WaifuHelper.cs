@@ -1,4 +1,4 @@
-﻿namespace YourWaifu2x.Helpers {
+namespace YourWaifu2x.Helpers {
     using System.Threading.Tasks;
     using Entities.Data;
 
@@ -9,7 +9,7 @@
             if (locker)
                 return false;
 
-            return true;
+            return execute() == 0;
         }
     }
 }
