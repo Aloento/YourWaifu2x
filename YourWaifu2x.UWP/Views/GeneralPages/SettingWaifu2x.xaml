@@ -8,6 +8,7 @@
 	  xmlns:ios="http:/uno.ui/ios"
 	  xmlns:wasm="http:/uno.ui/wasm"
       xmlns:xamarin="http:/uno.ui/xamarin"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d android ios wasm xamarin">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -15,7 +16,18 @@
                                  Description="Setting Waifu2x"
                                  Loaded="Setting_OnLoaded">
             <StackPanel>
-
+                <muxc:InfoBar
+                    IsOpen="True"
+                    IsClosable="False"
+                    Severity="Warning"
+                    Title="Waifu2x Status"
+                    Message="Loading...">
+                    <muxc:InfoBar.ActionButton>
+                        <Button Name="StatusButton"
+                                Content="Waiting..."
+                                IsEnabled="False"/>
+                    </muxc:InfoBar.ActionButton>
+                </muxc:InfoBar>
             </StackPanel>
         </local:ContentPageLayout>
     </Grid>

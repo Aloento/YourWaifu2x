@@ -127,7 +127,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Deeplinking\BranchService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Domain\AnalyticsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Data\DividerItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Data\WaifuData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Data\Record.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\MyPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\PageCategory.cs" />
@@ -135,6 +134,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SamplePageLayout.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Design.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\SourceSdk.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\WaifuData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ClipboardExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\TextBoxOutPutter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\XamlDisplayExtensions.cs" />

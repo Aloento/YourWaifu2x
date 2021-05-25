@@ -3,7 +3,6 @@ namespace YourWaifu2x {
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using System.Threading;
     using Microsoft.Extensions.Logging;
     using ShowMeTheXAML;
     using Uno.Extensions;
@@ -23,7 +22,6 @@ namespace YourWaifu2x {
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
     public sealed partial class App {
-        public static Waifu2X Waifu2X;
         private static MyPage[] myPages;
         private Shell shell;
 
@@ -32,10 +30,6 @@ namespace YourWaifu2x {
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App() {
-            _ = new Thread(() => {
-                Waifu2X = new Waifu2X();
-            });
-
 #if !WINDOWS_UWP
             Uno.UI.FeatureConfiguration.ApiInformation.NotImplementedLogLevel = LogLevel.Debug; // Raise not implemented usages as Debug messages
 #endif
