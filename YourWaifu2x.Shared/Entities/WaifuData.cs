@@ -23,13 +23,13 @@ namespace YourWaifu2x.Entities.Data {
     public class WaifuConfig {
         public string Format;
         public IntVector Gpu;
-        public string Input;
+        public IStorageItem2 Input;
         public IntVector JobProc;
-        public int JobSava;
+        public int JobSave;
         public int JobsLoad;
-        public string Model;
+        public IStorageItem2 Model;
         public int Noise;
-        public string Output;
+        public IStorageItem2 Output;
         public int Scale;
         public IntVector TileSize;
         public int TtaMode;
