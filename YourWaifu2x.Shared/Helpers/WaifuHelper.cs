@@ -4,11 +4,11 @@ namespace YourWaifu2x.Helpers {
     using Entities.Data;
 
     public class Waifu2X : Waifu2xWrapper {
-        private readonly Queue<Task<int>> queue = new Queue<Task<int>>();
+        private readonly Queue<Task<WaifuConfig>> queue = new Queue<Task<WaifuConfig>>();
         private static bool locker;
 
-        public Task<int> Submit(WaifuConfig config) {
-            var task = new Task<int>(() => {
+        public Task<WaifuConfig> Submit(WaifuConfig config) {
+            var task = new Task<WaifuConfig>(() => {
                 if (config.Input != null) {
                     setInput(config.Input.Path);
                 }
@@ -45,7 +45,9 @@ namespace YourWaifu2x.Helpers {
                 if (config.Format != null) {
                     setFormat(config.Format);
                 }
-                return execute();
+
+                config.Result = execute() == 0;
+                return config;
             });
             queue.Enqueue(task);
             return task;
@@ -61,6 +63,12 @@ namespace YourWaifu2x.Helpers {
                     var task = queue.Dequeue();
                     task.Start();
                     task.Wait();
+                    if (task.Result.Result) {
+                        ImageList.WaitingList.Remove(task.Result.Input);
+                        ImageList.FinishedList.Add(task.Result.Output);
+                    } else {
+                        ImageList.ErrorList.Add(task.Result.Input);
+                    }
                 }
                 locker = false;
             }).Start();

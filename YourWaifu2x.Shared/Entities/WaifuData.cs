@@ -15,7 +15,13 @@ namespace YourWaifu2x.Entities.Data {
     }
 
     public static class ImageList {
-        public static readonly ObservableCollection<IStorageItem2> ImageListData =
+        public static readonly ObservableCollection<IStorageItem2> WaitingList =
+            new ObservableCollection<IStorageItem2>();
+
+        public static readonly ObservableCollection<IStorageItem2> FinishedList =
+            new ObservableCollection<IStorageItem2>();
+
+        public static readonly ObservableCollection<IStorageItem2> ErrorList =
             new ObservableCollection<IStorageItem2>();
     }
 
@@ -33,5 +39,6 @@ namespace YourWaifu2x.Entities.Data {
         public int Scale;
         public IntVector TileSize;
         public int TtaMode;
+        public bool Result;
     }
 }
