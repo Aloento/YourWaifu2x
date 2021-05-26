@@ -404,44 +404,120 @@
     <Content Include="Native\libWaifu2x.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Native\models\CUnet\noise0_model.bin" />
-    <Content Include="Native\models\CUnet\noise0_model.param" />
-    <Content Include="Native\models\CUnet\noise0_scale2.0x_model.bin" />
-    <Content Include="Native\models\CUnet\noise0_scale2.0x_model.param" />
-    <Content Include="Native\models\CUnet\noise1_model.bin" />
-    <Content Include="Native\models\CUnet\noise1_model.param" />
-    <Content Include="Native\models\CUnet\noise1_scale2.0x_model.bin" />
-    <Content Include="Native\models\CUnet\noise1_scale2.0x_model.param" />
-    <Content Include="Native\models\CUnet\noise2_model.bin" />
-    <Content Include="Native\models\CUnet\noise2_model.param" />
-    <Content Include="Native\models\CUnet\noise2_scale2.0x_model.bin" />
-    <Content Include="Native\models\CUnet\noise2_scale2.0x_model.param" />
-    <Content Include="Native\models\CUnet\noise3_model.bin" />
-    <Content Include="Native\models\CUnet\noise3_model.param" />
-    <Content Include="Native\models\CUnet\noise3_scale2.0x_model.bin" />
-    <Content Include="Native\models\CUnet\noise3_scale2.0x_model.param" />
-    <Content Include="Native\models\CUnet\scale2.0x_model.bin" />
-    <Content Include="Native\models\CUnet\scale2.0x_model.param" />
-    <Content Include="Native\models\UpPhoto\noise0_scale2.0x_model.bin" />
-    <Content Include="Native\models\UpPhoto\noise0_scale2.0x_model.param" />
-    <Content Include="Native\models\UpPhoto\noise1_scale2.0x_model.bin" />
-    <Content Include="Native\models\UpPhoto\noise1_scale2.0x_model.param" />
-    <Content Include="Native\models\UpPhoto\noise2_scale2.0x_model.bin" />
-    <Content Include="Native\models\UpPhoto\noise2_scale2.0x_model.param" />
-    <Content Include="Native\models\UpPhoto\noise3_scale2.0x_model.bin" />
-    <Content Include="Native\models\UpPhoto\noise3_scale2.0x_model.param" />
-    <Content Include="Native\models\UpPhoto\scale2.0x_model.bin" />
-    <Content Include="Native\models\UpPhoto\scale2.0x_model.param" />
-    <Content Include="Native\models\UpRGB\noise0_scale2.0x_model.bin" />
-    <Content Include="Native\models\UpRGB\noise0_scale2.0x_model.param" />
-    <Content Include="Native\models\UpRGB\noise1_scale2.0x_model.bin" />
-    <Content Include="Native\models\UpRGB\noise1_scale2.0x_model.param" />
-    <Content Include="Native\models\UpRGB\noise2_scale2.0x_model.bin" />
-    <Content Include="Native\models\UpRGB\noise2_scale2.0x_model.param" />
-    <Content Include="Native\models\UpRGB\noise3_scale2.0x_model.bin" />
-    <Content Include="Native\models\UpRGB\noise3_scale2.0x_model.param" />
-    <Content Include="Native\models\UpRGB\scale2.0x_model.bin" />
-    <Content Include="Native\models\UpRGB\scale2.0x_model.param" />
+    <Content Include="Native\models\CUnet\noise0_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise0_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise0_scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise0_scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise1_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise1_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise1_scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise1_scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise2_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise2_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise2_scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise2_scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise3_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise3_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise3_scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\noise3_scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\CUnet\scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpPhoto\noise0_scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpPhoto\noise0_scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpPhoto\noise1_scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpPhoto\noise1_scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpPhoto\noise2_scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpPhoto\noise2_scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpPhoto\noise3_scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpPhoto\noise3_scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpPhoto\scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpPhoto\scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpRGB\noise0_scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpRGB\noise0_scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpRGB\noise1_scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpRGB\noise1_scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpRGB\noise2_scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpRGB\noise2_scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpRGB\noise3_scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpRGB\noise3_scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpRGB\scale2.0x_model.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Native\models\UpRGB\scale2.0x_model.param">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>
