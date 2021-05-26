@@ -75,6 +75,8 @@ namespace YourWaifu2x {
 
                 if (!(window.Content is Shell))
                     window.Content = shell = BuildShell();
+
+                WaifuInstance.Init();
             }
 
             // Ensure the current window is active

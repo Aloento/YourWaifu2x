@@ -1,5 +1,6 @@
 namespace YourWaifu2x.Entities.Data {
     using System.Collections.ObjectModel;
+    using System.Threading.Tasks;
     using Windows.Storage;
     using Helpers;
 
@@ -14,6 +15,14 @@ namespace YourWaifu2x.Entities.Data {
             new ObservableCollection<IStorageItem2>();
 
         public static readonly Waifu2X Waifu2X = new Waifu2X();
+
+        public static void Init() =>
+            Task.Run(() => {
+                _ = WaitingList.ToString();
+                _ = FinishedList.ToString();
+                _ = ErrorList.ToString();
+                _ = Waifu2X.ToString();
+            });
     }
 
     public class WaifuConfig {
