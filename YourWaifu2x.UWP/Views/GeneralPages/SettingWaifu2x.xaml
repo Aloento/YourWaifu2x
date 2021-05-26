@@ -100,7 +100,7 @@
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                Margin="0,40,0,0" FontWeight="Normal"
                                Text="Model" />
-                    <muxc:RadioButtons x:Name="navigationLocation"
+                    <muxc:RadioButtons x:Name="ModelRB"
                                        Margin="0,10,0,0"
                                        Header="CUnet is Default for General Images, UpRGB for Illustration, UpPhoto for Real Photos">
                         <RadioButton Content="CUnet"/>
@@ -113,11 +113,30 @@
                                FontWeight="Normal"
                                Text="Using CPU" />
                     <StackPanel Margin="0,10,0,0">
-                        <ToggleSwitch x:Name="soundToggle"
-                                      Header="Controls provide audible feedback"
+                        <ToggleSwitch x:Name="CPUToggle"
+                                      Header="Enable to use the CPU, not the GPU"
                                       OffContent="Off" OnContent="On" Margin="0,0,0,4"/>
-                        <TextBlock Text="See the Sound page for how to enable sound in your app!" Style="{ThemeResource CaptionTextBlockStyle}" FontStyle="Italic" Margin="0,8,0,0"/>
+                        <TextBlock Text="If you encounter a crash or error, try upgrading your GPU driver"
+                                   Style="{ThemeResource CaptionTextBlockStyle}"
+                                   FontStyle="Italic" />
                     </StackPanel>
+
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                               Margin="0,40,0,0"
+                               FontWeight="Normal"
+                               Text="TTA Mode" />
+                    <StackPanel Margin="0,10,0,0">
+                        <ToggleSwitch x:Name="TTAToggle"
+                                      Header="Convert 8 times slower, PSNR up 0.15, reduce distortion"
+                                      OffContent="Off" OnContent="On"
+                                      Margin="0,0,0,4"/>
+                    </StackPanel>
+
+                    <Button Name="NextButton"
+                            Content="Next Step"
+                            Style="{StaticResource MaterialOutlinedButtonStyle}"
+                            HorizontalAlignment="Left"
+                            Margin="0,24,0,0" />
 
                     <TextBlock
                         Style="{StaticResource TitleTextBlockStyle}"
@@ -132,7 +151,7 @@
                         </Paragraph>
                         <Paragraph Margin="0,10,0,0">
                             Source code:
-                            <Hyperlink NavigateUri="https://github.com/Microsoft/Xaml-Controls-Gallery">GitHub</Hyperlink>
+                            <Hyperlink NavigateUri="https://github.com/Aloento/Waifu2x-Vulkan-Library">GitHub</Hyperlink>
                         </Paragraph>
                         <Paragraph Margin="0,10,0,0">
                             <Run>To clone the source repository:</Run>
@@ -140,7 +159,7 @@
                         </Paragraph>
                     </RichTextBlock>
                     <TextBlock Margin="0,10,0,0">
-                        Version:
+                        Library Version:
                         <Run Text="0.1.0" FontWeight="Bold" />
                     </TextBlock>
 
