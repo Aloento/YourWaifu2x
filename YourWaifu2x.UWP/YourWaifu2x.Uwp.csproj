@@ -404,120 +404,44 @@
     <Content Include="Native\libWaifu2x.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Native\models\models-cunet\noise0_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise0_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise0_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise0_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise1_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise1_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise1_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise1_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise2_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise2_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise2_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise2_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise3_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise3_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise3_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\noise3_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-cunet\scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_anime_style_art_rgb\noise0_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_anime_style_art_rgb\noise0_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_anime_style_art_rgb\noise1_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_anime_style_art_rgb\noise1_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_anime_style_art_rgb\noise2_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_anime_style_art_rgb\noise2_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_anime_style_art_rgb\noise3_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_anime_style_art_rgb\noise3_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_anime_style_art_rgb\scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_anime_style_art_rgb\scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_photo\noise0_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_photo\noise0_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_photo\noise1_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_photo\noise1_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_photo\noise2_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_photo\noise2_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_photo\noise3_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_photo\noise3_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_photo\scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\models-upconv_7_photo\scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Native\models\cunet\noise0_model.bin" />
+    <Content Include="Native\models\cunet\noise0_model.param" />
+    <Content Include="Native\models\cunet\noise0_scale2.0x_model.bin" />
+    <Content Include="Native\models\cunet\noise0_scale2.0x_model.param" />
+    <Content Include="Native\models\cunet\noise1_model.bin" />
+    <Content Include="Native\models\cunet\noise1_model.param" />
+    <Content Include="Native\models\cunet\noise1_scale2.0x_model.bin" />
+    <Content Include="Native\models\cunet\noise1_scale2.0x_model.param" />
+    <Content Include="Native\models\cunet\noise2_model.bin" />
+    <Content Include="Native\models\cunet\noise2_model.param" />
+    <Content Include="Native\models\cunet\noise2_scale2.0x_model.bin" />
+    <Content Include="Native\models\cunet\noise2_scale2.0x_model.param" />
+    <Content Include="Native\models\cunet\noise3_model.bin" />
+    <Content Include="Native\models\cunet\noise3_model.param" />
+    <Content Include="Native\models\cunet\noise3_scale2.0x_model.bin" />
+    <Content Include="Native\models\cunet\noise3_scale2.0x_model.param" />
+    <Content Include="Native\models\cunet\scale2.0x_model.bin" />
+    <Content Include="Native\models\cunet\scale2.0x_model.param" />
+    <Content Include="Native\models\upconv_7_anime_style_art_rgb\noise0_scale2.0x_model.bin" />
+    <Content Include="Native\models\upconv_7_anime_style_art_rgb\noise0_scale2.0x_model.param" />
+    <Content Include="Native\models\upconv_7_anime_style_art_rgb\noise1_scale2.0x_model.bin" />
+    <Content Include="Native\models\upconv_7_anime_style_art_rgb\noise1_scale2.0x_model.param" />
+    <Content Include="Native\models\upconv_7_anime_style_art_rgb\noise2_scale2.0x_model.bin" />
+    <Content Include="Native\models\upconv_7_anime_style_art_rgb\noise2_scale2.0x_model.param" />
+    <Content Include="Native\models\upconv_7_anime_style_art_rgb\noise3_scale2.0x_model.bin" />
+    <Content Include="Native\models\upconv_7_anime_style_art_rgb\noise3_scale2.0x_model.param" />
+    <Content Include="Native\models\upconv_7_anime_style_art_rgb\scale2.0x_model.bin" />
+    <Content Include="Native\models\upconv_7_anime_style_art_rgb\scale2.0x_model.param" />
+    <Content Include="Native\models\upconv_7_photo\noise0_scale2.0x_model.bin" />
+    <Content Include="Native\models\upconv_7_photo\noise0_scale2.0x_model.param" />
+    <Content Include="Native\models\upconv_7_photo\noise1_scale2.0x_model.bin" />
+    <Content Include="Native\models\upconv_7_photo\noise1_scale2.0x_model.param" />
+    <Content Include="Native\models\upconv_7_photo\noise2_scale2.0x_model.bin" />
+    <Content Include="Native\models\upconv_7_photo\noise2_scale2.0x_model.param" />
+    <Content Include="Native\models\upconv_7_photo\noise3_scale2.0x_model.bin" />
+    <Content Include="Native\models\upconv_7_photo\noise3_scale2.0x_model.param" />
+    <Content Include="Native\models\upconv_7_photo\scale2.0x_model.bin" />
+    <Content Include="Native\models\upconv_7_photo\scale2.0x_model.param" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>

@@ -57,7 +57,7 @@ namespace YourWaifu2x.Helpers {
             if (locker)
                 return;
 
-            Task.Run(() => {
+            _ = Task.Run(() => {
                 locker = true;
                 while (queue.Count != 0) {
                     var task = queue.Dequeue();
@@ -71,7 +71,7 @@ namespace YourWaifu2x.Helpers {
                     }
                 }
                 locker = false;
-            }).Start();
+            });
         }
     }
 }
