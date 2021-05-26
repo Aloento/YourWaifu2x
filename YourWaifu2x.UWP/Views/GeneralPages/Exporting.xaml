@@ -17,9 +17,7 @@
                                  Loaded="Exporting_OnLoaded">
             <StackPanel>
                 <TextBox Name="TestBox"
-                         TextWrapping="Wrap"
-                         AcceptsReturn="True"
-                         IsSpellCheckEnabled="True"/>
+                         AcceptsReturn="True"/>
 
             </StackPanel>
         </local:ContentPageLayout>

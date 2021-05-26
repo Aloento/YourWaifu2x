@@ -3,6 +3,7 @@ namespace YourWaifu2x {
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
+    using System.Threading.Tasks;
     using Microsoft.Extensions.Logging;
     using ShowMeTheXAML;
     using Uno.Extensions;
@@ -13,6 +14,7 @@ namespace YourWaifu2x {
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Automation;
     using Windows.UI.Xaml.Controls;
+    using Entities.Data;
     using Helpers;
     using Views.GeneralPages;
     using MUXC = Microsoft.UI.Xaml.Controls;
@@ -97,13 +99,13 @@ namespace YourWaifu2x {
 
         public void ShellNavigateTo(MyPage myPage) => ShellNavigateTo(myPage, true);
 
-        private void ShellNavigateTo<TPage>(bool trySynchronizeCurrentItem = true) where TPage : Page {
-            var pageType = typeof(TPage);
-            var attribute = pageType.GetCustomAttribute<PageAttribute>()
-                ?? throw new NotSupportedException($"{pageType} isn't tagged with [{nameof(PageAttribute)}].");
+        //private void ShellNavigateTo<TPage>(bool trySynchronizeCurrentItem = true) where TPage : Page {
+        //    var pageType = typeof(TPage);
+        //    var attribute = pageType.GetCustomAttribute<PageAttribute>()
+        //        ?? throw new NotSupportedException($"{pageType} isn't tagged with [{nameof(PageAttribute)}].");
 
-            ShellNavigateTo(new MyPage(attribute, pageType), trySynchronizeCurrentItem);
-        }
+        //    ShellNavigateTo(new MyPage(attribute, pageType), trySynchronizeCurrentItem);
+        //}
 
         private void ShellNavigateTo(MyPage myPage, bool trySynchronizeCurrentItem) {
             var nv = shell.NavigationView;
@@ -132,22 +134,15 @@ namespace YourWaifu2x {
         private Shell BuildShell() {
             shell = new Shell();
             AutomationProperties.SetAutomationId(shell, "AppShell");
-            shell.RegisterPropertyChangedCallback(Shell.CurrentSampleBackdoorProperty, OnCurrentSampleBackdoorChanged);
+            _ = shell.RegisterPropertyChangedCallback(Shell.CurrentSampleBackdoorProperty, OnCurrentSampleBackdoorChanged);
             var nv = shell.NavigationView;
             AddNavigationItems(nv);
 
-            // landing navigation
-            ShellNavigateTo<OverviewPage>(
-#if !WINDOWS_UWP
-                // workaround for uno#5069: setting NavView.SelectedItem at launch bricks it
-                trySynchronizeCurrentItem: false
-#endif
-            );
-
+            ShellNavigateTo(FindMyPage<OverviewPage>());
             // navigation + setting handler
             nv.ItemInvoked += (s, e) => {
                 if (e.InvokedItemContainer.DataContext is MyPage sample)
-                    ShellNavigateTo(sample, trySynchronizeCurrentItem: false);
+                    ShellNavigateTo(sample, false);
             };
 
             return shell;

@@ -11,7 +11,7 @@ namespace YourWaifu2x.Views.GeneralPages {
 
     [Page(PageCategory.None, "Selecting Images")]
     public sealed partial class SelectingImages {
-        private readonly ObservableCollection<IStorageItem2> imageListData = ImageList.WaitingList;
+        private readonly ObservableCollection<IStorageItem2> imageListData = WaifuInstance.WaitingList;
 
         private readonly FileOpenPicker filePicker = new FileOpenPicker {
             ViewMode = PickerViewMode.Thumbnail,

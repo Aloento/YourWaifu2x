@@ -3,7 +3,7 @@ namespace YourWaifu2x.Helpers {
     using System.Threading.Tasks;
     using Entities.Data;
 
-    public class Waifu2X : Waifu2xWrapper {
+    public sealed class Waifu2X : Waifu2xWrapper {
         private readonly Queue<Task<WaifuConfig>> queue = new Queue<Task<WaifuConfig>>();
         private static bool locker;
 
@@ -64,20 +64,14 @@ namespace YourWaifu2x.Helpers {
                     task.Start();
                     task.Wait();
                     if (task.Result.Result) {
-                        ImageList.WaitingList.Remove(task.Result.Input);
-                        ImageList.FinishedList.Add(task.Result.Output);
+                        _ = WaifuInstance.WaitingList.Remove(task.Result.Input);
+                        WaifuInstance.FinishedList.Add(task.Result.Output);
                     } else {
-                        ImageList.ErrorList.Add(task.Result.Input);
+                        WaifuInstance.ErrorList.Add(task.Result.Input);
                     }
                 }
                 locker = false;
             }).Start();
-        }
-
-        private void Process() {
-            while (queue.Count != 0) {
-
-            }
         }
     }
 }

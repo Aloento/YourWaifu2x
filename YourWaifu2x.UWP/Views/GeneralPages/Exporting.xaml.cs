@@ -1,6 +1,7 @@
 namespace YourWaifu2x.Views.GeneralPages {
     using System;
     using Windows.UI.Xaml;
+    using Entities.Data;
     using Extensions;
 
     [Page(PageCategory.None, "Exporting")]
@@ -9,6 +10,7 @@ namespace YourWaifu2x.Views.GeneralPages {
             InitializeComponent();
 
             var outPutter = new TextBoxOutPutter(TestBox);
+            Console.SetError(outPutter);
             Console.SetOut(outPutter);
         }
 
