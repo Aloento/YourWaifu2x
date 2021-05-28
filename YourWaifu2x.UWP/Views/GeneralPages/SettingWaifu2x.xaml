@@ -18,16 +18,16 @@
             </TransitionCollection>
         </Grid.ChildrenTransitions>
         <local:ContentPageLayout Title="Setting Waifu2x"
-                                 Description="Setting Waifu2x"
+                                 Description="There you can config Waifu2x, or just go to NextStep"
                                  Loaded="Setting_OnLoaded">
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup>
-                    <VisualState x:Name="WideLayout">
+                    <VisualState>
                         <VisualState.StateTriggers>
                             <AdaptiveTrigger MinWindowWidth="641" />
                         </VisualState.StateTriggers>
                     </VisualState>
-                    <VisualState x:Name="NarrowLayout">
+                    <VisualState>
                         <VisualState.StateTriggers>
                             <AdaptiveTrigger MinWindowWidth="0" />
                         </VisualState.StateTriggers>
@@ -39,7 +39,6 @@
             </VisualStateManager.VisualStateGroups>
 
             <ScrollViewer
-                x:Name="ContentSv"
                 Padding="20,0,0,0"
                 IsTabStop="False"
                 UseSystemFocusVisuals="False"
@@ -52,9 +51,10 @@
                                FontWeight="Normal"
                                Text="Noise Level" />
                     <StackPanel Margin="0,10,0,0">
-                        <TextBlock Text="Large value means Strong De-Noise Effect, -1 = No Effect, Default = 0"
+                        <TextBlock Text="Large value means Strong De-Noise Effect, -1 = No Effect"
                                    Margin="0,0,0,10"/>
-                        <ComboBox PlaceholderText="Choose a Level"
+                        <ComboBox Name="NoiseCBox"
+                                  SelectedIndex="1"
                                   Width="200">
                             <x:String>-1</x:String>
                             <x:String>0</x:String>
@@ -69,9 +69,10 @@
                         FontWeight="Normal"
                         Text="Scale" />
                     <StackPanel Margin="0,10,0,0">
-                        <TextBlock Text="Upscale Ratio, 1 = No Scaling, Default = 2"
+                        <TextBlock Text="Upscale Ratio, 1 = No Scaling"
                                    Margin="0,0,0,10"/>
-                        <ComboBox PlaceholderText="Choose a Scale"
+                        <ComboBox Name="ScaleCBox"
+                                  SelectedIndex="1"
                                   Width="200">
                             <x:String>1</x:String>
                             <x:String>2</x:String>
@@ -87,9 +88,10 @@
                                FontWeight="Normal"
                                Text="Format" />
                     <StackPanel Margin="0,10,0,0">
-                        <TextBlock Text="PNG is better supported, WebP generally yields Smaller sizes, both are Loss-less, Default = ext/png"
+                        <TextBlock Text="PNG is better supported, WebP generally yields Smaller sizes, both are Loss-less"
                                    Margin="0,0,0,10"/>
-                        <ComboBox PlaceholderText="Choose a Format"
+                        <ComboBox Name="FormatCBox"
+                                  SelectedIndex="1"
                                   Width="200">
                             <x:String>JPG</x:String>
                             <x:String>PNG</x:String>
@@ -100,10 +102,11 @@
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                Margin="0,40,0,0" FontWeight="Normal"
                                Text="Model" />
-                    <muxc:RadioButtons x:Name="ModelRB"
+                    <muxc:RadioButtons Name="ModelRB"
                                        Margin="0,10,0,0"
                                        Header="CUnet is Default for General Images, UpRGB for Illustration, UpPhoto for Real Photos">
-                        <RadioButton Content="CUnet"/>
+                        <RadioButton Content="CUnet"
+                                     IsChecked="True"/>
                         <RadioButton Content="UpRGB"/>
                         <RadioButton Content="UpPhoto"/>
                     </muxc:RadioButtons>
@@ -113,7 +116,7 @@
                                FontWeight="Normal"
                                Text="Using CPU" />
                     <StackPanel Margin="0,10,0,0">
-                        <ToggleSwitch x:Name="CPUToggle"
+                        <ToggleSwitch Name="CPUToggle"
                                       Header="Enable to use the CPU, not the GPU"
                                       OffContent="Off" OnContent="On"
                                       Margin="0,0,0,4"/>
@@ -127,7 +130,7 @@
                                FontWeight="Normal"
                                Text="TTA Mode" />
                     <StackPanel Margin="0,10,0,0">
-                        <ToggleSwitch x:Name="TTAToggle"
+                        <ToggleSwitch Name="TTAToggle"
                                       Header="Convert 8 times slower, PSNR up 0.15, reduce distortion"/>
                     </StackPanel>
 
@@ -138,7 +141,8 @@
                     <StackPanel Margin="0,10,0,0">
                         <TextBlock Text="Use smaller value to reduce GPU memory usage, Default is Automatically"
                                    Margin="0,0,0,10"/>
-                        <muxc:NumberBox PlaceholderText="Auto"
+                        <muxc:NumberBox Name="TileNBox"
+                                        PlaceholderText="Auto"
                                         Width="200"
                                         IsEnabled="False"
                                         HorizontalAlignment="Left"/>
@@ -147,11 +151,12 @@
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                Margin="0,40,0,0"
                                FontWeight="Normal"
-                               Text="Load : proc : Save" />
+                               Text="Load : Proc : Save" />
                     <StackPanel Margin="0,10,0,0">
                         <TextBlock Text="Thread Count"
                                    Margin="0,0,0,10"/>
-                        <muxc:NumberBox PlaceholderText="Auto"
+                        <muxc:NumberBox Name="ThreadNBox"
+                                        PlaceholderText="1:2:2"
                                         Width="200"
                                         IsEnabled="False"
                                         HorizontalAlignment="Left"/>
@@ -161,7 +166,7 @@
                             Content="Next Step"
                             Style="{StaticResource MaterialOutlinedButtonStyle}"
                             HorizontalAlignment="Left"
-                            Margin="0,24,0,0" />
+                            Margin="0,40,0,0" />
 
                     <TextBlock
                         Style="{StaticResource TitleTextBlockStyle}"
