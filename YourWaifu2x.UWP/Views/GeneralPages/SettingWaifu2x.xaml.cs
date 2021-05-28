@@ -10,12 +10,10 @@ namespace YourWaifu2x.Views.GeneralPages {
         public SettingWaifu2x() => InitializeComponent();
 
         private void Setting_OnLoaded(object sender, RoutedEventArgs e) {
-
             var nextCommand = new StandardUICommand(StandardUICommandKind.Forward);
             nextCommand.ExecuteRequested += (command, args) =>
                 (Application.Current as App)?.ShellNavigateTo(App.FindMyPage<Exporting>());
             NextButton.Command = nextCommand;
-
         }
 
         private void NoiseCBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) =>

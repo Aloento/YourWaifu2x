@@ -3,11 +3,11 @@ namespace YourWaifu2x.Helpers {
     using System.Threading.Tasks;
     using Entities.Data;
 
-    public sealed class Waifu2X : Waifu2xWrapper {
+    internal sealed class Waifu2X : Waifu2xWrapper {
         private readonly Queue<Task<WaifuConfig>> queue = new Queue<Task<WaifuConfig>>();
         private static bool locker;
 
-        public Task<WaifuConfig> Submit(WaifuConfig config) {
+        internal Task<WaifuConfig> Submit(WaifuConfig config) {
             var task = new Task<WaifuConfig>(() => {
                 if (config.Input != null) {
                     setInput(config.Input.Path);
@@ -53,7 +53,7 @@ namespace YourWaifu2x.Helpers {
             return task;
         }
 
-        public void Start() {
+        internal void Start() {
             if (locker)
                 return;
 

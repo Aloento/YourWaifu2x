@@ -5,7 +5,7 @@ namespace YourWaifu2x.Extensions {
     using Windows.UI.Core;
     using Windows.UI.Xaml.Controls;
 
-    public class TextBoxOutPutter : TextWriter {
+    public sealed class TextBoxOutPutter : TextWriter {
         private readonly TextBox textBox;
 
         public TextBoxOutPutter(TextBox output) => textBox = output ?? throw new NullReferenceException();
@@ -15,9 +15,8 @@ namespace YourWaifu2x.Extensions {
         public override async void Write(char value) {
             // ReSharper disable once MethodHasAsyncOverload
             base.Write(value);
-            await textBox.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
-                textBox.Text += value.ToString();
-            });
+            await textBox.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                textBox.Text += value.ToString());
         }
     }
 }

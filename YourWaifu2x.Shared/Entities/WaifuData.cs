@@ -4,21 +4,21 @@ namespace YourWaifu2x.Entities.Data {
     using Windows.Storage;
     using Helpers;
 
-    public static class WaifuInstance {
-        public static readonly ObservableCollection<IStorageItem2> WaitingList =
+    internal static class WaifuInstance {
+        internal static readonly ObservableCollection<IStorageItem2> WaitingList =
             new ObservableCollection<IStorageItem2>();
 
-        public static readonly ObservableCollection<IStorageItem2> FinishedList =
+        internal static readonly ObservableCollection<IStorageItem2> FinishedList =
             new ObservableCollection<IStorageItem2>();
 
-        public static readonly ObservableCollection<IStorageItem2> ErrorList =
+        internal static readonly ObservableCollection<IStorageItem2> ErrorList =
             new ObservableCollection<IStorageItem2>();
 
-        public static readonly WaifuConfig Config = new WaifuConfig();
+        internal static readonly WaifuConfig Config = new WaifuConfig();
 
-        public static readonly Waifu2X Waifu2X = new Waifu2X();
+        internal static readonly Waifu2X Waifu2X = new Waifu2X();
 
-        public static void Init() =>
+        internal static void Init() =>
             Task.Run(() => {
                 _ = WaitingList.ToString();
                 _ = FinishedList.ToString();
@@ -27,19 +27,19 @@ namespace YourWaifu2x.Entities.Data {
             });
     }
 
-    public class WaifuConfig {
-        public string Format;
-        public IntVector Gpu;
-        public IStorageItem2 Input;
-        public IntVector JobProc;
-        public int JobSave;
-        public int JobsLoad;
-        public string Model;
-        public int Noise;
-        public IStorageItem2 Output;
-        public int Scale;
-        public IntVector TileSize;
-        public int TtaMode;
-        public bool Result;
+    internal sealed class WaifuConfig {
+        internal string Format;
+        internal IntVector Gpu;
+        internal IStorageItem2 Input;
+        internal IntVector JobProc;
+        internal int JobSave;
+        internal int JobsLoad;
+        internal string Model;
+        internal int Noise;
+        internal IStorageItem2 Output;
+        internal int Scale;
+        internal IntVector TileSize;
+        internal int TtaMode;
+        internal bool Result;
     }
 }
