@@ -115,7 +115,8 @@
                     <StackPanel Margin="0,10,0,0">
                         <ToggleSwitch x:Name="CPUToggle"
                                       Header="Enable to use the CPU, not the GPU"
-                                      OffContent="Off" OnContent="On" Margin="0,0,0,4"/>
+                                      OffContent="Off" OnContent="On"
+                                      Margin="0,0,0,4"/>
                         <TextBlock Text="If you encounter a crash or error, try upgrading your GPU driver"
                                    Style="{ThemeResource CaptionTextBlockStyle}"
                                    FontStyle="Italic" />
@@ -127,9 +128,33 @@
                                Text="TTA Mode" />
                     <StackPanel Margin="0,10,0,0">
                         <ToggleSwitch x:Name="TTAToggle"
-                                      Header="Convert 8 times slower, PSNR up 0.15, reduce distortion"
-                                      OffContent="Off" OnContent="On"
-                                      Margin="0,0,0,4"/>
+                                      Header="Convert 8 times slower, PSNR up 0.15, reduce distortion"/>
+                    </StackPanel>
+
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                               Margin="0,40,0,0"
+                               FontWeight="Normal"
+                               Text="Tile Size" />
+                    <StackPanel Margin="0,10,0,0">
+                        <TextBlock Text="Use smaller value to reduce GPU memory usage, Default is Automatically"
+                                   Margin="0,0,0,10"/>
+                        <muxc:NumberBox PlaceholderText="Auto"
+                                        Width="200"
+                                        IsEnabled="False"
+                                        HorizontalAlignment="Left"/>
+                    </StackPanel>
+
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                               Margin="0,40,0,0"
+                               FontWeight="Normal"
+                               Text="Load : proc : Save" />
+                    <StackPanel Margin="0,10,0,0">
+                        <TextBlock Text="Thread Count"
+                                   Margin="0,0,0,10"/>
+                        <muxc:NumberBox PlaceholderText="Auto"
+                                        Width="200"
+                                        IsEnabled="False"
+                                        HorizontalAlignment="Left"/>
                     </StackPanel>
 
                     <Button Name="NextButton"
