@@ -116,7 +116,7 @@
                                FontWeight="Normal"
                                Text="Using CPU" />
                     <StackPanel Margin="0,10,0,0">
-                        <ToggleSwitch Name="CPUToggle"
+                        <ToggleSwitch Name="CpuToggle"
                                       Header="Enable to use the CPU, not the GPU"
                                       OffContent="Off" OnContent="On"
                                       Margin="0,0,0,4"/>
@@ -130,7 +130,7 @@
                                FontWeight="Normal"
                                Text="TTA Mode" />
                     <StackPanel Margin="0,10,0,0">
-                        <ToggleSwitch Name="TTAToggle"
+                        <ToggleSwitch Name="TtaToggle"
                                       Header="Convert 8 times slower, PSNR up 0.15, reduce distortion"/>
                     </StackPanel>
 
@@ -139,7 +139,7 @@
                                FontWeight="Normal"
                                Text="Tile Size" />
                     <StackPanel Margin="0,10,0,0">
-                        <TextBlock Text="Use smaller value to reduce GPU memory usage, Default is Automatically"
+                        <TextBlock Text="Use smaller value to reduce GPU memory usage"
                                    Margin="0,0,0,10"/>
                         <muxc:NumberBox Name="TileNBox"
                                         PlaceholderText="Auto"
