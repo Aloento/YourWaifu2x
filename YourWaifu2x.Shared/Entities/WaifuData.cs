@@ -14,6 +14,8 @@ namespace YourWaifu2x.Entities.Data {
         public static readonly ObservableCollection<IStorageItem2> ErrorList =
             new ObservableCollection<IStorageItem2>();
 
+        public static readonly WaifuConfig Config = new WaifuConfig();
+
         public static readonly Waifu2X Waifu2X = new Waifu2X();
 
         public static void Init() =>
