@@ -25,7 +25,7 @@ namespace YourWaifu2x.Helpers {
                     setTileSize(config.TileSize);
                 }
                 if (config.Model != null) {
-                    setModel(config.Model.Path);
+                    setModel(config.Model);
                 }
                 if (config.Gpu != null) {
                     setGpu(config.Gpu);

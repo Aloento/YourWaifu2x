@@ -32,7 +32,7 @@ namespace YourWaifu2x.Entities.Data {
         public IntVector JobProc;
         public int JobSave;
         public int JobsLoad;
-        public IStorageItem2 Model;
+        public string Model;
         public int Noise;
         public IStorageItem2 Output;
         public int Scale;
