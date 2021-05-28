@@ -1,5 +1,6 @@
 namespace YourWaifu2x.Views.GeneralPages {
     using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Input;
     using Entities.Data;
 
@@ -16,6 +17,30 @@ namespace YourWaifu2x.Views.GeneralPages {
                 (Application.Current as App)?.ShellNavigateTo(App.FindMyPage<Exporting>());
             NextButton.Command = nextCommand;
 
+        }
+
+        private void NoiseCBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+            throw new System.NotImplementedException();
+        }
+
+        private void ScaleCBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+            throw new System.NotImplementedException();
+        }
+
+        private void FormatCBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+            throw new System.NotImplementedException();
+        }
+
+        private void ModelRB_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+            throw new System.NotImplementedException();
+        }
+
+        private void CpuToggle_OnToggled(object sender, RoutedEventArgs e) {
+            throw new System.NotImplementedException();
+        }
+
+        private void TtaToggle_OnToggled(object sender, RoutedEventArgs e) {
+            throw new System.NotImplementedException();
         }
     }
 }

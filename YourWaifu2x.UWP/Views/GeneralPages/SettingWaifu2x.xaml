@@ -53,7 +53,7 @@
                     <StackPanel Margin="0,10,0,0">
                         <TextBlock Text="Large value means Strong De-Noise Effect, -1 = No Effect"
                                    Margin="0,0,0,10"/>
-                        <ComboBox Name="NoiseCBox"
+                        <ComboBox SelectionChanged="NoiseCBox_OnSelectionChanged"
                                   SelectedIndex="1"
                                   Width="200">
                             <x:String>-1</x:String>
@@ -71,7 +71,7 @@
                     <StackPanel Margin="0,10,0,0">
                         <TextBlock Text="Upscale Ratio, 1 = No Scaling"
                                    Margin="0,0,0,10"/>
-                        <ComboBox Name="ScaleCBox"
+                        <ComboBox SelectionChanged="ScaleCBox_OnSelectionChanged"
                                   SelectedIndex="1"
                                   Width="200">
                             <x:String>1</x:String>
@@ -90,7 +90,7 @@
                     <StackPanel Margin="0,10,0,0">
                         <TextBlock Text="PNG is better supported, WebP generally yields Smaller sizes, both are Loss-less"
                                    Margin="0,0,0,10"/>
-                        <ComboBox Name="FormatCBox"
+                        <ComboBox SelectionChanged="FormatCBox_OnSelectionChanged"
                                   SelectedIndex="1"
                                   Width="200">
                             <x:String>JPG</x:String>
@@ -102,7 +102,7 @@
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                Margin="0,40,0,0" FontWeight="Normal"
                                Text="Model" />
-                    <muxc:RadioButtons Name="ModelRB"
+                    <muxc:RadioButtons SelectionChanged="ModelRB_OnSelectionChanged"
                                        Margin="0,10,0,0"
                                        Header="CUnet is Default for General Images, UpRGB for Illustration, UpPhoto for Real Photos">
                         <RadioButton Content="CUnet"
@@ -116,7 +116,7 @@
                                FontWeight="Normal"
                                Text="Using CPU" />
                     <StackPanel Margin="0,10,0,0">
-                        <ToggleSwitch Name="CpuToggle"
+                        <ToggleSwitch Toggled="CpuToggle_OnToggled"
                                       Header="Enable to use the CPU, not the GPU"
                                       OffContent="Off" OnContent="On"
                                       Margin="0,0,0,4"/>
@@ -130,7 +130,7 @@
                                FontWeight="Normal"
                                Text="TTA Mode" />
                     <StackPanel Margin="0,10,0,0">
-                        <ToggleSwitch Name="TtaToggle"
+                        <ToggleSwitch Toggled="TtaToggle_OnToggled"
                                       Header="Convert 8 times slower, PSNR up 0.15, reduce distortion"/>
                     </StackPanel>
 
