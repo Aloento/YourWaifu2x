@@ -38,163 +38,156 @@
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
 
-            <ScrollViewer
-                Padding="20,0,0,0"
-                IsTabStop="False"
-                UseSystemFocusVisuals="False"
-                VerticalScrollBarVisibility="Auto"
-                VerticalScrollMode="Auto">
-                <StackPanel HorizontalAlignment="Left">
+            <StackPanel Padding="20,0,0,0"
+                        HorizontalAlignment="Left">
 
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
-                               Margin="0,4,0,0"
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                FontWeight="Normal"
                                Text="Noise Level" />
-                    <StackPanel Margin="0,10,0,0">
-                        <TextBlock Text="Large value means Strong De-Noise Effect, -1 = No Effect"
+                <StackPanel Margin="0,10,0,0">
+                    <TextBlock Text="Large value means Strong De-Noise Effect, -1 = No Effect"
                                    Margin="0,0,0,10"/>
-                        <ComboBox SelectionChanged="NoiseCBox_OnSelectionChanged"
+                    <ComboBox SelectionChanged="NoiseCBox_OnSelectionChanged"
                                   SelectedIndex="1"
                                   Width="200">
-                            <x:String>-1</x:String>
-                            <x:String>0</x:String>
-                            <x:String>1</x:String>
-                            <x:String>2</x:String>
-                            <x:String>3</x:String>
-                        </ComboBox>
-                    </StackPanel>
+                        <x:String>-1</x:String>
+                        <x:String>0</x:String>
+                        <x:String>1</x:String>
+                        <x:String>2</x:String>
+                        <x:String>3</x:String>
+                    </ComboBox>
+                </StackPanel>
 
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                         Margin="0,40,0,0"
                         FontWeight="Normal"
                         Text="Scale" />
-                    <StackPanel Margin="0,10,0,0">
-                        <TextBlock Text="Upscale Ratio, 1 = No Scaling"
+                <StackPanel Margin="0,10,0,0">
+                    <TextBlock Text="Upscale Ratio, 1 = No Scaling"
                                    Margin="0,0,0,10"/>
-                        <ComboBox SelectionChanged="ScaleCBox_OnSelectionChanged"
+                    <ComboBox SelectionChanged="ScaleCBox_OnSelectionChanged"
                                   SelectedIndex="1"
                                   Width="200">
-                            <x:String>1</x:String>
-                            <x:String>2</x:String>
-                            <x:String>4</x:String>
-                            <x:String>8</x:String>
-                            <x:String>16</x:String>
-                            <x:String>32</x:String>
-                        </ComboBox>
-                    </StackPanel>
+                        <x:String>1</x:String>
+                        <x:String>2</x:String>
+                        <x:String>4</x:String>
+                        <x:String>8</x:String>
+                        <x:String>16</x:String>
+                        <x:String>32</x:String>
+                    </ComboBox>
+                </StackPanel>
 
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                Margin="0,40,0,0"
                                FontWeight="Normal"
                                Text="Format" />
-                    <StackPanel Margin="0,10,0,0">
-                        <TextBlock Text="PNG is better supported, WebP generally yields Smaller sizes, both are Loss-less"
+                <StackPanel Margin="0,10,0,0">
+                    <TextBlock Text="PNG is better supported, WebP generally yields Smaller sizes, both are Loss-less"
                                    Margin="0,0,0,10"/>
-                        <ComboBox SelectionChanged="FormatCBox_OnSelectionChanged"
+                    <ComboBox SelectionChanged="FormatCBox_OnSelectionChanged"
                                   SelectedIndex="1"
                                   Width="200">
-                            <x:String>JPG</x:String>
-                            <x:String>PNG</x:String>
-                            <x:String>WebP</x:String>
-                        </ComboBox>
-                    </StackPanel>
+                        <x:String>JPG</x:String>
+                        <x:String>PNG</x:String>
+                        <x:String>WebP</x:String>
+                    </ComboBox>
+                </StackPanel>
 
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                Margin="0,40,0,0" FontWeight="Normal"
                                Text="Model" />
-                    <muxc:RadioButtons SelectionChanged="ModelRB_OnSelectionChanged"
+                <muxc:RadioButtons SelectionChanged="ModelRB_OnSelectionChanged"
                                        Margin="0,10,0,0"
                                        Header="CUnet is Default for General Images, UpRGB for Illustration, UpPhoto for Real Photos">
-                        <RadioButton Content="CUnet"
+                    <RadioButton Content="CUnet"
                                      IsChecked="True"/>
-                        <RadioButton Content="UpRGB"/>
-                        <RadioButton Content="UpPhoto"/>
-                    </muxc:RadioButtons>
+                    <RadioButton Content="UpRGB"/>
+                    <RadioButton Content="UpPhoto"/>
+                </muxc:RadioButtons>
 
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                Margin="0,40,0,0"
                                FontWeight="Normal"
                                Text="Using CPU" />
-                    <StackPanel Margin="0,10,0,0">
-                        <ToggleSwitch Toggled="CpuToggle_OnToggled"
+                <StackPanel Margin="0,10,0,0">
+                    <ToggleSwitch Toggled="CpuToggle_OnToggled"
                                       Header="Enable to use the CPU, not the GPU"
                                       OffContent="Off" OnContent="On"
                                       Margin="0,0,0,4"/>
-                        <TextBlock Text="If you encounter a crash or error, try upgrading your GPU driver"
+                    <TextBlock Text="If you encounter a crash or error, try upgrading your GPU driver"
                                    Style="{ThemeResource CaptionTextBlockStyle}"
                                    FontStyle="Italic" />
-                    </StackPanel>
+                </StackPanel>
 
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                Margin="0,40,0,0"
                                FontWeight="Normal"
                                Text="TTA Mode" />
-                    <StackPanel Margin="0,10,0,0">
-                        <ToggleSwitch Toggled="TtaToggle_OnToggled"
+                <StackPanel Margin="0,10,0,0">
+                    <ToggleSwitch Toggled="TtaToggle_OnToggled"
                                       Header="Convert 8 times slower, PSNR up 0.15, reduce distortion"/>
-                    </StackPanel>
+                </StackPanel>
 
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                Margin="0,40,0,0"
                                FontWeight="Normal"
                                Text="Tile Size" />
-                    <StackPanel Margin="0,10,0,0">
-                        <TextBlock Text="Use smaller value to reduce GPU memory usage"
+                <StackPanel Margin="0,10,0,0">
+                    <TextBlock Text="Use smaller value to reduce GPU memory usage"
                                    Margin="0,0,0,10"/>
-                        <muxc:NumberBox Name="TileNBox"
+                    <muxc:NumberBox Name="TileNBox"
                                         PlaceholderText="Auto"
                                         Width="200"
                                         IsEnabled="False"
                                         HorizontalAlignment="Left"/>
-                    </StackPanel>
+                </StackPanel>
 
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                Margin="0,40,0,0"
                                FontWeight="Normal"
                                Text="Load : Proc : Save" />
-                    <StackPanel Margin="0,10,0,0">
-                        <TextBlock Text="Thread Count"
+                <StackPanel Margin="0,10,0,0">
+                    <TextBlock Text="Thread Count"
                                    Margin="0,0,0,10"/>
-                        <muxc:NumberBox Name="ThreadNBox"
+                    <muxc:NumberBox Name="ThreadNBox"
                                         PlaceholderText="1:2:2"
                                         Width="200"
                                         IsEnabled="False"
                                         HorizontalAlignment="Left"/>
-                    </StackPanel>
+                </StackPanel>
 
-                    <Button Name="NextButton"
+                <Button Name="NextButton"
                             Content="Next Step"
                             Style="{StaticResource MaterialOutlinedButtonStyle}"
                             HorizontalAlignment="Left"
                             Margin="0,40,0,0" />
 
-                    <TextBlock
+                <TextBlock
                         Style="{StaticResource TitleTextBlockStyle}"
                         Margin="0,40,0,0"
                         FontWeight="Normal"
                         Text="Waifu2x-Vulkan-Library" />
-                    <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True">
-                        <Paragraph>
-                            This app is the interactive companion to the
-                            <Hyperlink NavigateUri="https://developer.microsoft.com/windows/apps/design">Fluent Design System web site</Hyperlink>
-                            .
-                        </Paragraph>
-                        <Paragraph Margin="0,10,0,0">
-                            Source code:
-                            <Hyperlink NavigateUri="https://github.com/Aloento/Waifu2x-Vulkan-Library">GitHub</Hyperlink>
-                        </Paragraph>
-                        <Paragraph Margin="0,10,0,0">
-                            <Run>To clone the source repository:</Run>
-                            <Run FontStyle="Italic">git clone https://github.com/Microsoft/Xaml-Controls-Gallery</Run>
-                        </Paragraph>
-                    </RichTextBlock>
-                    <TextBlock Margin="0,10,0,0">
+                <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True">
+                    <Paragraph>
+                        This app is the interactive companion to the
+                        <Hyperlink NavigateUri="https://developer.microsoft.com/windows/apps/design">Fluent Design System web site</Hyperlink>
+                        .
+                    </Paragraph>
+                    <Paragraph Margin="0,10,0,0">
+                        Source code:
+                        <Hyperlink NavigateUri="https://github.com/Aloento/Waifu2x-Vulkan-Library">GitHub</Hyperlink>
+                    </Paragraph>
+                    <Paragraph Margin="0,10,0,0">
+                        <Run>To clone the source repository:</Run>
+                        <Run FontStyle="Italic">git clone https://github.com/Microsoft/Xaml-Controls-Gallery</Run>
+                    </Paragraph>
+                </RichTextBlock>
+                <TextBlock Margin="0,10,0,0">
                         Library Version:
                         <Run Text="0.1.0" FontWeight="Bold" />
-                    </TextBlock>
+                </TextBlock>
 
-                </StackPanel>
-            </ScrollViewer>
+            </StackPanel>
         </local:ContentPageLayout>
     </Grid>
 </Page>

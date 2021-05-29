@@ -16,19 +16,21 @@ namespace YourWaifu2x.Views.GeneralPages {
         }
 
         private void Exporting_OnLoaded(object sender, RoutedEventArgs e) {
-
+            WaitingList.ItemsSource = WaifuInstance.WaitingList;
+            FinishedList.ItemsSource = WaifuInstance.FinishedList;
+            ErrorList.ItemsSource = WaifuInstance.ErrorList;
         }
 
         private void WaitingList_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
-            throw new NotImplementedException();
+
         }
 
         private void FinishedList_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
-            throw new NotImplementedException();
+
         }
 
         private void ErrorList_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
-            throw new NotImplementedException();
+
         }
     }
 }

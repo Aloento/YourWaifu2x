@@ -7,8 +7,7 @@
       xmlns:local="using:YourWaifu2x"
 	  xmlns:ios="http:/uno.ui/ios"
 	  xmlns:wasm="http:/uno.ui/wasm"
-	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	  xmlns:xamarin="http:/uno.ui/xamarin"
+      xmlns:xamarin="http:/uno.ui/xamarin"
 	  xmlns:storage="using:Windows.Storage"
 	  mc:Ignorable="d android ios wasm xamarin">
 
@@ -18,6 +17,9 @@
                                  Loaded="Exporting_OnLoaded">
             <StackPanel>
 
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                           FontWeight="Normal"
+                           Text="Errors" />
                 <ListView x:Name="ErrorList"
                           SelectionMode="Multiple"
                           BorderThickness="1"
@@ -33,6 +35,10 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                           Margin="0,40,0,0"
+                           FontWeight="Normal"
+                           Text="Finished" />
                 <ListView x:Name="FinishedList"
                           SelectionMode="Multiple"
                           BorderThickness="1"
@@ -48,6 +54,10 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                           Margin="0,40,0,0"
+                           FontWeight="Normal"
+                           Text="Waiting" />
                 <ListView x:Name="WaitingList"
                           SelectionMode="Multiple"
                           BorderThickness="1"
@@ -63,8 +73,13 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                           Margin="0,40,0,0"
+                           FontWeight="Normal"
+                           Text="Logs" />
                 <TextBox Name="TestBox"
-                         AcceptsReturn="True"/>
+                         AcceptsReturn="True"
+                         Margin="0,16,0,0"/>
 
             </StackPanel>
         </local:ContentPageLayout>
