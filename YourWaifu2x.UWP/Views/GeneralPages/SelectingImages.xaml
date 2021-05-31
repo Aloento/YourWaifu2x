@@ -26,13 +26,40 @@
                           BorderThickness="1"
                           BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
                           IsItemClickEnabled="True"
-                          SelectedIndex="0"
                           SelectionChanged="ImagesList_OnSelectionChanged"
                           Margin="0,16,0,0">
 
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="storage:IStorageItem2">
-                            <TextBlock Text="{Binding Name}" ToolTipService.ToolTip="{Binding Path}"/>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.RowSpan="2"
+                                       Width ="32"
+                                       Height="32"
+                                       Margin="6"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Tag="{x:Bind Path}">
+                                </Image>
+                                <TextBlock Grid.Column="1"
+                                           Text="{x:Bind Name}"
+                                           x:Phase="1"
+                                           Style="{ThemeResource BaseTextBlockStyle}"
+                                           Margin="12,6,0,0"/>
+                                <TextBlock  Grid.Column="1"
+                                            Grid.Row="1"
+                                            Text="{x:Bind Path}"
+                                            x:Phase="2"
+                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                            Margin="12,0,0,6"/>
+                            </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
 

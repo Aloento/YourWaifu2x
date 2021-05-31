@@ -2,12 +2,17 @@ namespace YourWaifu2x.Views.GeneralPages {
     using System;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using System.Threading.Tasks;
     using Windows.Storage;
     using Windows.Storage.Pickers;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Input;
+    using Windows.UI.Xaml.Media;
+    using Windows.UI.Xaml.Media.Imaging;
+    using Windows.UI.Xaml.Shapes;
     using Entities.Data;
+    using Helpers;
 
     [Page(PageCategory.None, "Selecting Images")]
     public sealed partial class SelectingImages {
@@ -33,6 +38,7 @@ namespace YourWaifu2x.Views.GeneralPages {
 
         private void Selecting_OnLoaded(object sender, RoutedEventArgs e) {
             ImagesList.ItemsSource = imageListData;
+            imageListData.CollectionChanged += (o, args) => ImagesList_OnSelectionChanged(null, null);
 
             var addCommand = new StandardUICommand(StandardUICommandKind.Open);
             addCommand.ExecuteRequested += async (command, args) => {
@@ -44,6 +50,21 @@ namespace YourWaifu2x.Views.GeneralPages {
                         return;
 
                     imageListData.Add(file);
+
+                    await Dispatcher.RunIdleAsync(async (_) => {
+                        var items = VisualTreeHelperEx.GetDescendants(ImagesList);
+                        foreach (var item in items) {
+                            if (!(item is Image image))
+                                continue;
+                            if ((string)image.Tag != file.Path)
+                                continue;
+
+                            var bit = new BitmapImage();
+                            await bit.SetSourceAsync(await file.OpenReadAsync());
+                            image.Stretch = Stretch.UniformToFill;
+                            image.Source = bit;
+                        }
+                    });
                 }
             };
             AddButton.Command = addCommand;

@@ -21,11 +21,8 @@
                            FontWeight="Normal"
                            Text="Errors" />
                 <ListView x:Name="ErrorList"
-                          SelectionMode="Multiple"
                           BorderThickness="1"
                           BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
-                          IsItemClickEnabled="True"
-                          SelectedIndex="0"
                           SelectionChanged="ErrorList_OnSelectionChanged"
                           Margin="0,16,0,0">
                     <ListView.ItemTemplate>
@@ -40,11 +37,8 @@
                            FontWeight="Normal"
                            Text="Finished" />
                 <ListView x:Name="FinishedList"
-                          SelectionMode="Multiple"
                           BorderThickness="1"
                           BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
-                          IsItemClickEnabled="True"
-                          SelectedIndex="0"
                           SelectionChanged="FinishedList_OnSelectionChanged"
                           Margin="0,16,0,0">
                     <ListView.ItemTemplate>
@@ -59,11 +53,8 @@
                            FontWeight="Normal"
                            Text="Waiting" />
                 <ListView x:Name="WaitingList"
-                          SelectionMode="Multiple"
                           BorderThickness="1"
                           BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
-                          IsItemClickEnabled="True"
-                          SelectedIndex="0"
                           SelectionChanged="WaitingList_OnSelectionChanged"
                           Margin="0,16,0,0">
                     <ListView.ItemTemplate>
