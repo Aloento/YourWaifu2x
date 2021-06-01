@@ -41,5 +41,23 @@ namespace YourWaifu2x.Entities.Data {
         internal IntVector TileSize;
         internal int TtaMode;
         internal bool Result;
+
+        public WaifuConfig() {
+        }
+
+        public WaifuConfig(IStorageItem2 input) {
+            Format = WaifuInstance.Config.Format;
+            Gpu = WaifuInstance.Config.Gpu;
+            Input = input;
+            JobProc = WaifuInstance.Config.JobProc;
+            JobSave = WaifuInstance.Config.JobSave;
+            JobsLoad = WaifuInstance.Config.JobsLoad;
+            Model = WaifuInstance.Config.Model;
+            Noise = WaifuInstance.Config.Noise;
+            Output = WaifuInstance.Config.Output;
+            Scale = WaifuInstance.Config.Scale;
+            TileSize = WaifuInstance.Config.TileSize;
+            TtaMode = WaifuInstance.Config.TtaMode;
+        }
     }
 }

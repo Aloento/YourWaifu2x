@@ -1,9 +1,10 @@
 namespace YourWaifu2x.Views.GeneralPages {
     using System;
     using Windows.UI.Xaml;
-    using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Input;
     using Entities.Data;
     using Extensions;
+    using Helpers;
 
     [Page(PageCategory.None, "Exporting")]
     public sealed partial class Exporting {
@@ -19,18 +20,14 @@ namespace YourWaifu2x.Views.GeneralPages {
             WaitingList.ItemsSource = WaifuInstance.WaitingList;
             FinishedList.ItemsSource = WaifuInstance.FinishedList;
             ErrorList.ItemsSource = WaifuInstance.ErrorList;
-        }
 
-        private void WaitingList_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
-
-        }
-
-        private void FinishedList_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
-
-        }
-
-        private void ErrorList_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
-
+            var startCommand = new StandardUICommand(StandardUICommandKind.Play);
+            startCommand.ExecuteRequested += (command, args) => {
+                foreach (var item in WaifuInstance.WaitingList) {
+                    WaifuInstance.Waifu2X.Submit(new WaifuConfig(item));
+                }
+            };
+            StartButton.Command = startCommand;
         }
     }
 }

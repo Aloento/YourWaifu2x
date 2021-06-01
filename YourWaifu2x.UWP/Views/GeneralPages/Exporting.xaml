@@ -16,6 +16,11 @@
                                  Description="Exporting"
                                  Loaded="Exporting_OnLoaded">
             <StackPanel>
+                <Button Name="StartButton"
+                        Content="Start"
+                        Style="{StaticResource MaterialOutlinedButtonStyle}"
+                        HorizontalAlignment="Right"
+                        Margin="0,24,0,0" />
 
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                            FontWeight="Normal"
@@ -23,7 +28,6 @@
                 <ListView x:Name="ErrorList"
                           BorderThickness="1"
                           BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
-                          SelectionChanged="ErrorList_OnSelectionChanged"
                           Margin="0,16,0,0">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="storage:IStorageItem2">
@@ -39,7 +43,6 @@
                 <ListView x:Name="FinishedList"
                           BorderThickness="1"
                           BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
-                          SelectionChanged="FinishedList_OnSelectionChanged"
                           Margin="0,16,0,0">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="storage:IStorageItem2">
@@ -55,7 +58,6 @@
                 <ListView x:Name="WaitingList"
                           BorderThickness="1"
                           BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
-                          SelectionChanged="WaitingList_OnSelectionChanged"
                           Margin="0,16,0,0">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="storage:IStorageItem2">

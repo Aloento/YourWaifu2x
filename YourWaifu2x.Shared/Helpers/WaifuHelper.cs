@@ -7,8 +7,8 @@ namespace YourWaifu2x.Helpers {
         private readonly Queue<Task<WaifuConfig>> queue = new Queue<Task<WaifuConfig>>();
         private static bool locker;
 
-        internal Task<WaifuConfig> Submit(WaifuConfig config) {
-            var task = new Task<WaifuConfig>(() => {
+        internal void Submit(WaifuConfig config) =>
+            queue.Enqueue(new Task<WaifuConfig>(() => {
                 if (config.Input != null) {
                     setInput(config.Input.Path);
                 }
@@ -48,10 +48,7 @@ namespace YourWaifu2x.Helpers {
 
                 config.Result = execute() == 0;
                 return config;
-            });
-            queue.Enqueue(task);
-            return task;
-        }
+            }));
 
         internal void Start() {
             if (locker)
