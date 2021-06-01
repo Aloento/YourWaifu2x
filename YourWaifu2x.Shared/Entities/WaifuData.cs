@@ -45,18 +45,18 @@ namespace YourWaifu2x.Entities.Data {
         public override string ToString() =>
             "Error Item Info {" +
             "\n" + "Format=" + Format +
-            "\n" + "Gpu=" + Gpu +
+            // "\n" + "Gpu=" + Gpu +
             "\n" + "Input=" + Input.Path +
-            "\n" + "JobProc=" + JobProc +
-            "\n" + "JobSave=" + JobSave +
-            "\n" + "JobsLoad=" + JobsLoad +
+            // "\n" + "JobProc=" + JobProc +
+            // "\n" + "JobSave=" + JobSave +
+            // "\n" + "JobsLoad=" + JobsLoad +
             "\n" + "Model=" + Model +
             "\n" + "Noise=" + Noise +
             "\n" + "Output=" + Output.Path +
             "\n" + "Scale=" + Scale +
-            "\n" + "TileSize=" + TileSize +
+            // "\n" + "TileSize=" + TileSize +
             "\n" + "TtaMode=" + TtaMode +
-            "\n" + "Result=" + Result +
+            // "\n" + "Result=" + Result +
             "\n" + '}';
 
         public WaifuConfig() {
