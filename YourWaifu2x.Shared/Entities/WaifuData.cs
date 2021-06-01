@@ -36,11 +36,28 @@ namespace YourWaifu2x.Entities.Data {
         internal int JobsLoad;
         internal string Model;
         internal int Noise;
-        internal IStorageItem2 Output;
+        internal StorageFolder Output;
         internal int Scale;
         internal IntVector TileSize;
         internal int TtaMode;
         internal bool Result;
+
+        public override string ToString() =>
+            "Error Item Info {" +
+            "\n" + "Format=" + Format +
+            "\n" + "Gpu=" + Gpu +
+            "\n" + "Input=" + Input.Path +
+            "\n" + "JobProc=" + JobProc +
+            "\n" + "JobSave=" + JobSave +
+            "\n" + "JobsLoad=" + JobsLoad +
+            "\n" + "Model=" + Model +
+            "\n" + "Noise=" + Noise +
+            "\n" + "Output=" + Output.Path +
+            "\n" + "Scale=" + Scale +
+            "\n" + "TileSize=" + TileSize +
+            "\n" + "TtaMode=" + TtaMode +
+            "\n" + "Result=" + Result +
+            "\n" + '}';
 
         public WaifuConfig() {
         }

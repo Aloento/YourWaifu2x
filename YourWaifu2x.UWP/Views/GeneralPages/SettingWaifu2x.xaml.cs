@@ -1,5 +1,6 @@
 namespace YourWaifu2x.Views.GeneralPages {
     using System;
+    using Windows.Storage.Pickers;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Input;
@@ -38,6 +39,18 @@ namespace YourWaifu2x.Views.GeneralPages {
             if (!(sender is ToggleSwitch toggle))
                 return;
             WaifuInstance.Config.TtaMode = toggle.IsOn ? 1 : 0;
+        }
+
+        private async void FolderButton_Click(object sender, RoutedEventArgs e) {
+            var folderPicker = new FolderPicker {
+                SuggestedStartLocation = PickerLocationId.PicturesLibrary,
+                FileTypeFilter = {"*"}
+            };
+            var folder = await folderPicker.PickSingleFolderAsync();
+
+            if (folder == null) return;
+            WaifuInstance.Config.Output = folder;
+            FolderText.Text = folder.Path;
         }
     }
 }

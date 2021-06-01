@@ -40,8 +40,7 @@ namespace YourWaifu2x.Views.GeneralPages {
 
             if (imageListData.Count != 0) {
                 await Dispatcher.RunIdleAsync(async _ => {
-                    var items = VisualTreeHelperEx.GetDescendants(ImagesList);
-                    foreach (var item in items) {
+                    foreach (var item in VisualTreeHelperEx.GetDescendants(ImagesList)) {
                         if (!(item is Image image))
                             continue;
                         var file = from o in imageListData
@@ -68,8 +67,7 @@ namespace YourWaifu2x.Views.GeneralPages {
                     imageListData.Add(file);
 
                     await Dispatcher.RunIdleAsync(async _ => {
-                        var items = VisualTreeHelperEx.GetDescendants(ImagesList);
-                        foreach (var item in items) {
+                        foreach (var item in VisualTreeHelperEx.GetDescendants(ImagesList)) {
                             if (!(item is Image image))
                                 continue;
                             if ((string)image.Tag != file.Path)

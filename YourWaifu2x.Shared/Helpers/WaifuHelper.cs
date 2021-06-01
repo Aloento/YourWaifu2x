@@ -1,7 +1,10 @@
 namespace YourWaifu2x.Helpers {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Windows.UI.Xaml;
     using Entities.Data;
+    using Views.GeneralPages;
 
     internal sealed class Waifu2X : Waifu2xWrapper {
         private readonly Queue<Task<WaifuConfig>> queue = new Queue<Task<WaifuConfig>>();
@@ -50,7 +53,7 @@ namespace YourWaifu2x.Helpers {
                 return config;
             }));
 
-        internal void Start() {
+        internal void Start(Exporting exporting) {
             if (locker)
                 return;
 
@@ -60,12 +63,18 @@ namespace YourWaifu2x.Helpers {
                     var task = queue.Dequeue();
                     task.Start();
                     task.Wait();
-                    if (task.Result.Result) {
-                        _ = WaifuInstance.WaitingList.Remove(task.Result.Input);
-                        WaifuInstance.FinishedList.Add(task.Result.Output);
-                    } else {
-                        WaifuInstance.ErrorList.Add(task.Result.Input);
-                    }
+
+                    _ = exporting.Dispatcher.RunIdleAsync(_ => {
+                        WaifuInstance.WaitingList.Remove(task.Result.Input);
+                        if (task.Result.Result) {
+                            WaifuInstance.FinishedList.Add(task.Result.Output);
+                            Console.Out.WriteLineAsync("Success: " + task.Result.Input.Path);
+                        } else {
+                            WaifuInstance.ErrorList.Add(task.Result.Input);
+                            Console.Error.WriteLineAsync("Error: " + task.Result.Input.Path);
+                            Console.Error.WriteLineAsync(task.Result.ToString());
+                        }
+                    });
                 }
                 locker = false;
             });
