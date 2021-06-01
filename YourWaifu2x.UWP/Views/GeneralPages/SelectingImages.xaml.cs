@@ -2,7 +2,6 @@ namespace YourWaifu2x.Views.GeneralPages {
     using System;
     using System.Collections.ObjectModel;
     using System.Linq;
-    using System.Threading.Tasks;
     using Windows.Storage;
     using Windows.Storage.Pickers;
     using Windows.UI.Xaml;
@@ -10,7 +9,6 @@ namespace YourWaifu2x.Views.GeneralPages {
     using Windows.UI.Xaml.Input;
     using Windows.UI.Xaml.Media;
     using Windows.UI.Xaml.Media.Imaging;
-    using Windows.UI.Xaml.Shapes;
     using Entities.Data;
     using Helpers;
 
@@ -36,9 +34,27 @@ namespace YourWaifu2x.Views.GeneralPages {
             folderPicker.FileTypeFilter.Add("*");
         }
 
-        private void Selecting_OnLoaded(object sender, RoutedEventArgs e) {
+        private async void Selecting_OnLoaded(object sender, RoutedEventArgs e) {
             ImagesList.ItemsSource = imageListData;
             imageListData.CollectionChanged += (o, args) => ImagesList_OnSelectionChanged(null, null);
+
+            if (imageListData.Count != 0) {
+                await Dispatcher.RunIdleAsync(async _ => {
+                    var items = VisualTreeHelperEx.GetDescendants(ImagesList);
+                    foreach (var item in items) {
+                        if (!(item is Image image))
+                            continue;
+                        var file = from o in imageListData
+                                   where o.Path == image.Tag.ToString()
+                                   select o;
+
+                        var bit = new BitmapImage();
+                        await bit.SetSourceAsync(await ((StorageFile)file.First()).OpenReadAsync());
+                        image.Stretch = Stretch.UniformToFill;
+                        image.Source = bit;
+                    }
+                });
+            }
 
             var addCommand = new StandardUICommand(StandardUICommandKind.Open);
             addCommand.ExecuteRequested += async (command, args) => {
@@ -47,11 +63,11 @@ namespace YourWaifu2x.Views.GeneralPages {
                     return;
                 foreach (var file in files) {
                     if (imageListData.Any(image => image.IsEqual(file)))
-                        return;
+                        continue;
 
                     imageListData.Add(file);
 
-                    await Dispatcher.RunIdleAsync(async (_) => {
+                    await Dispatcher.RunIdleAsync(async _ => {
                         var items = VisualTreeHelperEx.GetDescendants(ImagesList);
                         foreach (var item in items) {
                             if (!(item is Image image))
