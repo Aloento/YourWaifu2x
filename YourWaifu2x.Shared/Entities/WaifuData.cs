@@ -1,5 +1,6 @@
 namespace YourWaifu2x.Entities.Data {
     using System.Collections.ObjectModel;
+    using System.IO;
     using System.Threading.Tasks;
     using Windows.Storage;
     using Helpers;
@@ -52,7 +53,7 @@ namespace YourWaifu2x.Entities.Data {
             // "\n" + "JobsLoad=" + JobsLoad +
             "\n" + "Model=" + Model +
             "\n" + "Noise=" + Noise +
-            "\n" + "Output=" + Output.Path +
+            "\n" + "Output=" + Output.Path + Path.DirectorySeparatorChar + Input.Name +
             "\n" + "Scale=" + Scale +
             // "\n" + "TileSize=" + TileSize +
             "\n" + "TtaMode=" + TtaMode +
