@@ -21,12 +21,6 @@
     <PackageReference Include="Uno.Material">
       <Version>1.0.0-dev.772</Version>
     </PackageReference>
-    <PackageReference Include="Uno.ShowMeTheXAML">
-      <Version>1.0.59</Version>
-    </PackageReference>
-    <PackageReference Include="Uno.ShowMeTheXAML.MSBuild">
-      <Version>1.0.59</Version>
-    </PackageReference>
     <PackageReference Include="Uno.UI" Version="3.7.4" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="5.0.0" />
