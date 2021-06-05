@@ -48,7 +48,6 @@ namespace YourWaifu2x {
 #endif
 
                 Uno.Material.Resources.Init(this, colorPaletteOverride: new ResourceDictionary() { Source = new Uri("ms-appx:///Views/Colors.xaml") });
-                Uno.Cupertino.Resources.Init(this, null);
                 Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("ms-appx:///Views/Styles/TextBlock.xaml") });
 
 #if WINDOWS_UWP
