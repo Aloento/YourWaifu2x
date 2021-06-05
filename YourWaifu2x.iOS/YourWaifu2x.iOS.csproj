@@ -102,8 +102,6 @@
     <DefineConstants>$(DefineConstants);USE_UITESTS</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\YourWaifu2x.UWP\App.xaml.cs" />
-    <ApplicationDefinition Include="..\YourWaifu2x.UWP\App.xaml" Link="App.xaml" Visible="False" />
     <Page Include="..\YourWaifu2x.UWP\Views\**\*.xaml" Visible="False">
       <Link>Views\%(RecursiveDir)%(FileName)%(Extension)</Link>
       <SubType>Designer</SubType>

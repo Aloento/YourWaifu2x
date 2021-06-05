@@ -8,7 +8,6 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<Compile Include="..\YourWaifu2x.UWP\App.xaml.cs" />
 		<Content Include="..\YourWaifu2x.Shared\Assets\**" Link="Assets\%(RecursiveDir)%(FileName)%(Extension)" CopyToOutputDirectory="Always" />
 		<EmbeddedResource Include="..\YourWaifu2x.UWP\Package.appxmanifest" LogicalName="Package.appxmanifest" />
 		<ApplicationDefinition Include="..\YourWaifu2x.UWP\App.xaml" Link="App.xaml" Visible="False" />
