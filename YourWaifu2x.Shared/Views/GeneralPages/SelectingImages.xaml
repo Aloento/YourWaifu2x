@@ -12,7 +12,10 @@
                                  Description="Please add the images you want to optimize to the list below. You can add multiple images at once, or add a folder containing images. For a large number of files it is recommended to add the folder where they are located directly. You can return to this page at any time to modify this list."
                                  Loaded="Selecting_OnLoaded">
             <StackPanel>
-                <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
+                <CommandBar Background="Transparent"
+                            IsOpen="False"
+                            DefaultLabelPosition="Right"
+                            OverflowButtonVisibility ="Collapsed">
                     <AppBarButton Name="AllCountLabel" Label="No Images" IsEnabled="False"/>
                     <AppBarSeparator/>
                     <AppBarButton x:Name="AddButton" Icon="Add" Label="Add Files"/>
@@ -41,9 +44,8 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.RowSpan="2"
-                                       Width ="32"
-                                       Height="32"
-                                       Margin="6"
+                                       Width ="48"
+                                       Height="48"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        Tag="{x:Bind Path}">
