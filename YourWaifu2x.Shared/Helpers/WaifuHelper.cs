@@ -4,7 +4,7 @@ namespace YourWaifu2x.Helpers {
     using System.IO;
     using System.Threading.Tasks;
     using Entities.Data;
-    using Views.GeneralPages;
+    using Views.MyPages;
 
     internal sealed class Waifu2X : Waifu2xWrapper {
         private readonly Queue<Task<WaifuConfig>> queue = new Queue<Task<WaifuConfig>>();

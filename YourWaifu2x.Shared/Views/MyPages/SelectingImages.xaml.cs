@@ -1,4 +1,4 @@
-namespace YourWaifu2x.Views.GeneralPages {
+namespace YourWaifu2x.Views.MyPages {
     using System;
     using System.Collections.ObjectModel;
     using System.Linq;

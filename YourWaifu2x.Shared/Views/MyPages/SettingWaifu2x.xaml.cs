@@ -1,4 +1,4 @@
-namespace YourWaifu2x.Views.GeneralPages {
+namespace YourWaifu2x.Views.MyPages {
     using System;
     using Windows.Storage.Pickers;
     using Windows.UI.Xaml;

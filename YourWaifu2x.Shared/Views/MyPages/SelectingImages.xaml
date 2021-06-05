@@ -1,4 +1,4 @@
-<Page x:Class="YourWaifu2x.Views.GeneralPages.SelectingImages"
+<Page x:Class="YourWaifu2x.Views.MyPages.SelectingImages"
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:local="using:YourWaifu2x"

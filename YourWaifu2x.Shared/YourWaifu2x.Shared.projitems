@@ -55,28 +55,19 @@
     <Compile Include="$(MSBuildThisFileDirectory)Native\IntVector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Native\libWaifu2xPINVOKE.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Native\Waifu2xWrapper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\GeneralPages\CupertinoPalettePage.xaml.cs">
-      <DependentUpon>CupertinoPalettePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\GeneralPages\Exporting.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MyPages\Exporting.xaml.cs">
       <DependentUpon>Exporting.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\GeneralPages\FluentPalettePage.xaml.cs">
-      <DependentUpon>FluentPalettePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\GeneralPages\MaterialPalettePage.xaml.cs">
-      <DependentUpon>MaterialPalettePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\GeneralPages\OverviewPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MyPages\OverviewPage.xaml.cs">
       <DependentUpon>OverviewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\GeneralPages\OverviewPageHeader.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MyPages\OverviewPageHeader.xaml.cs">
       <DependentUpon>OverviewPageHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\GeneralPages\SelectingImages.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MyPages\SelectingImages.xaml.cs">
       <DependentUpon>SelectingImages.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\GeneralPages\SettingWaifu2x.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MyPages\SettingWaifu2x.xaml.cs">
       <DependentUpon>SettingWaifu2x.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Shell.xaml.cs">
@@ -216,35 +207,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\GeneralPages\CupertinoPalettePage.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\MyPages\Exporting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\GeneralPages\Exporting.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\MyPages\OverviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\GeneralPages\FluentPalettePage.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\MyPages\OverviewPageHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\GeneralPages\MaterialPalettePage.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\MyPages\SelectingImages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\GeneralPages\OverviewPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\GeneralPages\OverviewPageHeader.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\GeneralPages\SelectingImages.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\GeneralPages\SettingWaifu2x.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\MyPages\SettingWaifu2x.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

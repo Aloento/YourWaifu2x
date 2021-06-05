@@ -14,7 +14,7 @@ namespace YourWaifu2x {
     using Windows.UI.Xaml.Controls;
     using Entities.Data;
     using Helpers;
-    using Views.GeneralPages;
+    using Views.MyPages;
     using MUXC = Microsoft.UI.Xaml.Controls;
     using MUXCP = Microsoft.UI.Xaml.Controls.Primitives;
 

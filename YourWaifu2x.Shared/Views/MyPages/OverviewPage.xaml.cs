@@ -1,4 +1,4 @@
-namespace YourWaifu2x.Views.GeneralPages {
+namespace YourWaifu2x.Views.MyPages {
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Input;

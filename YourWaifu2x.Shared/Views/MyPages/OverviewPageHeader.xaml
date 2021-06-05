@@ -1,7 +1,7 @@
-﻿<UserControl x:Class="YourWaifu2x.Views.GeneralPages.OverviewPageHeader"
+﻿<UserControl x:Class="YourWaifu2x.Views.MyPages.OverviewPageHeader"
 			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-			 xmlns:local="using:YourWaifu2x.Views.GeneralPages"
+			 xmlns:local="using:YourWaifu2x.Views.MyPages"
 			 xmlns:android="http://uno.ui/android"
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -16,7 +16,7 @@
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
-		
+
 		<!-- Text -->
 		<Grid x:Name="TextPart">
 			<Grid.RowDefinitions>
@@ -29,7 +29,7 @@
 				<ColumnDefinition Width="Auto" />
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
-			
+
 			<TextBlock Text="Uno Gallery is a collection of ready-to-use Fluent, Material, and Cupertino code snippets to help speed up your multi-platform development."
 					   TextWrapping="Wrap"
 					   Style="{StaticResource MaterialHeadline5}"
@@ -40,7 +40,7 @@
 					   Style="{StaticResource MaterialHeadline6}"
 					   Margin="4,16,0,0"
 					   Grid.Row="1"/>
-			
+
 			<TextBlock Text="Check how Uno.Material and Uno.Cupertino controls and color palettes can help you build your app faster."
 					   TextWrapping="Wrap"
 					   Style="{StaticResource MaterialHeadline6}"
@@ -72,7 +72,7 @@
 					   Grid.Column="1"
 					   Grid.Row="3" />
 		</Grid>
-		
+
 		<!-- Image -->
 		<Image x:Name="ImagePart"
 			   Source="{ThemeResource OverviewImageSource}"
