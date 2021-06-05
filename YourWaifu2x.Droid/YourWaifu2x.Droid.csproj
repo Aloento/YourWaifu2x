@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{41AA73D1-1930-4BF2-9154-7BE5F6974333}</ProjectGuid>
+    <ProjectGuid>0b4d5f57-5531-43ad-8cf9-69706bb14642</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -14,11 +14,10 @@
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
-    <!-- AndroidUseAapt2 is disabled until https://github.com/unoplatform/uno/issues/1382 is resolved -->
-    <AndroidUseAapt2>false</AndroidUseAapt2>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseIntermediateDesignerFile>True</AndroidUseIntermediateDesignerFile>
     <ResourcesDirectory>..\YourWaifu2x.Shared\Strings</ResourcesDirectory>
@@ -45,33 +44,12 @@
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
-    <AndroidCreatePackagePerAbi>false</AndroidCreatePackagePerAbi>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <AotAssemblies>true</AotAssemblies>
-    <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
-    <AndroidUseDefaultAotProfile>false</AndroidUseDefaultAotProfile>
     <EnableLLVM>true</EnableLLVM>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
-    <BundleAssemblies>false</BundleAssemblies>
-    <AndroidPackageFormat>apk</AndroidPackageFormat>
-    <AndroidPackageFormat Condition="'$(BuildForPlayStore)'=='True'">aab</AndroidPackageFormat>
-    <AndroidUseAapt2>true</AndroidUseAapt2>
-    <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
   </PropertyGroup>
-  <PropertyGroup>
-    <IsUiAutomationMappingEnabled>True</IsUiAutomationMappingEnabled>
-    <DefineConstants>$(DefineConstants);USE_UITESTS</DefineConstants>
-  </PropertyGroup>
-  <ItemGroup>
-    <Page Include="..\YourWaifu2x.UWP\Views\**\*.xaml" Visible="False">
-      <Link>Views\%(RecursiveDir)%(FileName)%(Extension)</Link>
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Compile Include="..\YourWaifu2x.UWP\Views\**\*.cs" Visible="False">
-      <Link>Views\%(RecursiveDir)%(FileName)%(Extension)</Link>
-    </Compile>
-  </ItemGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.Android.Export" />
@@ -82,60 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Branch-Xamarin-Linking-SDK">
-      <Version>7.0.7</Version>
-    </PackageReference>
-    <PackageReference Include="nventive.Nimue.Application.Building.Light">
-      <Version>0.1.0-alpha.58</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="nventive.Nimue.Application.Packaging">
-      <Version>0.1.0-alpha.58</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="nventive.Nimue.Application.Versioning">
-      <Version>0.1.0-alpha.58</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="nventive.Nimue.TargetFrameworks.Filtering">
-      <Version>0.1.0-alpha.58</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Uno.Cupertino">
-      <Version>1.0.0-dev.751</Version>
-    </PackageReference>
-    <PackageReference Include="Uno.Material">
-      <Version>1.0.0-dev.751</Version>
-    </PackageReference>
-    <PackageReference Include="Uno.ShowMeTheXAML">
-      <Version>1.0.59</Version>
-    </PackageReference>
-    <PackageReference Include="Uno.ShowMeTheXAML.MSBuild">
-      <Version>1.0.59</Version>
-    </PackageReference>
-    <PackageReference Include="Uno.UI">
-      <Version>3.8.0-dev.55</Version>
-    </PackageReference>
-    <PackageReference Include="Uno.UI.Lottie">
-      <Version>3.8.0-dev.55</Version>
-    </PackageReference>
-    <PackageReference Include="Uno.UI.RemoteControl" Version="3.8.0-dev.55" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Uno.UI" Version="3.7.4" />
+    <PackageReference Include="Uno.UI.RemoteControl" Version="3.7.4" Condition="'$(Configuration)'=='Debug'" />
     <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.33" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
-    <PackageReference Include="Xamarin.AndroidX.AppCompat.AppCompatResources">
-      <Version>1.1.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData">
-      <Version>2.2.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Essentials">
-      <Version>1.6.1</Version>
-    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -144,8 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Fonts\uno-fluentui-assets.ttf" />
-    <AndroidAsset Include="Assets\Fonts\roboto.ttf" />
-    <AndroidAsset Include="Assets\Fonts\SF-Pro.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
@@ -153,95 +80,22 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Styles.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-anydpi-v26\ic_launcher.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Splash.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values\colors.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\launchscreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\launchscreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\launchscreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\drawable-hdpi\" />
-    <Folder Include="Resources\drawable-xxxhdpi\" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values\ic_launcher_background.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher_foreground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher_round.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher_foreground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher_round.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher_foreground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher_round.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher_foreground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher_round.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_foreground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-anydpi-v26\ic_launcher_round.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAotProfile Include="$(MSBuildThisFileDirectory)custom.aprof" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values-night\colors.xml">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <Import Project="..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems" Label="Shared" Condition="Exists('..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems')" />
+  <Import Project="..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- This will force the generation of the APK when not building inside visual studio -->
   <Target Name="GenerateBuild" DependsOnTargets="SignAndroidPackage" AfterTargets="Build" Condition="'$(BuildingInsideVisualStudio)'==''" />
+  <Target Name="Issue3897Workaround" Condition=" '$(ManagedDesignTimeBuild)' == 'True' " AfterTargets="_RemoveLegacyDesigner">
+    <!-- See https://github.com/unoplatform/uno/issues/3897 and https://github.com/xamarin/xamarin-android/issues/5069 for more details -->
+    <ItemGroup>
+      <Compile Remove="$(_AndroidResourceDesignerFile)" />
+    </ItemGroup>
+  </Target>
 </Project>

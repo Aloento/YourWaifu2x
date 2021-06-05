@@ -1,7 +1,7 @@
-﻿var UnoAppManifest = {
+var UnoAppManifest = {
 
     splashScreenImage: "Assets/SplashScreen.png",
-    splashScreenColor: "#FFFFFF",
-    displayName: "Uno Gallery"
+    splashScreenColor: "#fff",
+    displayName: "YourWaifu2x"
 
 }

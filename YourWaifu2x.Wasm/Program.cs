@@ -1,11 +1,17 @@
-namespace YourWaifu2x.Wasm {
-    public class Program {
-        private static App app;
+using System;
+using Windows.UI.Xaml;
 
-        private static int Main(string[] args) {
-            Windows.UI.Xaml.Application.Start(_ => app = new App());
+namespace YourWaifu2x.Wasm
+{
+	public class Program
+	{
+		private static App _app;
 
-            return 0;
-        }
-    }
+		static int Main(string[] args)
+		{
+			Windows.UI.Xaml.Application.Start(_ => _app = new App());
+
+			return 0;
+		}
+	}
 }

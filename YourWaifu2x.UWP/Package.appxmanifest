@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <Package
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="b4470685-43a9-4cbd-88c8-c16675042d53"
-    Publisher="CN=matfi"
+    Name="f9e9a131-e2ff-4432-8d85-93ca286b278b"
+    Publisher="O=MyCompany"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="cdce436c-9292-44a5-9306-345d200d39d2" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="0b4d5f57-5531-43ad-8cf9-69706bb14642" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Uno Gallery</DisplayName>
-    <PublisherDisplayName>Uno Platform</PublisherDisplayName>
+    <DisplayName>YourWaifu2x</DisplayName>
+    <PublisherDisplayName>YourWaifu2x</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -29,16 +29,16 @@
 
   <Applications>
     <Application Id="App"
-      Executable="YourWaifu2x.exe"
+      Executable="$targetnametoken$.exe"
       EntryPoint="YourWaifu2x.App">
       <uap:VisualElements
-        DisplayName="Uno Gallery"
+        DisplayName="YourWaifu2x"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="Uno Gallery Description"
-        BackgroundColor="#FFFFFF">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
-        <uap:SplashScreen Image="Assets\SplashScreen.png"  BackgroundColor="#FFFFFF"/>
+        Description="YourWaifu2x"
+        BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
+        <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
     </Application>
   </Applications>

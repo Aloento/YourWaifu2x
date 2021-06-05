@@ -1,55 +1,23 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-		<OutputType Condition="'$(Configuration)'=='Release'">WinExe</OutputType>
-		<OutputType Condition="'$(Configuration)'=='Debug'">Exe</OutputType>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
-		<NoWarn>$(NoWarn);NU1701</NoWarn>
-	</PropertyGroup>
-	
-	<ItemGroup>
-		<Content Include="..\YourWaifu2x.Shared\Assets\**" Link="Assets\%(RecursiveDir)%(FileName)%(Extension)" CopyToOutputDirectory="Always" />
-		<EmbeddedResource Include="..\YourWaifu2x.UWP\Package.appxmanifest" LogicalName="Package.appxmanifest" />
-		<ApplicationDefinition Include="..\YourWaifu2x.UWP\App.xaml" Link="App.xaml" Visible="False" />
-		<Page Include="..\YourWaifu2x.UWP\Views\**\*.xaml" Visible="False">
-			<Link>Views\%(RecursiveDir)%(FileName)%(Extension)</Link>
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Compile Include="..\YourWaifu2x.UWP\Views\**\*.cs" Visible="False">
-			<Link>Views\%(RecursiveDir)%(FileName)%(Extension)</Link>
-		</Compile>
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <Content Include="Assets\StoreLogo.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Uno.Cupertino" Version="1.0.0-dev.751" />
-		<PackageReference Include="Uno.Material" Version="1.0.0-dev.751" />
-		<!-- Note that for WebAssembly version 1.1.1 of the console logger required -->
-		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
-		<PackageReference Include="nventive.Nimue.Application.Building.Light" Version="0.1.0-alpha.55">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="nventive.Nimue.Application.Packaging" Version="0.1.0-alpha.55">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="nventive.Nimue.Application.Versioning" Version="0.1.0-alpha.55">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Uno.ShowMeTheXAML" Version="1.0.59" />
-		<PackageReference Include="Uno.ShowMeTheXAML.MSBuild" Version="1.0.59" />		
-		<PackageReference Include="Uno.UI.Lottie" Version="3.8.0-dev.55" />
-		<PackageReference Include="Uno.UI.Skia.Gtk" Version="3.8.0-dev.55" />
-		<PackageReference Include="Uno.UI.RemoteControl" Version="3.8.0-dev.55" Condition="'$(Configuration)'=='Debug'" />
-	</ItemGroup>
-	
-	<Import Project="..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems" Label="Shared" />
-
+    <OutputType Condition="'$(Configuration)'=='Release'">WinExe</OutputType>
+    <OutputType Condition="'$(Configuration)'=='Debug'">Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup Condition="exists('..\YourWaifu2x.UWP')">
+    <EmbeddedResource Include="..\YourWaifu2x.UWP\Package.appxmanifest" LogicalName="Package.appxmanifest" />
+    <Content Include="..\YourWaifu2x.UWP\Assets\StoreLogo.png" Link="Assets\StoreLogo.png" />
+    <Content Include="Assets\Fonts\uno-fluentui-assets.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Include="..\YourWaifu2x.Shared\**\*.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
+    <PackageReference Include="Uno.UI.Skia.Gtk" Version="3.7.4" />
+    <PackageReference Include="Uno.UI.RemoteControl" Version="3.7.4" Condition="'$(Configuration)'=='Debug'" />
+  </ItemGroup>
+  <Import Project="..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems" Label="Shared" />
 </Project>

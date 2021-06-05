@@ -3,47 +3,23 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <!-- 
-			If, in the same solution, you are referencing a project that uses https://github.com/onovotny/MSBuildSdkExtras,
-			you need to make sure that the version provided here matches https://github.com/onovotny/MSBuildSdkExtras/blob/master/Source/MSBuild.Sdk.Extras/DefaultItems/ImplicitPackages.targets#L11.
-			This is not an issue when libraries are referenced through nuget packages. See https://github.com/unoplatform/uno/issues/446 for more details.
-			-->
-      <Version>6.2.10</Version>
+      <!--
+      If, in the same solution, you are referencing a project that uses https://github.com/onovotny/MSBuildSdkExtras,
+      you need to make sure that the version provided here matches https://github.com/novotnyllc/MSBuildSdkExtras/blob/main/Source/MSBuild.Sdk.Extras/DefaultItems/ImplicitPackages.targets#L11.
+      This is not an issue when libraries are referenced through nuget packages. See https://github.com/unoplatform/uno/issues/446 for more details.
+      -->
+      <Version>6.2.11</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Lottie">
-      <Version>6.1.0</Version>
+      <Version>7.0.2</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.6.0-prerelease.210129001</Version>
-    </PackageReference>
-    <PackageReference Include="nventive.Nimue.Application.Building.Light">
-      <Version>0.1.0-alpha.58</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="nventive.Nimue.Application.Packaging">
-      <Version>0.1.0-alpha.58</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="nventive.Nimue.Application.Versioning">
-      <Version>0.1.0-alpha.58</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="nventive.Nimue.TargetFrameworks.Filtering">
-      <Version>0.1.0-alpha.58</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="Microsoft.UI.Xaml" Version="2.5.0" />
     <PackageReference Include="Uno.Core" Version="2.3.0" />
     <PackageReference Include="Uno.Cupertino">
-      <Version>1.0.0-dev.751</Version>
+      <Version>1.0.0-dev.772</Version>
     </PackageReference>
     <PackageReference Include="Uno.Material">
-      <Version>1.0.0-dev.751</Version>
+      <Version>1.0.0-dev.772</Version>
     </PackageReference>
     <PackageReference Include="Uno.ShowMeTheXAML">
       <Version>1.0.59</Version>
@@ -51,14 +27,14 @@
     <PackageReference Include="Uno.ShowMeTheXAML.MSBuild">
       <Version>1.0.59</Version>
     </PackageReference>
-    <PackageReference Include="Uno.UI">
-      <Version>3.8.0-dev.55</Version>
-    </PackageReference>
+    <PackageReference Include="Uno.UI" Version="3.7.4" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="5.0.0" />
   </ItemGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{B4470685-43A9-4CBD-88C8-C16675042D53}</ProjectGuid>
+    <ProjectGuid>{F9E9A131-E2FF-4432-8D85-93CA286B278B}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>YourWaifu2x</RootNamespace>
@@ -70,7 +46,7 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+    <PackageCertificateKeyFile>YourWaifu2x.Uwp_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -166,15 +142,17 @@
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Native\IntVector.cs" />
-    <Compile Include="Native\libWaifu2xPINVOKE.cs" />
-    <Compile Include="Native\Waifu2xWrapper.cs" />
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\Fonts\SF-Pro.ttf" />
+    <None Include="YourWaifu2x.Uwp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\LargeTile.scale-100.png" />
@@ -219,6 +197,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
     <Content Include="Assets\StoreLogo.backup.png" />
+    <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-125.png" />
     <Content Include="Assets\StoreLogo.scale-150.png" />
@@ -229,134 +208,14 @@
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
-    <Content Include="Native\libWaifu2x.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise0_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise0_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise0_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise0_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise1_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise1_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise1_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise1_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise2_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise2_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise2_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise2_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise3_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise3_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise3_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\noise3_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\CUnet\scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpPhoto\noise0_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpPhoto\noise0_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpPhoto\noise1_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpPhoto\noise1_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpPhoto\noise2_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpPhoto\noise2_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpPhoto\noise3_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpPhoto\noise3_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpPhoto\scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpPhoto\scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpRGB\noise0_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpRGB\noise0_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpRGB\noise1_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpRGB\noise1_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpRGB\noise2_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpRGB\noise2_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpRGB\noise3_scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpRGB\noise3_scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpRGB\scale2.0x_model.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Native\models\UpRGB\scale2.0x_model.param">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Assets\Fonts\SF-Pro.ttf" />
-  </ItemGroup>
-  <Import Project="..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems" Label="Shared" Condition="Exists('..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems')" />
+  <Import Project="..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

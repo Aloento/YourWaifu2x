@@ -1,130 +1,47 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Web">
-	<PropertyGroup>
-		<OutputType>Exe</OutputType>
-		<TargetFramework>net5</TargetFramework>
-		<NoWarn>NU1701</NoWarn>
-		<WasmHead>true</WasmHead>
-		<DefineConstants>__WASM__</DefineConstants>
-		<UnoUIUseRoslynSourceGenerators>false</UnoUIUseRoslynSourceGenerators>
-	</PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <NoWarn>NU1701</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <MonoRuntimeDebuggerEnabled>true</MonoRuntimeDebuggerEnabled>
+    <DefineConstants>$(DefineConstants);TRACE;DEBUG</DefineConstants>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Assets\SplashScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Include="..\YourWaifu2x.Shared\**\*.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WasmCSS\Fonts.css" />
+    <EmbeddedResource Include="WasmScripts\AppManifest.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <LinkerDescriptor Include="LinkerConfig.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <!--
+    This item group is required by the project template because of the
+    new SDK-Style project, otherwise some files are not added automatically.
 
-	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
-		<MonoRuntimeDebuggerEnabled>true</MonoRuntimeDebuggerEnabled>
-		<DefineConstants>$(DefineConstants);TRACE;DEBUG</DefineConstants>
-		<DebugType>portable</DebugType>
-		<DebugSymbols>true</DebugSymbols>
-		<WasmShellILLinkerEnabled>false</WasmShellILLinkerEnabled>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)'=='Release'">
-		<WasmShellMonoRuntimeExecutionMode>InterpreterAndAOT</WasmShellMonoRuntimeExecutionMode>
-		<WasmShellEnableEmccProfiling>true</WasmShellEnableEmccProfiling>
-		<!--<WasmShellGenerateAOTProfile>true</WasmShellGenerateAOTProfile>-->
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">
-		<IsUiAutomationMappingEnabled>True</IsUiAutomationMappingEnabled>
-		<DefineConstants>$(DefineConstants);USE_UITESTS</DefineConstants>
-	</PropertyGroup>
-
-	<!--
-	<ItemGroup Condition="'$(Configuration)'=='Release' and '$(WasmShellMonoRuntimeExecutionMode)'=='InterpreterAndAOT'">
-		<WasmShellEnableAotProfile Condition="'$(IsUiAutomationMappingEnabled)'==''" Include="aot.profile" />
-		
-		--><!-- 
-		Use smaller profile for UI tests to avoid the browser's memory 
-		use to go higher than the Ci agent's availability
-		--><!--
-		<WasmShellEnableAotProfile Condition="'$(IsUiAutomationMappingEnabled)'=='True'" Include="aot-uitests.profile" />
-	</ItemGroup>
-
-	<PropertyGroup>
-		<WasmShellAOTProfileExcludedMethods>$(WasmShellAOTProfileExcludedMethods);System\.Reflection\.Assembly\.GetExecutingAssembly</WasmShellAOTProfileExcludedMethods>
-		<WasmShellAOTProfileExcludedMethods>$(WasmShellAOTProfileExcludedMethods);Dispose</WasmShellAOTProfileExcludedMethods>
-	</PropertyGroup>
-	-->
-	
-	<ItemGroup>
-		<MonoRuntimeMixedModeExcludedAssembly Include="System.Console" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ApplicationDefinition Include="..\YourWaifu2x.UWP\App.xaml" Link="App.xaml" Visible="False" />
-		<Page Include="..\YourWaifu2x.UWP\Views\**\*.xaml" Visible="False">
-			<Link>Views\%(RecursiveDir)%(FileName)%(Extension)</Link>
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Compile Include="..\YourWaifu2x.UWP\Views\**\*.cs" Visible="False">
-			<Link>Views\%(RecursiveDir)%(FileName)%(Extension)</Link>
-		</Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-		<Content Include="Assets\SplashScreen.png" />
-	</ItemGroup>
-
-	<!--
-	<ItemGroup>
-		<WasmShellExtraEmccFlags Include="-fsanitize=address" />
-	</ItemGroup>
-	-->
-
-	<ItemGroup>
-		<EmbeddedResource Include="WasmCSS\*.css" />
-		<EmbeddedResource Include="WasmScripts\*.js" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<LinkerDescriptor Include="LinkerConfig.xml" />
-	</ItemGroup>
-	<ItemGroup>
-		<WasmShellMonoEnvironment Include="MONO_GC_PARAMS" Value="soft-heap-limit=512m,nursery-size=64m,evacuation-threshold=66,major=marksweep" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<!-- Note that for WebAssembly version 1.1.1 of the console logger required -->
-		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
-		<PackageReference Include="nventive.Nimue.Application.Building.Light" Version="0.1.0-alpha.58">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="nventive.Nimue.Application.Packaging" Version="0.1.0-alpha.58">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="nventive.Nimue.Application.Versioning" Version="0.1.0-alpha.58">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="nventive.Nimue.TargetFrameworks.Filtering" Version="0.1.0-alpha.58">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.1" />
-		<PackageReference Include="Uno.Cupertino" Version="1.0.0-dev.751" />
-		<PackageReference Include="Uno.Diagnostics.Eventing" Version="1.0.5-dev.13" />
-		<PackageReference Include="Uno.Material" Version="1.0.0-dev.751" />
-		<PackageReference Include="Uno.ShowMeTheXAML" Version="1.0.59" />
-		<PackageReference Include="Uno.ShowMeTheXAML.MSBuild" Version="1.0.59" />
-		<PackageReference Include="Uno.UI.Lottie" Version="3.8.0-dev.55" />
-		<PackageReference Include="Uno.UI.WebAssembly" Version="3.8.0-dev.55" />
-		<PackageReference Include="Uno.UI.RemoteControl" Version="3.8.0-dev.55" Condition="'$(Configuration)'=='Debug'" />
-		<PackageReference Include="Uno.Wasm.Bootstrap" Version="2.1.0-dev.45" />
-		<PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="2.1.0-dev.45" />
-		<PackageReference Include="Microsoft.TypeScript.Compiler" Version="3.1.5">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.3.1">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-		</PackageReference>
-	</ItemGroup>
-	<ItemGroup>
-		<TypeScriptCompile Include="ts\GoogleAnalytics.ts" />
-	</ItemGroup>
-	<Import Project="..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems" Label="Shared" Condition="Exists('..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems')" />
+    You can safely remove this ItemGroup completely.
+    -->
+    <None Include="Program.cs" />
+    <None Include="LinkerConfig.xml" />
+    <None Include="wwwroot\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="Uno.Extensions.Logging.WebAssembly.Console" Version="1.0.1" />
+    <PackageReference Include="Uno.UI.WebAssembly" Version="3.7.4" />
+    <PackageReference Include="Uno.UI.RemoteControl" Version="3.7.4" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Uno.Wasm.Bootstrap" Version="1.3.4" />
+    <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="1.3.4" />
+  </ItemGroup>
+  <Import Project="..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems" Label="Shared" Condition="Exists('..\YourWaifu2x.Shared\YourWaifu2x.Shared.projitems')" />
 </Project>

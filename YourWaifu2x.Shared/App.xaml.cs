@@ -18,7 +18,7 @@ namespace YourWaifu2x {
     using MUXC = Microsoft.UI.Xaml.Controls;
     using MUXCP = Microsoft.UI.Xaml.Controls.Primitives;
 
-    public sealed partial class App {
+    public sealed partial class App : Application {
         private static MyPage[] myPages;
         private Shell shell;
 
