@@ -79,21 +79,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\GeneralPages\SettingWaifu2x.xaml.cs">
       <DependentUpon>SettingWaifu2x.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\HyperlinkButtonSamplePage.xaml.cs">
-      <DependentUpon>HyperlinkButtonSamplePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\IconSamplePage.xaml.cs">
-      <DependentUpon>IconSamplePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\ImageSamplePage.xaml.cs">
-      <DependentUpon>ImageSamplePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\ListViewSamplePage.xaml.cs">
-      <DependentUpon>ListViewSamplePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\LottieSamplePage.xaml.cs">
-      <DependentUpon>LottieSamplePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\MessageDialogSamplePage.xaml.cs">
       <DependentUpon>MessageDialogSamplePage.xaml</DependentUpon>
     </Compile>
@@ -320,26 +305,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Views\GeneralPages\SettingWaifu2x.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\SamplePages\HyperlinkButtonSamplePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\SamplePages\IconSamplePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\SamplePages\ImageSamplePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\SamplePages\ListViewSamplePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\SamplePages\LottieSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
