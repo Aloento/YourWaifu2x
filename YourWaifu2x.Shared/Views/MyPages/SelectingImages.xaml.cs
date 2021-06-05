@@ -12,7 +12,7 @@ namespace YourWaifu2x.Views.MyPages {
     using Entities.Data;
     using Helpers;
 
-    [Page(PageCategory.None, "Selecting Images")]
+    [Page(PageCategory.None, "2. Selecting Images")]
     public sealed partial class SelectingImages {
         private readonly ObservableCollection<IStorageItem2> imageListData = WaifuInstance.WaitingList;
 

@@ -6,7 +6,7 @@ namespace YourWaifu2x.Views.MyPages {
     using Windows.UI.Xaml.Input;
     using Entities.Data;
 
-    [Page(PageCategory.None, "Setting Waifu2x")]
+    [Page(PageCategory.None, "3. Setting Waifu2x")]
     public sealed partial class SettingWaifu2x {
         public SettingWaifu2x() => InitializeComponent();
 
@@ -44,11 +44,12 @@ namespace YourWaifu2x.Views.MyPages {
         private async void FolderButton_Click(object sender, RoutedEventArgs e) {
             var folderPicker = new FolderPicker {
                 SuggestedStartLocation = PickerLocationId.PicturesLibrary,
-                FileTypeFilter = {"*"}
+                FileTypeFilter = { "*" }
             };
             var folder = await folderPicker.PickSingleFolderAsync();
 
-            if (folder == null) return;
+            if (folder == null)
+                return;
             WaifuInstance.Config.Output = folder;
             FolderText.Text = folder.Path;
         }

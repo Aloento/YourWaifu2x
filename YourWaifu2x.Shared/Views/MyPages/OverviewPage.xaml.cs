@@ -3,7 +3,7 @@ namespace YourWaifu2x.Views.MyPages {
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Input;
 
-    [Page(PageCategory.None, "Overview")]
+    [Page(PageCategory.None, "1. Overview")]
     public sealed partial class OverviewPage {
         public OverviewPage() => InitializeComponent();
 

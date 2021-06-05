@@ -11,7 +11,7 @@ namespace YourWaifu2x.Views.MyPages {
     using Helpers;
     using Microsoft.UI.Xaml.Controls;
 
-    [Page(PageCategory.None, "Exporting")]
+    [Page(PageCategory.None, "4. Exporting")]
     public sealed partial class Exporting {
         public Exporting() {
             InitializeComponent();
