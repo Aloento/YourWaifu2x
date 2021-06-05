@@ -36,6 +36,12 @@
                             <ToggleSwitch Header="Disabled"
 										  IsEnabled="False"
 										  Style="{StaticResource MaterialToggleSwitchStyle}" />
+
+                            <Button Click="ButtonBase_OnClick"
+                                    Content="Next Step"
+                                    Style="{StaticResource MaterialOutlinedButtonStyle}"
+                                    HorizontalAlignment="Left"
+                                    Margin="0,40,0,0" />
                         </StackPanel>
                     </local:OverviewSampleView>
                 </StackPanel>
