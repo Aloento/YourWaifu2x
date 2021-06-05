@@ -79,30 +79,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\GeneralPages\SettingWaifu2x.xaml.cs">
       <DependentUpon>SettingWaifu2x.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\MessageDialogSamplePage.xaml.cs">
-      <DependentUpon>MessageDialogSamplePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\ModalStandardBottomSheetSamplePage.xaml.cs">
-      <DependentUpon>ModalStandardBottomSheetSamplePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\NavigationViewSamplePage.xaml.cs">
-      <DependentUpon>NavigationViewSamplePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\PanelSamplePage.xaml.cs">
-      <DependentUpon>PanelSamplePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\PasswordBoxSamplePage.xaml.cs">
-      <DependentUpon>PasswordBoxSamplePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\PathSamplePage.xaml.cs">
-      <DependentUpon>PathSamplePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\PersonPictureSamplePage.xaml.cs">
-      <DependentUpon>PersonPictureSamplePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\ProgressSamplePage.xaml.cs">
-      <DependentUpon>ProgressSamplePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\SamplePages\RadioButtonSamplePage.xaml.cs">
       <DependentUpon>RadioButtonSamplePage.xaml</DependentUpon>
     </Compile>
@@ -305,38 +281,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Views\GeneralPages\SettingWaifu2x.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\SamplePages\MessageDialogSamplePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\SamplePages\ModalStandardBottomSheetSamplePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\SamplePages\NavigationViewSamplePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\SamplePages\PanelSamplePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\SamplePages\PasswordBoxSamplePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\SamplePages\PathSamplePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\SamplePages\PersonPictureSamplePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\SamplePages\ProgressSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
