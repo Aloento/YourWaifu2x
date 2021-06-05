@@ -1,3 +1,2 @@
-namespace YourWaifu2x.Skia.Gtk
-{
+namespace YourWaifu2x.Skia.Gtk {
 }
