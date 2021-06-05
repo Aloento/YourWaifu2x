@@ -26,24 +26,11 @@
         <local:SamplePageLayout.MaterialTemplate>
             <DataTemplate>
                 <StackPanel>
-                    <!-- ToggleSwitch -->
-                    <local:OverviewSampleView SamplePageType="samples:ToggleSwitchSamplePage">
-                        <StackPanel Spacing="8">
-                            <ToggleSwitch Header="ToggleSwitch"
-                                          IsOn="True"
-                                          Style="{StaticResource MaterialToggleSwitchStyle}" />
-
-                            <ToggleSwitch Header="Disabled"
-										  IsEnabled="False"
-										  Style="{StaticResource MaterialToggleSwitchStyle}" />
-
-                            <Button Click="ButtonBase_OnClick"
+                    <Button Click="ButtonBase_OnClick"
                                     Content="Next Step"
                                     Style="{StaticResource MaterialOutlinedButtonStyle}"
                                     HorizontalAlignment="Left"
                                     Margin="0,40,0,0" />
-                        </StackPanel>
-                    </local:OverviewSampleView>
                 </StackPanel>
             </DataTemplate>
         </local:SamplePageLayout.MaterialTemplate>
