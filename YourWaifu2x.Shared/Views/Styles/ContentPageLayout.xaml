@@ -74,7 +74,6 @@
                                                   IsClosable="False"
                                                   Title="Tips"
                                                   Opacity="0.8"
-                                                  Style="{StaticResource MaterialSubtitle1}"
                                                   Foreground="{StaticResource MaterialOnBackgroundBrush}"
                                                   Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Description, Converter={StaticResource IsNullOrEmptyToCollapsed}, FallbackValue=Collapsed}"
                                                   Margin="0,16,0,0"/>
